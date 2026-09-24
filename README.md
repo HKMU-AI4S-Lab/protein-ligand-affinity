@@ -43,4 +43,6 @@ The browser checks accept `TEST_BASE_URL` and `QA_OUTPUT_DIR`. Their local Chrom
 
 [Deployment instructions](docs/deployment.md) describe the manual GitHub Pages workflow. `deployment.config.mjs` defines the confirmed repository, site URL and subdirectory. Publication requires the artifact and source-distribution checks in `npm run publication:check`.
 
+[Publication checks](docs/publication-check.md) record the deployed release and live verification.
+
 Paper credits and licences appear with the figures. Software notices and corresponding Open Babel sources are available at the website's **Software licences** link. Third-party files retain their own licences; no blanket licence is applied to the research material in this repository.

@@ -2,6 +2,8 @@
 
 The confirmed repository is `HKMU-AI4S-Lab/protein-ligand-affinity`. GitHub Pages serves the production build at `https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/`.
 
+The first release is live. [Publication checks](publication-check.md) record the deployed commit, successful workflow and live verification.
+
 ## Manual release
 
 1. In repository Settings → Pages, select **GitHub Actions** as the source.
