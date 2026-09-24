@@ -1,0 +1,37 @@
+[
+  {
+    "path": "runtime/rdkit/RDKit_minimal.wasm",
+    "sha256": "e0967d44fed59e44a2d07bfc08f3a86821c54a14c95bb7e6e392fe867333b8c8",
+    "bytes": 6914823
+  },
+  {
+    "path": "runtime/ort/ort-wasm-simd-threaded.wasm",
+    "sha256": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d",
+    "bytes": 13961845
+  },
+  {
+    "path": "runtime/ort/ort-wasm-simd-threaded.mjs",
+    "sha256": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747",
+    "bytes": 24218
+  },
+  {
+    "path": "runtime/openbabel/openbabel.js",
+    "sha256": "5e895fb68e1c80e0e8c94f24f3f4f5c3ba70b07e8ee5a394a1974001b962ce82",
+    "bytes": 1420576
+  },
+  {
+    "path": "runtime/openbabel/openbabel.wasm",
+    "sha256": "7822651af18039c57ec8660d01193ac215381c18cbe69fc5bedddfa00a180cdc",
+    "bytes": 4097831
+  },
+  {
+    "path": "runtime/openbabel/openbabel.data",
+    "sha256": "382090ab1002bd6319d339d51c52df5fed8c63ce1183ed08a3d7f079da8ec572",
+    "bytes": 2853362
+  },
+  {
+    "path": "runtime/openbabel/openbabel.mjs",
+    "sha256": "f85220ca8e3cc6db5847cfff348103aaf879c05657c9c7ef3289dbc4bb23cfb2",
+    "bytes": 1420609
+  }
+]

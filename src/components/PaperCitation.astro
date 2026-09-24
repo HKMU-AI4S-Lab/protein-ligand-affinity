@@ -1,0 +1,4 @@
+---
+const {paper}=Astro.props;
+---
+<div class="citation"><p>{paper.authors}. <a href={paper.url}>{paper.title}</a>. <em>{paper.venue}</em> ({paper.year}).</p></div>

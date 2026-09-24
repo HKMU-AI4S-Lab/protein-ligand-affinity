@@ -1,0 +1,97 @@
+[
+  {
+    "id": "agima-adjacency",
+    "source": "research_works/AGIMA-Score/figure-002.tif",
+    "sourceSha256": "bea870ab68e67a982e33284973a369b606d27669740c8a60f28b93c067d2196b",
+    "sourceUrl": "https://journals.plos.org/ploscompbiol/article/figure/image?download&size=original&id=10.1371/journal.pcbi.1013074.g002",
+    "label": "Figure 2",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "operation": "Lossless WebP encoding; no pixel edits",
+    "width": 1333,
+    "height": 1375,
+    "artifact": {
+      "path": "paper-figures/agima-adjacency.webp",
+      "sha256": "19ac42ce3449c3dee9d0bc4b703b9a9e90a0639733c4c8d15d58444d06e58cd3",
+      "bytes": 216560
+    }
+  },
+  {
+    "id": "agima-interface",
+    "source": "research_works/AGIMA-Score/figure-002.tif",
+    "sourceSha256": "bea870ab68e67a982e33284973a369b606d27669740c8a60f28b93c067d2196b",
+    "label": "Figure 2D excerpt",
+    "license": "CC BY 4.0",
+    "operation": "Rectangular crop of panel D only; pixels unchanged",
+    "cropPixels": [
+      735,
+      700,
+      1333,
+      1375
+    ],
+    "width": 598,
+    "height": 675,
+    "artifact": {
+      "path": "paper-figures/agima-interface.webp",
+      "sha256": "c74907eefbca5607f6847772372acbe3728c1d7db5785cfcfdee253fb1863002",
+      "bytes": 60838
+    }
+  },
+  {
+    "id": "agima-architecture",
+    "source": "research_works/AGIMA-Score/figure-003.tif",
+    "sourceSha256": "86f733c4a2fc1d2221d2f0571e7f269ba1c1ef6c4826efea1e280d067371fed1",
+    "sourceUrl": "https://journals.plos.org/ploscompbiol/article/figure/image?download&size=original&id=10.1371/journal.pcbi.1013074.g003",
+    "label": "Figure 3",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "operation": "Lossless WebP encoding; no pixel edits",
+    "width": 994,
+    "height": 1384,
+    "artifact": {
+      "path": "paper-figures/agima-architecture.webp",
+      "sha256": "bf5c84cade46e2c32782e843ef3934ce4e3f6c39e8f5440fee26898a812ec6ae",
+      "bytes": 165238
+    }
+  },
+  {
+    "id": "agima-feature-importance",
+    "source": "research_works/AGIMA-Score/figure-009.tif",
+    "sourceSha256": "f7e0c97d45a4f17c792ee0297ffbd043658d2eac6bdd5de4ed787ec5df795e13",
+    "sourceUrl": "https://journals.plos.org/ploscompbiol/article/figure/image?download&size=original&id=10.1371/journal.pcbi.1013074.g009",
+    "label": "Figure 9",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "operation": "Lossless WebP encoding; no pixel edits",
+    "width": 1548,
+    "height": 819,
+    "artifact": {
+      "path": "paper-figures/agima-feature-importance.webp",
+      "sha256": "9cdb6c032a2aca51d9dbd2bad10735a0e19547e3b1224343dcd350a9d8176a7d",
+      "bytes": 114688
+    }
+  },
+  {
+    "id": "agima-scoring-benchmark",
+    "source": "research_works/AGIMA-Score/AGIMA-Score_PLOS_2025.pdf",
+    "sourceSha256": "f95f308e945dede8ae79132bb64a2494d5508f6c1f754eeff5e3b92ce0515b31",
+    "sourceUrl": "https://doi.org/10.1371/journal.pcbi.1013074",
+    "label": "Table 2",
+    "page": 10,
+    "cropPoints": [
+      37,
+      469,
+      577,
+      684
+    ],
+    "license": "CC BY 4.0",
+    "operation": "Unaltered PDF rendering, rectangular crop of table and footnotes",
+    "width": 2160,
+    "height": 860,
+    "artifact": {
+      "path": "paper-figures/agima-scoring-benchmark.webp",
+      "sha256": "295a88bc2e8f897b0d07d7300ab6be5baa746d752573dee0c01cb26bc767ac42",
+      "bytes": 65788
+    }
+  }
+]

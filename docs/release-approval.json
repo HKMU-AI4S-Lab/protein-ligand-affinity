@@ -1,0 +1,11 @@
+{
+  "date": "2026-09-25",
+  "repository": "HKMU-AI4S-Lab/protein-ligand-affinity",
+  "site": "https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/",
+  "manualPublicationApproved": true,
+  "publicationAuthorization": "The project owner explicitly requested publication of the approved website and authorized Hugging Face CLI upload of its inference assets.",
+  "chemistryRuntimeRedistributionApproved": true,
+  "chemistryReview": "Open Babel GPL notice and corresponding core, Eigen and browser-binding sources accompany the runtime. Binary and source revisions are recorded in artifacts/chemistry-source-provenance.json; public/notices/OPENBABEL-SOURCE.txt provides build information and the local loader modification.",
+  "researchArtifactReview": "Publication authorization covers the supplied project Fusion weights and selected UniMolRep author-manuscript crops. DL-FSG and AGIMA paper credits remain at their figures. Upstream BSD-3-Clause and gnina-torch MIT notices are retained; GNINA is credited as external software. This record grants no blanket licence over the private research archive.",
+  "assetRevision": "784a88468de2077a8b50d1fd9353590930039aee"
+}

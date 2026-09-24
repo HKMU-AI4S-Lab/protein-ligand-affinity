@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 3,
+  "id": "gnina-crossdock",
+  "format": "onnx",
+  "runtime": "onnxruntime-web",
+  "backend": "wasm",
+  "precision": "fp32",
+  "preprocessingVersion": "libmolgrid-0.5.5-gnina-default-types-v1",
+  "checkpointSha256": "56990c0a31a7aa0a57c5445de64c3d59002bc23de9947a8d028548d89ca803b4",
+  "sourceRevision": "5196d00ec78738428313a1af9a11bf73c550edd3",
+  "license": "gnina-torch MIT; GNINA attribution retained",
+  "redistributionApproved": true,
+  "artifact": {
+    "path": "research/gnina-crossdock/gradients.onnx",
+    "sha256": "41150f6f1e5a5e52b92f803f411cd2d8c38a6b8b1128cd4a59b71e3e12436dfb",
+    "bytes": 1675017
+  },
+  "inputs": [
+    {
+      "name": "grid",
+      "dtype": "float32",
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "pose_scores",
+      "dtype": "float32",
+      "shape": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "affinity",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "input_gradient",
+      "dtype": "float32",
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ]
+    },
+    {
+      "name": "grad_cam",
+      "dtype": "float32",
+      "shape": [
+        1,
+        6,
+        6,
+        6
+      ]
+    },
+    {
+      "name": "spatial_activation",
+      "dtype": "float32",
+      "shape": [
+        1,
+        128,
+        6,
+        6,
+        6
+      ]
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "referenceSha256": "8f97b2df530a8d8e5e016f1ce565c31f11208a1ab8f78563695d2025ee0ead35",
+    "maxAbsError": 4.6566128730773926e-09
+  },
+  "examples": []
+}

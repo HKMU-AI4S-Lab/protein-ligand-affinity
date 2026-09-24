@@ -1,0 +1,37 @@
+{
+  "name": "molecular-grid-research",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-local.ps1",
+    "demo:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-local.ps1",
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "node scripts/prepare-runtime.mjs && node scripts/prepare-notices.mjs && node scripts/validate-content.mjs && astro build && node scripts/prune-hosted-artifacts.mjs && node scripts/build-offline.mjs",
+    "preview": "node scripts/serve-static.mjs 4321",
+    "check": "astro check",
+    "test": "node --test tests/*.test.mjs",
+    "content:validate": "node scripts/validate-content.mjs",
+    "publication:check": "node scripts/check-publication.mjs",
+    "release:inputs": "node scripts/provision-release-inputs.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.5",
+    "@rdkit/rdkit": "2025.3.4-1.0.0",
+    "3dmol": "2.5.5",
+    "astro": "^7.3.2",
+    "kekule": "1.0.3",
+    "marked": "18.0.12",
+    "onnxruntime-web": "1.29.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "zod": "4.6.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "sharp": "^0.35.4",
+    "typescript": "^6.0.3"
+  }
+}

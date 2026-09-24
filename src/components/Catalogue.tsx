@@ -1,0 +1,7 @@
+import {useId,useState} from 'react';
+type Entry={id:string;title:string;summary:string;category:string;tags:string[];url:string};
+export default function Catalogue({entries,label='Search research'}:{entries:Entry[];label?:string}) {
+  const [query,setQuery]=useState(''),[category,setCategory]=useState('All');const id=useId();
+  const filtered=entries.filter(e=>(category==='All'||e.category===category)&&`${e.title} ${e.summary} ${e.tags.join(' ')}`.toLowerCase().includes(query.toLowerCase()));
+  return <div><div className="catalogue-controls"><div><label htmlFor={id+'q'}>{label}</label><input id={id+'q'} type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Molecular properties, affinity, …"/></div><div><label htmlFor={id+'c'}>Contribution type</label><select id={id+'c'} value={category} onChange={e=>setCategory(e.target.value)}>{['All',...new Set(entries.map(e=>e.category))].map(c=><option key={c}>{c}</option>)}</select></div></div><p className="small" role="status">{filtered.length} {filtered.length===1?'contribution':'contributions'}</p><div className="catalogue-grid">{filtered.map(e=><article key={e.id} className="work-card"><p className="eyebrow">{e.category}</p><h3><a href={e.url}>{e.title} <span aria-hidden="true">↗</span></a></h3><p>{e.summary}</p><div className="tags">{e.tags.map(t=><span key={t}>{t}</span>)}</div></article>)}</div>{!filtered.length&&<p>No matching contributions. Try a different search.</p>}</div>;
+}

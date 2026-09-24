@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.qa/
+*.log
+.venv/
+.venv-linux/
+__pycache__/
+backend/data/
+backend/models/*.joblib
+.local-demo.json
+
+public/runtime/
+public/models/**/*.onnx
+public/notices/npm/
+artifacts/staging/
+
+# Local research sources and large inference data are provisioned separately for release.
+research_works/
+public/research/fusion-aofb/weights/54ee06307f6dc6b27bf8894ebe5944d010aef4c9e05e8336e6a01b7ca01975d1.bin
+public/research/gnina-crossdock/1hsg-grid.bin
+public/research/gnina-crossdock/1hvr-grid.bin

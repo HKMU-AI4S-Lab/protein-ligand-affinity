@@ -1,0 +1,23 @@
+{
+  "binaryDistribution": "kekule@1.0.3",
+  "wasmSha256": "7822651af18039c57ec8660d01193ac215381c18cbe69fc5bedddfa00a180cdc",
+  "wrapperRevision": "816c78557211348ef0b99f78c5e0a95d295b9aef",
+  "bindingsLicenseRevision": "4ccb195c2916e99905abf264bf6212f2b4f9a10d",
+  "sources": [
+    {
+      "path": "notices/sources/eigen-2.0.17.tar.gz",
+      "bytes": 449027,
+      "sha256": "151853ebebfe076986129feb02cd76ede117a7705bad6be51f2da05799dab58e"
+    },
+    {
+      "path": "notices/sources/openbabel-3.1.1.tar.gz",
+      "bytes": 36688499,
+      "sha256": "c97023ac6300d26176c97d4ef39957f06e68848d64f1a04b0b284ccff2744f02"
+    },
+    {
+      "path": "notices/sources/openbabel-web-bindings.tar.gz",
+      "bytes": 19021,
+      "sha256": "5e86dbaf10ff40328c741638faf84cddeb2376a8989234cad1592a26cfb1e4ce"
+    }
+  ]
+}

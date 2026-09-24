@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-24T18:11:32.333Z",
+  "base": "/protein-ligand-affinity/",
+  "pages": 18,
+  "localReferences": 79,
+  "checks": [
+    "dist/topics/binding-affinity/index.html: concept → research → occlusion → experiment → references",
+    "dist/topics/representing-molecules/index.html: concept → research → experiment → references",
+    "dist/topics/screening-molecules/index.html: concept → research → grad-cam → experiment → references"
+  ],
+  "issues": []
+}

@@ -1,0 +1,3 @@
+# Scientific fixtures and source-bound provenance use exact file bytes.
+# Preserve those bytes across Windows and Linux checkouts.
+* -text

@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/SiteLayout.astro';
+import PaperFigure from '../../components/PaperFigure.astro';
+import TeachingFigure from '../../components/TeachingFigure.astro';
+import PaperCitation from '../../components/PaperCitation.astro';
+import TopicWorkbench from '../../components/TopicWorkbench';
+import {citations} from '../../data/citations.mjs';
+import {topics} from '../../data/research';
+export function getStaticPaths(){return topics.map(topic=>({params:{slug:topic.id},props:{topic}}));}
+const {topic}=Astro.props,rep=topic.demo==='representations',screen=topic.demo==='screening',affinity=topic.demo==='binding-affinity';
+const base=import.meta.env.BASE_URL;
+const references=rep?[citations.unimolrep]:screen?[citations.fusion,citations.gradcam]:[citations.agima,citations.unimolrep,citations.gnina,citations.pdb1hsg,citations.pdb1hvr,citations.occlusion];
+const heading=rep?'Representations':screen?'Screening':'Binding-affinity prediction';
+const question=rep?'What should a model be able to see in a molecule?':screen?'Can sequence and spatial features improve screening when learned together?':'Which atomic contacts should a model learn from to predict binding strength?';
+const takeaway=rep?'UniMolRep provides a common way to prepare molecular features and compare the information they carry.':screen?'DL-FSG connects chemical sequences and molecular grids through cross-attention, then tests their contribution to target-specific screening.':'AGIMA-Score investigates this question using graphs whose edges connect protein atoms to ligand atoms.';
+---
+<Layout title={topic.title} description={topic.summary}>
+<main id="main" class="wrap topic-document">
+<header class="topic-title"><a class="back-link" href={base+'#topics'}>← Research from the project</a><h1>{heading}</h1><p class="lead">{question}</p><p class="article-takeaway">{takeaway}</p><div class="article-actions"><a href="#research">{rep?'UniMolRep':screen?'DL-FSG':'AGIMA-Score'}: method and findings ↓</a><a href="#experiment">{topic.analysisTitle} ↓</a></div></header>
+<div class="article-layout"><aside class="article-nav" aria-label="On this page"><span>In this article</span><a href="#concept">{rep?'Describing a molecule':screen?'The screening question':'The binding interface'}</a><a href="#research">{rep?'UniMolRep':screen?'DL-FSG':'AGIMA-Score'}</a>{rep&&<a href="#affinity-findings">Affinity benchmarks</a>}{screen&&<a href="#grad-cam">Reading Grad-CAM</a>}{affinity&&<><a href="#grid-scoring">Grid-scoring exercise</a><a href="#occlusion">Spatial occlusion</a></>}<a href="#experiment">{topic.analysisTitle}</a><a href="#references">References</a></aside>
+<article class="article-content">
+<section id="concept" class="article-section">
+{rep?<>
+<h2>Chemical identity is only part of the description</h2>
+<p>Two representations of the same molecule need not give a model the same information. A fingerprint records chemical patterns. A graph records connections between atoms. Angles and torsions describe how connected atoms are arranged in space. UniMolRep brings these descriptions together so their effects can be studied systematically.</p>
+<PaperFigure id="unimolrep-taxonomy"/>
+<h3>From coordinates to a grid</h3><p>A molecular grid divides space into voxels. Separate channels record atomic features at each location, allowing a three-dimensional convolution to learn from local spatial neighbourhoods. The example below follows one aspirin conformer from its chemical structure to two element channels.</p>
+<TeachingFigure kind="grid"/>
+</>:screen?<>
+<h2>A model for one protein target</h2>
+<p>Screening asks which compounds to prioritise from a collection. In our study, a target-specific model learns from compounds labelled for one protein. It uses the ligand’s sequence and geometry to rank compounds by predicted activity against that target.</p>
+<div class="figure-with-note"><PaperFigure id="fusion-screening-overview"/><div><h3>Why use two descriptions?</h3><p>A SMILES sequence records chemical connectivity, while a molecular grid provides spatial context. Our question was whether learning interactions between these descriptions improves the ranking of active compounds.</p></div></div>
+</>:<>
+<h2>The interface between protein and ligand</h2>
+<p>Binding affinity describes the strength of association between a ligand and its target protein. A binding structure records where the ligand sits within the protein. Our AGIMA-Score study asks which connections in that structure a model should learn from: every nearby atomic contact, or contacts across the binding interface?</p>
+<div class="figure-with-note adjacency-note"><PaperFigure id="agima-adjacency"/><div><h3>Making the graph reflect the question</h3><p>In panel D, edges connect protein atoms to ligand atoms. Distance ranges distinguish different neighbourhoods. The graph therefore emphasises how the two binding partners meet.</p></div></div>
+</>}
+</section>
+<section id="research" class="article-section research-section"><h2>{rep?'UniMolRep: comparing representations':screen?'DL-FSG: learning across two molecular views':'AGIMA-Score: learning intermolecular adjacency'}</h2>
+<div class="publication-reference"><p><a href={topic.paper.url}>{topic.paper.title} ↗</a><br/>{topic.paper.authors}<br/><em>{topic.paper.venue}</em> ({topic.paper.year})</p></div>
+{rep?<>
+<p>UniMolRep standardises preparation of fingerprints, graphs, geometric features, interaction features and grids. The toolkit covers small molecules, protein–ligand complexes and molecular trajectories. A shared preparation workflow makes it easier to compare representations for the same learning task.</p>
+<PaperFigure id="unimolrep-workflow"/>
+<h3>What the benchmarks show</h3><p>On Tox21, combining fingerprints with topological graphs improved classification performance. For QM9 regression, the strongest evaluated configuration included angle and torsion features. The results illustrate why a representation should be chosen for the prediction task.</p>
+<PaperFigure id="unimolrep-small-molecule-benchmarks"/>
+<h3 id="affinity-findings">The protein–ligand affinity comparison</h3><p>The PDBbind benchmark combines interaction fingerprints, graph features and geometric features. The combined 1D, 2D and 3D configuration achieved a Pearson correlation of <strong>0.7359</strong>, RMSE of <strong>1.3001</strong> and MAE of <strong>1.0132</strong>, leading the configurations evaluated in this study.</p>
+<PaperFigure id="unimolrep-affinity-benchmarks"/>
+<p>Our <a href={base+'topics/binding-affinity/#research'}>AGIMA-Score study</a> examines which protein–ligand contacts to encode when predicting affinity.</p>
+</>:screen?<>
+<p>DL-FSG encodes the SMILES sequence and ligand grid in parallel. Bidirectional cross-attention lets the features from each branch inform the other. The combined features then produce a target-specific screening score.</p>
+<PaperFigure id="fusion-architecture"/>
+<h3>Screening across 102 DUD-E targets</h3><p>DL-FSG distinguishes active compounds from decoys with an AUROC of <strong>0.9910</strong> and an AUPRC of <strong>0.9725</strong> on the DUD-E benchmark.</p>
+<PaperFigure id="fusion-performance"/>
+<h3>What changes when a component is removed?</h3><p>Replacing cross-attention with self-attention reduced AUC to 0.9855. Using either SMILES or grids alone also reduced performance. The two ablation studies support learning from both representations and their interaction.</p><div class="ablation-figures"><PaperFigure id="fusion-attention-ablation"/><PaperFigure id="fusion-representation-ablation"/></div>
+</>:<>
+<div class="figure-with-note architecture-note"><PaperFigure id="agima-architecture"/><div><h3>From atomic contacts to a score</h3><p>AGIMA-Score combines atom features with distance-dependent, intermolecular adjacency matrices. Graph convolutions and aggregation produce features used to estimate binding strength.</p><p>The study examines alternative atom-feature sets and adjacency definitions. The default model uses two intermolecular contact ranges: 2–3 Å and 3–4 Å.</p><p>The <a href="https://github.com/debbydanwang/DL-PLBAP">research code</a> and <a href="https://zenodo.org/records/15023336">trained model and data</a> accompany the paper.</p></div></div>
+<h3>Testing on independent complex sets</h3><p>Models were trained on PDBbind v2020 and tested on two CSAR sets. AGIMA-Score<sup>18</sup> achieved the lowest test RMSEs in the comparison: <strong>1.5806</strong> and <strong>1.6279</strong>. The eight-feature variant achieved the highest Test1 correlation, <strong>0.7414</strong>.</p>
+<PaperFigure id="agima-scoring-benchmark"/>
+<h3>Investigating what the model uses</h3><p>Feature masking measures how validation performance changes when one feature type is removed. In the eight-feature variant, excluded volume has the largest effect.</p><PaperFigure id="agima-feature-importance"/>
+<p>UniMolRep addresses the complementary question of how representation combinations affect affinity prediction. See its <a href={base+'topics/representing-molecules/#affinity-findings'}>PDBbind comparison</a> for results using fingerprints, graphs and geometric features together.</p>
+</>}
+</section>
+{screen&&<section id="grad-cam" class="article-section"><h2>Reading the grid branch with Grad-CAM</h2><p>Grad-CAM highlights spatial regions associated with a higher screening score. It uses score gradients to weight the grid branch’s feature maps. The gradients pass through the sequence–grid fusion model while the molecule and conformer remain fixed. <a href="#ref-2">[2]</a></p><TeachingFigure kind="cam"/><p>Each voxel summarises a spatial neighbourhood, giving a coarse view of the model’s response. Read the map at this scale rather than as a contribution from an individual atom. A shared colour scale allows comparisons across molecules.</p></section>}
+{affinity&&<>
+<section id="grid-scoring" class="article-section exercise-context"><h2>Exploring grid-based scoring with GNINA</h2><p>Our interactive exercise uses <a href={citations.gnina.url}>GNINA</a>, a molecular docking package developed by McNutt and colleagues. It lets you examine how a three-dimensional grid of a protein–ligand complex becomes an affinity estimate.</p><p>Protein and ligand atoms occupy separate spatial channels. The <em>crossdock_default2018</em> network produces an affinity estimate and a pose score. The two prepared examples are HIV-1 protease with MK1 (<a href={citations.pdb1hsg.url}>1HSG</a>) and XK2 (<a href={citations.pdb1hvr.url}>1HVR</a>).</p><TeachingFigure kind="scoring"/><p>The exercise scores the ligand in its supplied pose. Docking searches for candidate poses; rescoring applies an additional scoring model to those candidates.</p></section>
+<section id="occlusion" class="article-section"><h2>What changes when a region is masked?</h2><p>Spatial occlusion examines how a prediction responds when part of the input grid is hidden. All channels within one region are set to zero, while the molecular coordinates stay fixed.</p><p>Evaluate the masked grid with the same model, then subtract its score from the original score. Positive differences mean that masking lowered the estimate; negative differences mean that it raised the estimate. The comparison measures the model’s sensitivity to each region. <a href="#ref-6">[6]</a></p><TeachingFigure kind="occlusion"/></section>
+</>}
+<section id="experiment" class="article-section experiment-section"><h2>{topic.analysisTitle}</h2>
+<p>{rep?'Compare the representations of an example molecule or enter a SMILES sequence of your own. Select atoms and geometric features to see how the views correspond.':screen?'Try the MAO-B screening model with an example molecule or your own SMILES sequence. Its score ranks molecules for this target; it is not a calibrated probability of activity. After calculating a score, choose Calculate Grad-CAM to explore the spatial response.':'Select a prepared complex and calculate its affinity and pose scores. Then choose Evaluate spatial occlusion to explore how masking different regions changes the affinity estimate.'}</p>
+<TopicWorkbench initialTab={topic.demo} client:load/>
+</section>
+<section id="references" class="article-section references"><h2>References</h2><ol>{references.map((paper,i)=><li id={'ref-'+(i+1)}><PaperCitation paper={paper}/></li>)}</ol></section>
+<a class="back-link" href={base+'#topics'}>← Research from the project</a>
+</article></div></main></Layout>

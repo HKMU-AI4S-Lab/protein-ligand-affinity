@@ -1,0 +1,227 @@
+[
+  {
+    "id": "molecule-to-grid",
+    "generator": "scripts/create-research-illustrations.py",
+    "kind": "verified teaching figure",
+    "width": 1200,
+    "height": 1080,
+    "mobileHeight": 2100,
+    "sources": [
+      "unimolrep"
+    ],
+    "inputs": [
+      {
+        "path": "artifacts/research-illustration-data.json",
+        "sha256": "efa317d28d9a338f17c01ff36c96da9b4ac76e572758cb3068f59e93320385c2"
+      },
+      {
+        "path": "artifacts/illustrated-chrome-fusion-outputs.json",
+        "sha256": "f2a85fd598d58334f90c3c4cb0defd45929cb687ab39d582404bde9c0a289826"
+      }
+    ],
+    "detail": {
+      "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+      "sliceIndex": 23,
+      "zAngstrom": 3.019390106201172,
+      "origin": [
+        -11.584152221679688,
+        -13.626581192016602,
+        -8.730609893798828
+      ],
+      "spacing": 0.5,
+      "cropIndices": [
+        16,
+        32
+      ],
+      "scale": [
+        0,
+        0.999083399772644
+      ],
+      "orientation": "x right, y up; input row order preserved",
+      "geometry": "fixed browser conformer; heavy-atom connectivity verified by RDKit; hydrogens omitted from rendering only"
+    },
+    "molecularImageCrops": {},
+    "output": {
+      "path": "public/illustrations/molecule-to-grid.svg",
+      "sha256": "ae089b73b64a5300f92f6f0a0c61ac38782ffd203adaa837bd096b41aedde90f"
+    },
+    "mobileOutput": {
+      "path": "public/illustrations/molecule-to-grid-mobile.svg",
+      "sha256": "84a6884e1f93f9b350475e4646edba72c5aabb8229c17666b37f499fcda73431"
+    }
+  },
+  {
+    "id": "grad-cam",
+    "generator": "scripts/create-research-illustrations.py",
+    "kind": "verified teaching figure",
+    "width": 1200,
+    "height": 1080,
+    "mobileHeight": 2100,
+    "sources": [
+      "fusion",
+      "gradcam"
+    ],
+    "inputs": [
+      {
+        "path": "artifacts/gradcam-illustration-data.json",
+        "sha256": "7563994f800e380a5464d8644186328f1ee8e17ded126f04f9a2664a4e68c1b5"
+      },
+      {
+        "path": "artifacts/illustrated-chrome-fusion-outputs.json",
+        "sha256": "f2a85fd598d58334f90c3c4cb0defd45929cb687ab39d582404bde9c0a289826"
+      },
+      {
+        "path": "src/lib/research/grad-cam.mjs",
+        "sha256": "6b4e4822656247e49f0f1622478cffcb388d37146ac91b449372b4e0dc9f4155"
+      }
+    ],
+    "detail": {
+      "smiles": "CCO",
+      "score": 0.5370500087738037,
+      "sliceIndex": 5,
+      "zAngstrom": 0.21433550119400024,
+      "spatialFrame": {
+        "origin": [
+          -8.66900897026062,
+          -10.295104444026947,
+          -9.785664498806
+        ],
+        "spacing": [
+          2,
+          2,
+          2
+        ],
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "units": "angstrom"
+      },
+      "scale": [
+        0,
+        1e-05
+      ],
+      "neutralBelow": 1e-08,
+      "maxNativeError": 6.093614501878619e-11,
+      "projection": "heavy atoms projected on x-y; no invented activations, interpolation or contrast normalization",
+      "gradient": "through full fusion graph, spatial feature layer before pooling/projection"
+    },
+    "molecularImageCrops": {
+      "complex": {
+        "path": "public/illustrations/molecular-panels/complex.png",
+        "crop": [
+          707,
+          326,
+          1273,
+          1213
+        ],
+        "adjustments": "none"
+      },
+      "pocket": {
+        "path": "public/illustrations/molecular-panels/pocket.png",
+        "crop": [
+          267,
+          0,
+          1601,
+          1448
+        ],
+        "adjustments": "none"
+      }
+    },
+    "output": {
+      "path": "public/illustrations/grad-cam.svg",
+      "sha256": "d8675a763464857f0ae81ce3296a911afd7b039dfb2cf9f2a7ec8f3cd483e319"
+    },
+    "mobileOutput": {
+      "path": "public/illustrations/grad-cam-mobile.svg",
+      "sha256": "38f8b5a261dd628219401b549fe69bbc5ae54f6a3b0827070ff6b656ab61b9d3"
+    }
+  },
+  {
+    "id": "spatial-occlusion",
+    "generator": "scripts/create-research-illustrations.py",
+    "kind": "verified teaching figure",
+    "width": 1200,
+    "height": 1080,
+    "mobileHeight": 2100,
+    "sources": [
+      "occlusion",
+      "gnina",
+      "pdb1hsg"
+    ],
+    "inputs": [
+      {
+        "path": "public/research/gnina-crossdock/1hsg-grid.bin",
+        "sha256": "d751536593597e4002254a76f3b149954242e9daf4eda173a6237992cfa41fe9"
+      },
+      {
+        "path": "public/research/gnina-crossdock/1hsg-protein.pdb",
+        "sha256": "679f34d930f13a6cd1f60ce43ac6effe030f459ac0d997c36e712ad53f9fdfb3"
+      },
+      {
+        "path": "public/research/gnina-crossdock/1hsg.sdf",
+        "sha256": "359d7337e0519dd8ed833da71d4ce60b0ee26b61632a78419929ad0539b794f4"
+      },
+      {
+        "path": "artifacts/gnina-native-occlusion.json",
+        "sha256": "62af8dce4aa74b2e47118beaeb4280ed677039549c1837d0e150a57cb3f0056f"
+      }
+    ],
+    "detail": {
+      "region": "A: x<24, y<24, z<24; all channels zeroed",
+      "regionBounds": [
+        [
+          1.0726680755615234,
+          10.467355728149414,
+          -6.44251012802124
+        ],
+        [
+          13.072668075561523,
+          22.467355728149414,
+          5.55748987197876
+        ]
+      ],
+      "sliceIndex": 11,
+      "scale": [
+        0,
+        2.0915074348449707
+      ],
+      "baseline": 8.625168800354004,
+      "maskedScore": 8.026151657104492,
+      "difference": 0.5990171432495117,
+      "geometry": "prepared protein heavy atoms within 5 \u00c5 shown as context; ligand coordinates unchanged; no atom deletion",
+      "display": "native density sum, x right and y up; hatching marks zeroed quadrant"
+    },
+    "molecularImageCrops": {
+      "complex": {
+        "path": "public/illustrations/molecular-panels/complex.png",
+        "crop": [
+          707,
+          326,
+          1273,
+          1213
+        ],
+        "adjustments": "none"
+      },
+      "pocket": {
+        "path": "public/illustrations/molecular-panels/pocket.png",
+        "crop": [
+          267,
+          0,
+          1601,
+          1448
+        ],
+        "adjustments": "none"
+      }
+    },
+    "output": {
+      "path": "public/illustrations/spatial-occlusion.svg",
+      "sha256": "e5e099ae932eba9895ec630da5c142ae07b2941accd4bdefe86f7cf8ef5959ae"
+    },
+    "mobileOutput": {
+      "path": "public/illustrations/spatial-occlusion-mobile.svg",
+      "sha256": "10063b19f453486d51f0bf24b15b6fa0752d5f9d3af9d45c40af66baf0b16f4c"
+    }
+  }
+]

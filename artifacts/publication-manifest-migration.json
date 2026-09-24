@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-25",
+  "revision": "784a88468de2077a8b50d1fd9353590930039aee",
+  "changes": "Artifact hosting locations and publication metadata only. Checkpoints, tensors, coordinates, reference scores, arrays, precision and scientific validation retained.",
+  "manifests": [
+    {
+      "path": "public/research/fusion-aofb/manifest.json",
+      "beforeSha256": "b873e0fdee26d6426697f08d4a0be3222e3c24c68206b93f7f6708c714e5f724",
+      "afterSha256": "37d9fa0887af1b1f8c4714507b79270a8d7f2ccdb7a990666553144baf1ec011",
+      "scientificIdentityUnchanged": true
+    },
+    {
+      "path": "public/research/fusion-aofb/gradients-manifest.json",
+      "beforeSha256": "58731d77ce81f892a5ddea38696557e25f0b5d6269e808936d502d1ae14596d9",
+      "afterSha256": "23b8482680f56ff594705a94ad25bd59af2d6c54f624e98dc212272ca4e1fc23",
+      "scientificIdentityUnchanged": true
+    },
+    {
+      "path": "public/research/gnina-crossdock/manifest.json",
+      "beforeSha256": "8a4884591a22b0fded7bba6588d3f9c5d49bf16a0d8e4a186a31de260444dfd9",
+      "afterSha256": "905641e2608d527ca84f955a34cf9e00af419c4fc49cae17027abffbee14c5fb",
+      "scientificIdentityUnchanged": true
+    },
+    {
+      "path": "public/research/gnina-crossdock/gradients-manifest.json",
+      "beforeSha256": "1909dacaf1242f90b82eef147e6e424fa07501253b18fa7754e2027f2a77482f",
+      "afterSha256": "3a2b0147849e28653048df570d39492e12d0ade888c53c67db0fd7dbba98b77c",
+      "scientificIdentityUnchanged": true
+    }
+  ]
+}

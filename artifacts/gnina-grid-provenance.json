@@ -1,0 +1,127 @@
+{
+  "molgrid": "0.5.5",
+  "settings": {
+    "resolution": 0.5,
+    "dimension": 23.5,
+    "random_translation": 0,
+    "random_rotation": false,
+    "atomTyper": "default receptor and ligand GNINA types",
+    "addHydrogens": "ExampleProvider default",
+    "center": "ligand coordinate-set center"
+  },
+  "preparation": "Original crystal heavy-atom coordinates. Waters removed. Protein ATOM and CSO records retained, alternate location blank/A. RCSB ModelServer ligand bond orders; libmolgrid/OpenBabel native hydrogen handling. No pH optimisation or minimisation. Demonstration estimates only.",
+  "sources": [
+    {
+      "id": "1hsg",
+      "receptor": "1hsg-receptor.pdb",
+      "ligand": "1hsg-ligand.sdf",
+      "sourcePdbSha256": "d430675c358060808ef614002cfdcfcfa824714d89f1240adf5749d2ba60fed2",
+      "receptorSha256": "679f34d930f13a6cd1f60ce43ac6effe030f459ac0d997c36e712ad53f9fdfb3",
+      "ligandSha256": "359d7337e0519dd8ed833da71d4ce60b0ee26b61632a78419929ad0539b794f4",
+      "source": "https://www.rcsb.org/structure/1HSG",
+      "label": "1HSG \u00b7 HIV protease / MK1"
+    },
+    {
+      "id": "1hvr",
+      "receptor": "1hvr-receptor.pdb",
+      "ligand": "1hvr-ligand.sdf",
+      "sourcePdbSha256": "c8d3f238d3269a66823454d4681b71467b4677a18751ce094047961620b338cb",
+      "receptorSha256": "e5e79bf59fe193e05025b648ba30ea780de595c93716aec409f6220c569d7063",
+      "ligandSha256": "abf86b66a03e6b6062ba6a4b95e123c05f6e7419948f5a745238dd75cd8880d2",
+      "source": "https://www.rcsb.org/structure/1HVR",
+      "label": "1HVR \u00b7 HIV protease / XK2"
+    }
+  ],
+  "grids": [
+    {
+      "id": "1hsg",
+      "gridSha256": "d751536593597e4002254a76f3b149954242e9daf4eda173a6237992cfa41fe9",
+      "bytes": 12386304,
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ],
+      "sum": 49423.984375,
+      "center": [
+        13.072668075561523,
+        22.467355728149414,
+        5.55748987197876
+      ]
+    },
+    {
+      "id": "1hvr",
+      "gridSha256": "32bfe625f20b4f926679878ee75bad1a30133c10f5861e80afb9907f256e3022",
+      "bytes": 12386304,
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ],
+      "sum": 51505.28515625,
+      "center": [
+        -9.191564559936523,
+        15.90626049041748,
+        27.94647789001465
+      ]
+    },
+    {
+      "id": "regression-r1l1",
+      "gridSha256": "e2feb5dd1b7d4d792b4790902c8b4b7b467f8c3eaf80fa2f75af2521985699be",
+      "bytes": 12386304,
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ],
+      "sum": 625.875732421875,
+      "center": [
+        0.01080000028014183,
+        -0.0027000000700354576,
+        0.0008999999845400453
+      ]
+    },
+    {
+      "id": "regression-r2l2",
+      "gridSha256": "ecd19c529ee9c6ba33b0184c98e1be9685275214fc79e4e7b17bc36f16286a37",
+      "bytes": 12386304,
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ],
+      "sum": 1607.033935546875,
+      "center": [
+        0.000550001859664917,
+        0.0008500004187226295,
+        -0.0020499974489212036
+      ]
+    },
+    {
+      "id": "regression-r1l2",
+      "gridSha256": "fe9c2b6cbfbd57de39f9d86f6d7599bc10f7a51194845fbae755037eb4d07e85",
+      "bytes": 12386304,
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ],
+      "sum": 725.4691772460938,
+      "center": [
+        0.000550001859664917,
+        0.0008500004187226295,
+        -0.0020499974489212036
+      ]
+    }
+  ]
+}

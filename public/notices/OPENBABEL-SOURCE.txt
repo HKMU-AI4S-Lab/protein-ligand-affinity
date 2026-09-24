@@ -1,0 +1,33 @@
+Open Babel browser runtime
+
+Open Babel is distributed under the GNU General Public License, version 2
+or later. See OPENBABEL-GPL.txt. The Emscripten bindings retain Jiang Chen's
+MIT notice in OPENBABEL-BINDINGS-LICENSE.txt.
+
+Complete upstream source, data, headers and build files:
+  sources/openbabel-3.1.1.tar.gz
+  https://github.com/openbabel/openbabel/tree/openbabel-3-1-1
+
+Emscripten bindings and build instructions:
+  sources/openbabel-web-bindings.tar.gz
+  https://github.com/partridgejiang/cheminfo-to-web/tree/816c78557211348ef0b99f78c5e0a95d295b9aef/OpenBabel3/OpenBabel-js
+
+Eigen 2 headers and their licences:
+  sources/eigen-2.0.17.tar.gz
+  https://gitlab.com/libeigen/eigen/-/tree/2.0.17
+
+Follow OpenBabel3/OpenBabel-js/readme.txt and the included make/Makefile to
+build with Emscripten. The Open Babel 3.1.1 release retains the internal
+version string 3.1.0. The shipped WASM and data files match the binding
+revision above byte for byte. This website obtains them from the pinned
+kekule@1.0.3 package. It does not modify the WASM or chemistry data.
+
+The JavaScript module adapter adds only:
+  export default OpenBabelModule;
+
+The original loader, module adapter and binaries are available together
+under ../runtime/openbabel/. The adapter-generation script and browser
+worker source are available in the website source repository:
+  https://github.com/HKMU-AI4S-Lab/protein-ligand-affinity
+
+No warranty is provided; see the respective licence texts.

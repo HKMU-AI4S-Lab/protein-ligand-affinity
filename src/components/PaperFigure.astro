@@ -1,0 +1,16 @@
+---
+import {figures} from '../data/figures';
+import {citations} from '../data/citations.mjs';
+import crops from '../../artifacts/paper-figure-provenance.json';
+const {id,compact=false}=Astro.props;const f=figures[id];const src=import.meta.env.BASE_URL+f.path;
+const sources=f.sources.map(id=>citations[id as keyof typeof citations]);
+const crop=crops.find(c=>c.id===id);const label=f.label||crop?.label||'';
+---
+<figure id={'figure-'+id} class:list={['paper-figure','figure-'+(f.size||'wide'),{'compact-figure':compact}]}>
+<button class="figure-enlarge" data-figure={id} aria-label={'Enlarge '+f.title}><img src={src} width={f.width} height={f.height} alt={f.alt} loading="lazy"/><span>Enlarge figure ↗</span></button>
+<figcaption>{!compact&&<><strong>{f.title}.</strong> {f.caption} </>}<cite class="figure-credit">{label&&<>{label}, </>}{sources.map((source,i)=><>{i>0?'; ':''}<a href={source.url}>{source.short}</a></>)}{f.license&&<> · <a href="https://creativecommons.org/licenses/by/4.0/">{f.license}</a></>}.</cite></figcaption>
+<dialog class="figure-dialog" id={'enlarged-'+id} aria-label={f.title}><div class="dialog-heading"><p>{f.title}</p><button class="dialog-close secondary" autofocus>Close figure ×</button></div><div class="figure-pan" tabindex="0" aria-label="Enlarged figure; scroll horizontally on narrow screens"><img src={src} width={f.width} height={f.height} alt={f.alt}/></div><p>{f.caption} <cite class="figure-credit">{sources.map((source,i)=><>{i>0?' · ':''}<a href={source.url}>{source.short}</a></>)}.</cite></p></dialog>
+</figure>
+<script>
+document.querySelectorAll<HTMLButtonElement>('[data-figure]').forEach(button=>{const dialog=document.getElementById('enlarged-'+button.dataset.figure) as HTMLDialogElement;button.addEventListener('click',()=>dialog.showModal());dialog.querySelector('button')?.addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});});
+</script>

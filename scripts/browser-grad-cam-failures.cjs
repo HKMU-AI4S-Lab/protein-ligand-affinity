@@ -1,0 +1,19 @@
+/* Public Grad-CAM failure/recovery checks; no mock predictions or explanations. */
+const {chromium}=require('C:/Users/Mick/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const engine=process.env.TEST_BROWSER||'chrome',root=(process.env.TEST_BASE_URL||'http://127.0.0.1:4322'+require('../deployment.config.mjs').siteBase).replace(/\/$/,''),prefix=(process.env.QA_OUTPUT_DIR||'artifacts')+'/rethink-'+engine;
+(async()=>{
+ const browser=await chromium.launch({executablePath:engine==='edge'?'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe':'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--enable-unsafe-swiftshader']}),context=await browser.newContext({viewport:{width:1500,height:1000},serviceWorkers:'block'}),page=await context.newPage(),errors=[],checks=[];
+ page.setDefaultTimeout(120000);page.on('pageerror',e=>errors.push(e.message));const note=s=>{checks.push(s);console.log(s);};
+ const predict=async()=>{await page.getByRole('button',{name:'Calculate screening score'}).click();await page.locator('.result-title').waitFor();assert.equal(await page.getByRole('alert').count(),0);};
+ const explain=async()=>{await page.getByRole('button',{name:'Calculate Grad-CAM'}).click();await page.locator('.grad-cam-view').waitFor();assert.equal(await page.getByRole('alert').count(),0);};
+ const url=root+'/research/fusion-aofb/gradients.onnx';
+ try{
+  await page.goto(root+'/topics/screening-molecules/#experiment',{waitUntil:'networkidle'});await predict();const score=await page.locator('.result-stats').innerText();
+  await page.route(url,route=>route.fulfill({status:503,body:'Unavailable'}));await page.getByRole('button',{name:'Calculate Grad-CAM'}).click();await page.getByRole('alert').waitFor();assert.match(await page.getByRole('alert').innerText(),/download could not be completed/i);assert.equal(await page.locator('.result-stats').innerText(),score);assert.equal(await page.locator('.grad-cam-view').count(),0);await page.unroute(url);await explain();note('Failed Grad-CAM download preserves the prediction, reports the error and retries live');
+  await predict();await page.evaluate(async url=>{const c=await caches.open('molecular-grid-verified-v3');await c.put(url,new Response(new Uint8Array([1,2,3,4])));},url);let repairs=0;const count=req=>{if(req.url()===url)repairs++;};page.on('request',count);await explain();page.off('request',count);assert.equal(repairs,1);note('Corrupted derivative graph is evicted, verified again and used for a live explanation');
+  await predict();await page.evaluate(async url=>{const c=await caches.open('molecular-grid-verified-v3');await c.delete(url);},url);await page.route(url,async route=>{await new Promise(r=>setTimeout(r,1500));try{await route.continue();}catch{}});const requested=page.waitForRequest(url);await page.getByRole('button',{name:'Calculate Grad-CAM'}).click();await requested;await page.getByRole('button',{name:'Cancel calculation'}).click();assert.equal(await page.locator('.result-title,.grad-cam-view').count(),0);await page.unroute(url);await predict();await explain();note('Interrupted derivative download cancels without stale output; a new session recovers');
+  await page.locator('.mol-view canvas').waitFor();await page.locator('.workbench').screenshot({path:prefix+'-grad-cam-recovered.png'});
+  await page.setViewportSize({width:390,height:844});await page.waitForFunction(()=>document.documentElement.scrollWidth<=innerWidth);await page.locator('.workbench').screenshot({path:prefix+'-grad-cam-recovered-mobile.png'});assert.deepEqual(errors,[]);fs.writeFileSync(prefix+'-grad-cam-failures.json',JSON.stringify({passed:true,date:new Date().toISOString(),browser:browser.version(),checks,errors},null,2));
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exit(1)});

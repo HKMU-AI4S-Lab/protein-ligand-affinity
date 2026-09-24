@@ -1,0 +1,83 @@
+{
+  "generator": "scripts/render-teaching-molecules.cjs",
+  "renderer": "3Dmol 2.5.5",
+  "inputs": [
+    {
+      "path": "public/research/gnina-crossdock/manifest.json",
+      "sha256": "905641e2608d527ca84f955a34cf9e00af419c4fc49cae17027abffbee14c5fb"
+    },
+    {
+      "path": "artifacts/research-illustration-data.json",
+      "sha256": "efa317d28d9a338f17c01ff36c96da9b4ac76e572758cb3068f59e93320385c2"
+    },
+    {
+      "path": "artifacts/gradcam-illustration-data.json",
+      "sha256": "7563994f800e380a5464d8644186328f1ee8e17ded126f04f9a2664a4e68c1b5"
+    },
+    {
+      "path": "artifacts/illustrated-chrome-fusion-outputs.json",
+      "sha256": "f2a85fd598d58334f90c3c4cb0defd45929cb687ab39d582404bde9c0a289826"
+    },
+    {
+      "path": "public/research/gnina-crossdock/1hsg-protein.pdb",
+      "sha256": "679f34d930f13a6cd1f60ce43ac6effe030f459ac0d997c36e712ad53f9fdfb3"
+    },
+    {
+      "path": "public/research/gnina-crossdock/1hsg.sdf",
+      "sha256": "359d7337e0519dd8ed833da71d4ce60b0ee26b61632a78419929ad0539b794f4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "public/illustrations/panels/aspirin-space.png",
+      "sha256": "ccd918f456ab0d376b9e283ce4dd142587d57883b370e9338f8d7dd55fcfaba7",
+      "plane": 3.019390106201172,
+      "bounds": [
+        [
+          -3.5841522216796875,
+          -5.626581192016602,
+          -0.7306098937988281
+        ],
+        [
+          4.4158477783203125,
+          2.3734188079833984,
+          7.269390106201172
+        ]
+      ]
+    },
+    {
+      "path": "public/illustrations/panels/ethanol-space.png",
+      "sha256": "ed97884b4db181873731ad60ff28d7dba0171d0b52e173286b6a324ccfedb499",
+      "plane": 0.21433550119400024,
+      "bounds": [
+        [
+          -2.5109,
+          -4.3686,
+          -3.5210999999999997
+        ],
+        [
+          4.1729,
+          2.7784,
+          2.9497999999999998
+        ]
+      ]
+    },
+    {
+      "path": "public/illustrations/panels/1hsg-region-a.png",
+      "sha256": "62b5e4d7354f03690953759d8f388692309cc70a146b7939a9777b9d0d04e947",
+      "bounds": [
+        [
+          1.0726680755615234,
+          10.467355728149414,
+          -6.44251012802124
+        ],
+        [
+          25.072668075561523,
+          34.467355728149414,
+          17.55748987197876
+        ]
+      ]
+    }
+  ],
+  "operations": "Fixed source coordinates, element colours, exact spatial plane or region bounds; rendering only, no conformer generation or model execution."
+}

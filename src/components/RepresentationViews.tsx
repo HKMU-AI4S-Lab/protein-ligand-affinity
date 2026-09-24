@@ -1,0 +1,29 @@
+import {useEffect,useRef,useState} from 'react';
+import ResearchMolecule from './ResearchMolecule';
+
+export function GridView({grid}:{grid:any}){
+ const canvas=useRef<HTMLCanvasElement>(null),[channel,setChannel]=useState(grid.shape[2]===24?17:11),[slice,setSlice]=useState(-1);
+ useEffect(()=>{const c=canvas.current,ctx=c?.getContext('2d');if(!c||!ctx)return;const n=grid.shape[2];c.width=c.height=n;const pixels=ctx.createImageData(n,n),values=new Float32Array(n*n);let max=0;
+  for(let x=0;x<n;x++)for(let y=0;y<n;y++){let value=0;if(slice<0){for(let z=0;z<n;z++)value+=grid.data[((channel*n+x)*n+y)*n+z];}else value=grid.data[((channel*n+x)*n+y)*n+slice];values[(n-1-y)*n+x]=value;max=Math.max(max,value);}
+  for(let i=0;i<values.length;i++){const v=max?values[i]/max:0;pixels.data.set([Math.round(242-v*193),Math.round(245-v*152),Math.round(252-v*84),255],i*4);}ctx.putImageData(pixels,0,0);
+ },[grid,channel,slice]);
+ return <div className="grid-panel"><div className="grid-controls"><label>Atomic channel<select value={channel} onChange={e=>setChannel(Number(e.target.value))}>{grid.channels.map((c:string,i:number)=><option key={c} value={i}>{c.replace(':', ' · ')}</option>)}</select></label><label>Spatial view<select value={slice} onChange={e=>setSlice(Number(e.target.value))}><option value={-1}>Sum along Z</option>{Array.from({length:grid.shape[2]},(_,i)=><option key={i} value={i}>Z slice {i+1}</option>)}</select></label></div><canvas className="grid" ref={canvas} role="img" aria-label={grid.channels[channel]+' grid, '+(slice<0?'summed along Z':'Z slice '+(slice+1))}/><p className="small">{grid.shape[2]} × {grid.shape[2]} × {grid.shape[2]} voxels · {grid.spacing??1} Å spacing. Darker cells contain greater channel density; intensity is scaled to this view.</p></div>;
+}
+
+function MolecularGraph({result:r,selected}:{result:any;selected:number[]}){
+ const p=r.graph.positions as number[][],xs=p.map(v=>v[0]),ys=p.map(v=>v[1]),minX=Math.min(...xs),minY=Math.min(...ys),dx=Math.max(...xs)-minX,dy=Math.max(...ys)-minY,scale=Math.min(290/Math.max(dx,1),210/Math.max(dy,1));
+ const positions=p.map(v=>[170+(v[0]-minX-dx/2)*scale,135-(v[1]-minY-dy/2)*scale]);
+ return <svg className="molecular-graph" viewBox="0 0 340 270" role="img" aria-label={'Molecular graph with numbered atoms'+(selected.length?'; selected atoms '+selected.map(i=>i+1).join(', '):'')}>
+ {r.graph.bonds.map((b:any,i:number)=>{const a=positions[b.a],c=positions[b.b],length=Math.hypot(c[0]-a[0],c[1]-a[1])||1,nx=-(c[1]-a[1])/length,ny=(c[0]-a[0])/length;return <g key={i}>{Array.from({length:Math.max(1,Math.round(b.order))},(_,j)=>{const offset=(j-(b.order-1)/2)*4;return <line key={j} x1={a[0]+nx*offset} y1={a[1]+ny*offset} x2={c[0]+nx*offset} y2={c[1]+ny*offset} stroke={selected.includes(b.a)&&selected.includes(b.b)?'#345da8':'#999999'} strokeWidth="2"/>;})}</g>;})}
+ {positions.map(([x,y],i)=><g key={i} data-atom-index={i} data-selected={selected.includes(i)}><circle cx={x} cy={y} r="12" fill={selected.includes(i)?'#dce6fb':'#f5f7fb'}/><text x={x} y={y+4} textAnchor="middle" fill={r.atoms[i].symbol==='O'?'#a24a3c':r.atoms[i].symbol==='N'?'#25648d':'#191919'} fontSize="12">{r.atoms[i].symbol}</text><text x={x+10} y={y-10} fontSize="9" fill="#666666">{i+1}</text></g>)}
+ </svg>;
+}
+
+export default function RepresentationViews({result:r}:{result:any}){
+ const [mode,setMode]=useState('angles'),[index,setIndex]=useState(0),features=r[mode],feature=features[index],selected=feature?.indices??[];
+ const label=(f:any)=>f.indices.map((i:number)=>r.atoms[i].symbol+(i+1)).join('–');
+ return <div className="representation-results"><div className="result-title"><h3>{r.formula}</h3><span>Molecular representations</span></div>
+ <div className="visuals"><figure><ResearchMolecule molblock={r.molblock} highlightAtoms={selected}/><figcaption>Conformer generated with OpenBabel.</figcaption></figure><figure><MolecularGraph result={r} selected={selected}/><figcaption>Molecular connectivity · {r.graph.atoms.length} atoms and {r.graph.bonds.length} bonds, with implicit hydrogens. Atom numbers link the views.</figcaption></figure></div>
+ <div className="geometry-controls"><h3>Angles and torsions</h3><div className="region-selector"><button className="secondary" aria-pressed={mode==='angles'} onClick={()=>{setMode('angles');setIndex(0);}}>Bond angles</button><button className="secondary" aria-pressed={mode==='torsions'} onClick={()=>{setMode('torsions');setIndex(0);}}>Torsion angles</button></div>{feature?<><label htmlFor="geometry-feature">Select atoms</label><select id="geometry-feature" value={index} onChange={e=>setIndex(Number(e.target.value))}>{features.map((f:any,i:number)=><option key={i} value={i}>{label(f)}</option>)}</select><output className="geometry-measurement" data-atoms={selected.join(',')}>{label(feature)}: <strong>{feature.degrees.toFixed(2)}°</strong></output><p className="small">Highlighted atoms define {mode==='angles'?'a three-atom bond angle':'a four-atom torsion'}.</p></>:<p>This molecule has no {mode==='angles'?'bond-angle':'torsion'} feature under the selected definition.</p>}</div>
+ <h3>Fingerprint and spatial grid</h3><div className="visuals"><figure><div className="fingerprint" role="img" aria-label={'Morgan fingerprint with '+(r.fingerprint.split('1').length-1)+' active bits out of 2,048 positions'}>{Array.from(r.fingerprint as string).map((v,i)=><i key={i} title={'Bit '+i+': '+(v==='1'?'active':'inactive')} className={v==='1'?'active':''}/>)}</div><figcaption>Morgan fingerprint · 2,048 bits · radius 2 · chirality included. {r.fingerprint.split('1').length-1} active bits (dark cells) record hashed chemical neighbourhoods; light cells are inactive.</figcaption></figure><figure><GridView grid={r.grid}/><figcaption>Element channels show the spatial distribution of atoms.</figcaption></figure></div></div>;
+}

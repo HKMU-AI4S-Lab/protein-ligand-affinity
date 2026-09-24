@@ -1,0 +1,23 @@
+[
+  {
+    "publicPath": "public/research/fusion-aofb/weights/54ee06307f6dc6b27bf8894ebe5944d010aef4c9e05e8336e6a01b7ca01975d1.bin",
+    "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/784a88468de2077a8b50d1fd9353590930039aee/54ee06307f6dc6b27bf8894ebe5944d010aef4c9e05e8336e6a01b7ca01975d1.bin",
+    "sha256": "54ee06307f6dc6b27bf8894ebe5944d010aef4c9e05e8336e6a01b7ca01975d1",
+    "bytes": 891289600,
+    "buildInput": false
+  },
+  {
+    "publicPath": "public/research/gnina-crossdock/1hsg-grid.bin",
+    "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/784a88468de2077a8b50d1fd9353590930039aee/1hsg-grid.bin",
+    "sha256": "d751536593597e4002254a76f3b149954242e9daf4eda173a6237992cfa41fe9",
+    "bytes": 12386304,
+    "buildInput": true
+  },
+  {
+    "publicPath": "public/research/gnina-crossdock/1hvr-grid.bin",
+    "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/784a88468de2077a8b50d1fd9353590930039aee/1hvr-grid.bin",
+    "sha256": "32bfe625f20b4f926679878ee75bad1a30133c10f5861e80afb9907f256e3022",
+    "bytes": 12386304,
+    "buildInput": true
+  }
+]

@@ -1,0 +1,97 @@
+{
+  "id": "bap-workflow",
+  "generator": "scripts/create-research-illustrations.py",
+  "kind": "verified teaching figure",
+  "width": 1200,
+  "height": 1080,
+  "mobileHeight": 2100,
+  "sources": [
+    "gnina",
+    "pdb1hsg"
+  ],
+  "inputs": [
+    {
+      "path": "public/research/gnina-crossdock/1hsg-grid.bin",
+      "sha256": "d751536593597e4002254a76f3b149954242e9daf4eda173a6237992cfa41fe9"
+    },
+    {
+      "path": "public/research/gnina-crossdock/1hsg-protein.pdb",
+      "sha256": "679f34d930f13a6cd1f60ce43ac6effe030f459ac0d997c36e712ad53f9fdfb3"
+    },
+    {
+      "path": "public/research/gnina-crossdock/1hsg.sdf",
+      "sha256": "359d7337e0519dd8ed833da71d4ce60b0ee26b61632a78419929ad0539b794f4"
+    },
+    {
+      "path": "public/illustrations/molecular-panels/complex.png",
+      "sha256": "9edc8cb3089c8106e2b94c24e8a9442ac6b9e03c18e9987286e61db51b5ed325"
+    },
+    {
+      "path": "public/illustrations/molecular-panels/pocket.png",
+      "sha256": "f57cba7040376d7db28a6cacdbb119efd09bf1e0ab5e4dab42e43924e2b07e27"
+    }
+  ],
+  "detail": {
+    "channels": [
+      0,
+      14
+    ],
+    "channelMeaning": "protein/ligand aliphatic carbon hydrophobe",
+    "sliceIndex": 23,
+    "scale": [
+      0,
+      1.5526248216629028
+    ],
+    "voxelEdgeBounds": [
+      [
+        1.0726680755615234,
+        10.467355728149414,
+        -6.44251012802124
+      ],
+      [
+        25.072668075561523,
+        34.467355728149414,
+        17.55748987197876
+      ]
+    ],
+    "model": "GNINA crossdock_default2018; network panel is an operation diagram, not an activation measurement"
+  },
+  "molecularImageCrops": {
+    "complex": {
+      "path": "public/illustrations/molecular-panels/complex.png",
+      "crop": [
+        707,
+        326,
+        1273,
+        1213
+      ],
+      "adjustments": "none"
+    },
+    "pocket": {
+      "path": "public/illustrations/molecular-panels/pocket.png",
+      "crop": [
+        267,
+        0,
+        1601,
+        1448
+      ],
+      "adjustments": "none"
+    }
+  },
+  "output": {
+    "path": "public/illustrations/bap-workflow.svg",
+    "sha256": "63a094a85c69e68eb001eaebf5fe3506ff7d066d8877aebd68d40455ca07d699"
+  },
+  "mobileOutput": {
+    "path": "public/illustrations/bap-workflow-mobile.svg",
+    "sha256": "8e5ffbec1124d66d36fb99a4c30a151106f6b30f922616e909232876f4e65cd3"
+  },
+  "protein": {
+    "path": "public/research/gnina-crossdock/1hsg-protein.pdb",
+    "sha256": "679f34d930f13a6cd1f60ce43ac6effe030f459ac0d997c36e712ad53f9fdfb3"
+  },
+  "ligand": {
+    "path": "public/research/gnina-crossdock/1hsg.sdf",
+    "sha256": "359d7337e0519dd8ed833da71d4ce60b0ee26b61632a78419929ad0539b794f4"
+  }
+}

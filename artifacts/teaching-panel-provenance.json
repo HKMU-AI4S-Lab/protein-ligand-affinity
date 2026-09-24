@@ -1,0 +1,137 @@
+{
+  "generator": "scripts/prepare-teaching-panels.py",
+  "inputs": [
+    {
+      "path": "public/research/gnina-crossdock/manifest.json",
+      "sha256": "905641e2608d527ca84f955a34cf9e00af419c4fc49cae17027abffbee14c5fb"
+    },
+    {
+      "path": "artifacts/research-illustration-data.json",
+      "sha256": "efa317d28d9a338f17c01ff36c96da9b4ac76e572758cb3068f59e93320385c2"
+    },
+    {
+      "path": "artifacts/gradcam-illustration-data.json",
+      "sha256": "7563994f800e380a5464d8644186328f1ee8e17ded126f04f9a2664a4e68c1b5"
+    },
+    {
+      "path": "artifacts/illustrated-chrome-fusion-outputs.json",
+      "sha256": "f2a85fd598d58334f90c3c4cb0defd45929cb687ab39d582404bde9c0a289826"
+    },
+    {
+      "path": "artifacts/gnina-native-occlusion.json",
+      "sha256": "62af8dce4aa74b2e47118beaeb4280ed677039549c1837d0e150a57cb3f0056f"
+    },
+    {
+      "path": "public/research/gnina-crossdock/1hsg-grid.bin",
+      "sha256": "d751536593597e4002254a76f3b149954242e9daf4eda173a6237992cfa41fe9"
+    },
+    {
+      "path": "public/research/gnina-crossdock/1hsg-protein.pdb",
+      "sha256": "679f34d930f13a6cd1f60ce43ac6effe030f459ac0d997c36e712ad53f9fdfb3"
+    },
+    {
+      "path": "public/research/gnina-crossdock/1hsg.sdf",
+      "sha256": "359d7337e0519dd8ed833da71d4ce60b0ee26b61632a78419929ad0539b794f4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "public/illustrations/panels/aspirin-structure.svg",
+      "sha256": "ef339b711fe991c708ee02827cd7f7b87b85947815864f19f817308108970a5d"
+    },
+    {
+      "path": "public/illustrations/panels/aspirin-space.svg",
+      "sha256": "a855616eaa992dc10ce6cd4988f5b3712117e03032501f47356bc98aafd10140"
+    },
+    {
+      "path": "public/illustrations/panels/aspirin-carbon.svg",
+      "sha256": "85263fc5f83af655ba7f27871ac1ffa3d37cb920c8a858487036825faa421626"
+    },
+    {
+      "path": "public/illustrations/panels/aspirin-oxygen.svg",
+      "sha256": "1376f18a2bad24087541b8b92748a5e95f72bb25b7926241bdfcd6dc4f86497a"
+    },
+    {
+      "path": "public/illustrations/panels/ethanol-space.svg",
+      "sha256": "d0dbdddcca17ffad69bd8b121c0a52c6e6826897a134dbdaa35599c8c61a7cd5"
+    },
+    {
+      "path": "public/illustrations/panels/ethanol-cam.svg",
+      "sha256": "7c803f153290a7efe38e3a2294089973be01c3adb3e778f5c8ef655ff7ad9cb0"
+    },
+    {
+      "path": "public/illustrations/panels/1hsg-protein.svg",
+      "sha256": "e225d6186138c34da4e072a560398bc4617befedd76bb4ad3e5ec9914b967f7d"
+    },
+    {
+      "path": "public/illustrations/panels/1hsg-ligand.svg",
+      "sha256": "397528d59c2287135973cd37a5196d4d2728ecc0f01f1f6102be2344f4fb2375"
+    },
+    {
+      "path": "public/illustrations/panels/1hsg-region-a.svg",
+      "sha256": "367e3509fbc46fe91e0b3d5a7c0b392edc95b94fd8292c40b85088a434289519"
+    },
+    {
+      "path": "public/illustrations/panels/1hsg-original.svg",
+      "sha256": "75e0de0309e84980bc166bbfc20bb6cd26d88850e6cd73bfd626f4d4ced30e58"
+    },
+    {
+      "path": "public/illustrations/panels/1hsg-masked.svg",
+      "sha256": "8f6a4c01188329d6e3067faada8a4dc7079d2677723aa7675eed9c5dc9aaadca"
+    }
+  ],
+  "aspirin": {
+    "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "sliceIndex": 23,
+    "z": 3.019390106201172,
+    "spacing": 0.5,
+    "cropIndices": [
+      16,
+      32
+    ],
+    "sharedScale": [
+      0,
+      0.999083399772644
+    ]
+  },
+  "gradcam": {
+    "score": 0.5370500087738037,
+    "z": 0.21433550119400024,
+    "scale": [
+      0,
+      1e-05
+    ],
+    "checkpointSha256": "73029954ba6581365d5786c78768cf54f1d399c7f891f0e2b7bd5d8c371d12f1",
+    "spatialFrame": {
+      "origin": [
+        -8.66900897026062,
+        -10.295104444026947,
+        -9.785664498806
+      ],
+      "spacing": [
+        2,
+        2,
+        2
+      ],
+      "axes": [
+        "x",
+        "y",
+        "z"
+      ],
+      "units": "angstrom"
+    },
+    "orientation": "x right, y up; heavy atoms projected; native grid, no contrast normalization"
+  },
+  "occlusion": {
+    "baseline": 8.625168800354004,
+    "masked": 8.026151657104492,
+    "delta": 0.5990171432495117,
+    "region": "A: x,y,z indices below 24, all channels zeroed",
+    "sliceIndex": 11,
+    "scale": [
+      0,
+      2.0915074348449707
+    ]
+  },
+  "operations": "RDKit structure, fixed verified coordinates, direct array plots; no generated scientific content"
+}

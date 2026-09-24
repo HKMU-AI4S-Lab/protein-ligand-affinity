@@ -1,0 +1,16 @@
+---
+import '../styles/research.css';
+import {siteTitle, teamUrl} from '../data/research';
+const {title=siteTitle, description='Explore molecular grids, deep learning and protein–ligand binding-affinity prediction through research findings and interactive molecular analysis.'} = Astro.props;
+const base=import.meta.env.BASE_URL;
+const pageTitle=title===siteTitle?title:title+' · '+siteTitle;
+const canonical=new URL(Astro.url.pathname,Astro.site);
+---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><link rel="icon" type="image/svg+xml" href={base+'favicon.svg'}/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#345da8"/><title>{pageTitle}</title><link rel="canonical" href={canonical}/><meta property="og:title" content={pageTitle}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:type" content="website"/><meta property="og:site_name" content={siteTitle}/><meta name="twitter:card" content="summary"/></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header wrap"><span class="project-id">UGC/FDS16/E16/23</span><nav aria-label="Main navigation"><a href={teamUrl}>Research team ↗</a></nav></header>
+<slot/>
+<footer class="footer wrap"><p>Funded by the Research Grants Council of Hong Kong under the Faculty Development Scheme, Project No. UGC/FDS16/E16/23.</p><p><a href={base+'notices/'}>Software licences</a></p></footer>
+<script>if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register(import.meta.env.BASE_URL+'sw.js',{scope:import.meta.env.BASE_URL}).catch(()=>{}));</script>
+</body></html>

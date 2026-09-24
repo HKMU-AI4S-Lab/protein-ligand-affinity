@@ -1,0 +1,21 @@
+name: Validate contributions (local runner only)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    if: ${{ vars.ENABLE_PRIVATE_VALIDATION == 'true' }}
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run release:inputs
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: node scripts/audit-built-site.mjs
+      # Deliberately no uploads, GitHub Release writes, or deployment steps.

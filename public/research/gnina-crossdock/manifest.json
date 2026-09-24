@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 3,
+  "id": "gnina-crossdock",
+  "format": "onnx",
+  "runtime": "onnxruntime-web",
+  "backend": "wasm",
+  "precision": "fp32",
+  "preprocessingVersion": "libmolgrid-0.5.5-gnina-default-types-v1",
+  "checkpointSha256": "56990c0a31a7aa0a57c5445de64c3d59002bc23de9947a8d028548d89ca803b4",
+  "sourceRevision": "5196d00ec78738428313a1af9a11bf73c550edd3",
+  "license": "gnina-torch MIT; GNINA attribution retained",
+  "redistributionApproved": true,
+  "artifact": {
+    "path": "research/gnina-crossdock/model.onnx",
+    "sha256": "9d34fa3dc325a8a30354ff402b649f427d8b672454ab58aa59b59f8d03ec5f51",
+    "bytes": 1561139
+  },
+  "inputs": [
+    {
+      "name": "grid",
+      "dtype": "float32",
+      "shape": [
+        1,
+        28,
+        48,
+        48,
+        48
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "pose_scores",
+      "dtype": "float32",
+      "shape": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "affinity",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ]
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "referenceSha256": "3e87f12e39f7cff6556105d1ef138444a8f678a30ac30c5ddad24b9c37a34654",
+    "maxAbsError": 1.239776611328125e-05
+  },
+  "examples": [
+    {
+      "id": "1hsg",
+      "label": "1HSG · HIV protease / MK1",
+      "grid": {
+        "sha256": "d751536593597e4002254a76f3b149954242e9daf4eda173a6237992cfa41fe9",
+        "bytes": 12386304,
+        "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/784a88468de2077a8b50d1fd9353590930039aee/1hsg-grid.bin"
+      },
+      "structure": {
+        "path": "research/gnina-crossdock/1hsg.sdf",
+        "sha256": "359d7337e0519dd8ed833da71d4ce60b0ee26b61632a78419929ad0539b794f4",
+        "bytes": 4948
+      },
+      "referenceAffinity": 8.625168800354004,
+      "explanation": {
+        "path": "research/gnina-crossdock/1hsg-explanations.json",
+        "sha256": "472627eaabbaf0d83c2e9c5f39875ab6a01be4429dfdebc7dbab909e67c417ca",
+        "bytes": 56123
+      },
+      "protein": {
+        "path": "research/gnina-crossdock/1hsg-protein.pdb",
+        "bytes": 122638,
+        "sha256": "679f34d930f13a6cd1f60ce43ac6effe030f459ac0d997c36e712ad53f9fdfb3"
+      },
+      "center": [
+        13.072668075561523,
+        22.467355728149414,
+        5.55748987197876
+      ],
+      "sourceUrl": "https://www.rcsb.org/structure/1HSG",
+      "description": "HIV-1 protease with bound inhibitor MK1. A prepared crystallographic complex for examining affinity and pose scoring."
+    },
+    {
+      "id": "1hvr",
+      "label": "1HVR · HIV protease / XK2",
+      "grid": {
+        "sha256": "32bfe625f20b4f926679878ee75bad1a30133c10f5861e80afb9907f256e3022",
+        "bytes": 12386304,
+        "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/784a88468de2077a8b50d1fd9353590930039aee/1hvr-grid.bin"
+      },
+      "structure": {
+        "path": "research/gnina-crossdock/1hvr.sdf",
+        "sha256": "abf86b66a03e6b6062ba6a4b95e123c05f6e7419948f5a745238dd75cd8880d2",
+        "bytes": 5084
+      },
+      "referenceAffinity": 9.630258560180664,
+      "explanation": {
+        "path": "research/gnina-crossdock/1hvr-explanations.json",
+        "sha256": "89daddf4a6cb4c16842b58c6793a6bd041705b21e7bc91414b4740ebb547102f",
+        "bytes": 57122
+      },
+      "protein": {
+        "path": "research/gnina-crossdock/1hvr-protein.pdb",
+        "bytes": 149368,
+        "sha256": "e5e79bf59fe193e05025b648ba30ea780de595c93716aec409f6220c569d7063"
+      },
+      "center": [
+        -9.191564559936523,
+        15.90626049041748,
+        27.94647789001465
+      ],
+      "sourceUrl": "https://www.rcsb.org/structure/1HVR",
+      "description": "HIV-1 protease with bound inhibitor XK2. A prepared crystallographic complex for examining affinity and pose scoring."
+    }
+  ]
+}
