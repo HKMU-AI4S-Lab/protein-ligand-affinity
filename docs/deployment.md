@@ -2,7 +2,7 @@
 
 The confirmed repository is `HKMU-AI4S-Lab/protein-ligand-affinity`. GitHub Pages serves the production build at `https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/`.
 
-The first release is live. [Publication checks](publication-check.md) record the deployed commit, successful workflow and live verification.
+The first release was published, then taken offline during experimental work. The October public release adds browser docking; [Publication checks](publication-check.md) record the deployed commit, successful workflow and live verification.
 
 ## Manual release
 
@@ -10,7 +10,7 @@ The first release is live. [Publication checks](publication-check.md) record the
 2. Set the repository Actions variable `ENABLE_PUBLIC_DEPLOY` to `true`.
 3. Run **Deploy lab website to GitHub Pages** from the Actions tab on `main`.
 
-The workflow installs the locked dependencies, retrieves and verifies the prepared complex grids, runs tests and type checking, builds and audits the static output, and checks the publication records before deploying. Pushes alone do not publish changes.
+The workflow installs the locked dependencies, retrieves and verifies the prepared complex grids, runs tests and type checking, builds and audits the static output, and checks the publication records before deploying. The workflow uses `npm run build:public` and `node scripts/check-publication.mjs --public`; pending experimental assets are excluded and retain their pending source status. Pushes alone do not publish changes.
 
 ## Asset hosting
 

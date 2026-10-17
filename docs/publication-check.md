@@ -1,43 +1,23 @@
-# Publication check — 25 September 2026
+# Publication check - 17 October 2026
 
-The approved three-method website is published at [protein-ligand-affinity](https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/). The source repository is [HKMU-AI4S-Lab/protein-ligand-affinity](https://github.com/HKMU-AI4S-Lab/protein-ligand-affinity).
+The owner authorized publication and selected Webina / AutoDock Vina for public browser docking. The release is prepared for GitHub Pages at https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/. Deployment and production verification are pending; this record will be updated after they complete.
 
-## Release
+## Verified release candidate
 
-- Deployed source commit: `ed078a37909420864e21aa11f5e8d3f2745ade05`.
-- Successful [GitHub Pages workflow](https://github.com/HKMU-AI4S-Lab/protein-ligand-affinity/actions/runs/36039966649): build and deploy both completed.
-- Pages uses GitHub Actions. `ENABLE_PUBLIC_DEPLOY=true` enables the manually dispatched release workflow; a push alone does not deploy.
-- The three large inference files were uploaded with the Hugging Face CLI to `micklee17/protein-ligand-affinity-web-assets`, revision `784a88468de2077a8b50d1fd9353590930039aee`.
-- The Pages artifact is approximately 104.4 MB. Large model files remain outside Git and the Pages artifact; pinned manifest URLs retain their original byte counts and SHA-256 hashes.
+- Clean installation, immutable build-input provisioning, 92 unit tests, Astro/TypeScript (121 files, no errors/warnings/hints), public build, publication gate and built-site audit passed. The audit covered 21 pages and 110 local references.
+- Real browser docking from PDB IDs, protein/SDF uploads, reference and explicit boxes, pose exports, cancellation/retry, reload recovery and stale-result removal passed. The 1HSG stereochemical ligand also passed the exact-coordinate handoff to GNINA browser scoring. The 3PTB HIS/TRP rejection remains enforced by that scorer.
+- Returning visitors can upgrade the previous service worker and enable browser isolation. A fresh visitor receives a guarded first-visit reload for SharedArrayBuffer. No private docking API request is used by the public engine.
+- The existing three tools passed browser regression, including MAO-B prediction and Grad-CAM, GNINA scoring and occlusion, downloads, failures and retry. Desktop and mobile viewport checks passed; physical mobile device performance was not tested.
+- Approved MAO-B and GNINA model bytes remain unchanged. The MAO-B manifest now links the September 28 browser validation report included under artifacts/browser-fusion-validation.json; its SHA-256 matches the manifest.
 
-Deployment preserved the approved public wording, design, paper crops, teaching figures, scientific inputs and outputs. Necessary release changes cover asset hosting, clean-build provisioning, publication records, and a small footer link to software licences and corresponding Open Babel sources.
+## Release boundary
 
-## Completed checks
+The four experimental screening checkpoints retain pending validation and redistribution status and are excluded. The two uncleared ETDock paper crops are excluded; an original lab diagram explains the cited method. Native private GNINA workflows remain in the maintainer workspace. Live docking is accurately labelled AutoDock Vina 1.2.3 through Webina 1.0.5, with Vina energies and no CNN rescoring.
 
-| Check | Result |
-| --- | --- |
-| Clean installation and unit tests | 66 passed; no failures |
-| Astro and TypeScript | 96 files; zero errors, warnings or hints |
-| Scientific content and figure provenance | 46 artifact hashes and all figure/source checks passed |
-| Production build and publication gate | Passed locally and in the clean Ubuntu GitHub runner |
-| Built-site audit | 18 HTML pages, 79 local references, zero issues |
-| Deployed resource audit | 361 resources checked; no unresolved missing or broken resources |
-| Hosted inference files | Immutable URLs, expected sizes, CORS and successful browser download/integrity checks |
-| Live scientific workflows | Representations, Screening with Grad-CAM, and both BAP examples with all eight occlusion regions passed |
-| Recovery and caching | Cancellation, changed inputs, stale-result suppression, failed/interrupted grid recovery, corrupt-cache repair and cached restarts passed |
-| Offline operation | Reload and new calculations worked from verified caches for both models |
-| Compatibility | Nested pages, legacy method redirects and missing-snapshot recovery passed |
+Webina's exact upstream runtime bytes, licence and pinned commit are distributed; its loader resolves the verified module URL for pthread startup. Inputs, preparation, engine hashes, coordinate mapping and results accompany JSON exports. Two redocking examples verify implementation, not general docking accuracy or experimental affinity.
 
-The live Screening test downloaded the full hosted checkpoint and reused it for Grad-CAM. Interpretation retained the prediction score, model, tokens, grid and coordinates. Both prepared affinity examples matched native reference tolerances. Weak Grad-CAM values retained the shared scale. Existing native Fusion parity, derivative-download recovery and verified legacy snapshot-restoration checks remain applicable; publication did not change their scientific implementation.
+The locked npm dependencies retain pre-existing audit advisories (six in the complete install; five when dev dependencies are omitted). They concern build/serialization/image/source-map dependencies; no dependency versions were changed in this release. The static site has no public Node server. Dependency maintenance remains separate from this release.
 
-The deployed resource audit accounted for platform-specific dependency licence lists and Astro-generated component identifiers when comparing the Windows preview with the Linux release. Scientific assets and runtime files retained their verified bytes.
+Local evidence: artifacts/publication-20261017/ contains clean-*.log, browser-full.log, clean-browser-1hsg/, platform/platform-review.json and service-worker-upgrade.json. Runtime inputs and results in those local evidence directories are not included in the public repository.
 
-## Rendered review
-
-The live homepage and all three method articles were reviewed at desktop and mobile reading sizes, including published figures beside the teaching panels, captions, navigation and demonstration controls. Paper enlargement remained keyboard accessible. Mobile arrangements stayed within the viewport, with no observed clipping or overlap. The new software-credit page was also inspected on mobile.
-
-Review used Chrome 153.0.8010.54 with desktop and mobile viewport emulation, not physical-device testing. Visual assessment was performed separately from the automated checks. Original dense paper figures remain available through enlargement on small screens.
-
-Local evidence includes `live/rethink-chrome-verification.json`, `live/resource-audit.json`, live inference outputs, `live/visual-review/` captures, and `rethink-chrome-failures-and-visuals.json` in the publication evidence directory. These reports are not included in the public website.
-
-No publication blockers remain. See [deployment instructions](deployment.md) for subsequent releases.
+The prior three-tool release was deployed from ed078a37909420864e21aa11f5e8d3f2745ade05 on 25 September 2026 in workflow run 36039966649, then taken offline during subsequent development.

@@ -1,8 +1,19 @@
 function coordinate(field){const value=field.trim();return /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?$/.test(value)?Number(value):NaN;}
+const canonicalElements={BR:'Br',CA:'Ca',CL:'Cl',FE:'Fe',MG:'Mg',MN:'Mn',SE:'Se',ZN:'Zn'};
+/** PDB ModelServer can write uppercase two-letter SDF symbols (for example FE). */
+export function canonicalizeSdfElements(sdf,count){
+ const lines=sdf.split(/\r?\n/);
+ for(let i=4;i<4+count;i++){
+  const element=canonicalElements[lines[i]?.slice(31,34).trim()];
+  if(element)lines[i]=lines[i].slice(0,31)+element.padEnd(3)+lines[i].slice(34);
+ }
+ return lines.join('\n');
+}
 export function validatePreparedComplex(pdbText,sdfText){
   if(!pdbText||!sdfText||pdbText.length>5_000_000||sdfText.length>500_000)throw Error('Provide one prepared receptor PDB (≤5 MB) and one ligand SDF pose (≤0.5 MB).');
   const pdbLines=pdbText.split(/\r?\n/),models=pdbLines.filter(line=>line.startsWith('MODEL '));
   if(models.length>1)throw Error('Multiple PDB models are unsupported; provide one prepared receptor model.');
+  if(pdbLines.some(line=>line.startsWith('HETATM')))throw Error('Remove ligand, waters and other HETATM records from the receptor PDB; supply the bound ligand separately as SDF.');
   const records=pdbLines.filter(line=>/^(ATOM  |HETATM)/.test(line));
   if(!records.length||records.length>20_000)throw Error('The receptor must contain 1–20,000 atom records.');
   const identifiers=new Set();

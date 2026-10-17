@@ -1,7 +1,7 @@
 """Exact chain-rule graph for the full sequence/grid cross-attention model.
 Original weights are shared by forward and reverse operations. No surrogate.
 """
-import ast,importlib.util,json,math,time,sys
+import argparse,ast,importlib.util,json,math,time,sys
 from pathlib import Path
 import numpy as np
 import torch
@@ -76,25 +76,27 @@ def architecture_smoke():
  return Wrapper().eval()
 
 def main():
+ args=argparse.ArgumentParser();args.add_argument('--target',choices=['aofb','egfr','parp1','dpp4','hivpr'],default='aofb');args.add_argument('--architecture-smoke',action='store_true');args=args.parse_args()
  torch.set_num_threads(4);torch.manual_seed(234)
- smoke='--architecture-smoke' in sys.argv
- native=architecture_smoke() if smoke else ex.load_fusion()[0]
+ smoke=args.architecture_smoke
+ native=architecture_smoke() if smoke else ex.load_fusion(args.target)[0]
  native.requires_grad_(False);model=FusionDerivatives(native).eval()
  g=torch.rand(1,28,24,24,24)*.3;t=torch.randint(0,65,(1,100));expected=reference(native,g,t)
  with torch.no_grad():actual=model(g,t)
  errors={name:float((a-b).abs().max()) for name,a,b in zip(['screening_scores','input_gradient','grad_cam','spatial_activation'],actual,expected)}
- print(json.dumps({'randomArchitectureSmoke':smoke,'errors':errors}),flush=True)
+ print(json.dumps({'target':args.target,'randomArchitectureSmoke':smoke,'errors':errors}),flush=True)
  if max(errors.values())>1e-5:raise ValueError('Analytic derivative mismatch')
  if smoke:
   (ROOT/'artifacts/fusion-derivative-architecture-smoke.json').write_text(json.dumps({'learnedWeights':False,'errors':errors},indent=2));return
  import onnx,onnxruntime as ort
- out=ROOT/'public/research/fusion-aofb';out.mkdir(exist_ok=True,parents=True);dest=out/'gradients.onnx'
+ out=ROOT/'public/research'/('fusion-'+args.target);out.mkdir(exist_ok=True,parents=True);dest=out/'gradients.onnx'
  torch.onnx.export(model,(g,t),str(dest),input_names=['grid','tokens'],output_names=['screening_scores','input_gradient','grad_cam','spatial_activation'],opset_version=17,dynamo=False,do_constant_folding=False)
  external=ex.externalize(dest)
  onnx.checker.check_model(str(dest));session=ort.InferenceSession(str(dest),providers=['CPUExecutionProvider']);actual=session.run(None,{'grid':g.numpy(),'tokens':t.numpy()})
- report={'checkpointSha256':ex.digest(ROOT/'artifacts/research-source/fusion-aofb/valid_best_checkpoint.pth'),'artifact':ex.artifact(dest),'analyticErrors':errors,'onnxErrors':{name:float(np.max(np.abs(a-b.numpy()))) for name,a,b in zip(['screening_scores','input_gradient','grad_cam','spatial_activation'],actual,expected)}}
+ report={'target':args.target,'checkpointSha256':ex.digest(ROOT/'artifacts/research-source'/('fusion-'+args.target)/'valid_best_checkpoint.pth'),'artifact':ex.artifact(dest),'analyticErrors':errors,'onnxErrors':{name:float(np.max(np.abs(a-b.numpy()))) for name,a,b in zip(['screening_scores','input_gradient','grad_cam','spatial_activation'],actual,expected)}}
  manifest=json.loads((out/'manifest.json').read_text());manifest.update(artifact=ex.artifact(dest),externalData=external,examples=[],validation={'status':'pending'})
+ manifest['explanationCapabilities']=['grad-cam']
  manifest['outputs']=[{'name':n,'dtype':'float32','shape':shape} for n,shape in [('screening_scores',[1,2]),('input_gradient',[1,28,24,24,24]),('grad_cam',[1,12,12,12]),('spatial_activation',[1,256,12,12,12])]]
  (out/'gradients-manifest.json').write_text(json.dumps(manifest,indent=2))
- (ROOT/'artifacts/fusion-gradients-export.json').write_text(json.dumps(report,indent=2));print(json.dumps(report),flush=True)
+ (ROOT/'artifacts'/('fusion-'+args.target+'-gradients-export.json')).write_text(json.dumps(report,indent=2));print(json.dumps(report),flush=True)
 if __name__=='__main__':main()

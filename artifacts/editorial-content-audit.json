@@ -1,12 +1,13 @@
 {
-  "date": "2026-09-24T18:11:32.333Z",
+  "date": "2026-10-17T14:31:56.659Z",
   "base": "/protein-ligand-affinity/",
-  "pages": 18,
-  "localReferences": 79,
+  "pages": 21,
+  "localReferences": 110,
   "checks": [
-    "dist/topics/binding-affinity/index.html: concept → research → occlusion → experiment → references",
-    "dist/topics/representing-molecules/index.html: concept → research → experiment → references",
-    "dist/topics/screening-molecules/index.html: concept → research → grad-cam → experiment → references"
+    "dist/topics/binding-affinity/index.html: experiment → concept → occlusion → research → etdock → references",
+    "dist/topics/protein-ligand-docking/index.html: experiment → idea → findings → connections → references",
+    "dist/topics/representing-molecules/index.html: experiment → concept → research → references",
+    "dist/topics/screening-molecules/index.html: experiment → concept → research → grad-cam → references"
   ],
   "issues": []
 }

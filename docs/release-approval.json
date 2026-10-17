@@ -1,11 +1,29 @@
 {
-  "date": "2026-09-25",
+  "date": "2026-10-17",
   "repository": "HKMU-AI4S-Lab/protein-ligand-affinity",
   "site": "https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/",
   "manualPublicationApproved": true,
-  "publicationAuthorization": "The project owner explicitly requested publication of the approved website and authorized Hugging Face CLI upload of its inference assets.",
+  "publicationAuthorization": "The project owner requested publication, then explicitly selected Webina / AutoDock Vina for public browser docking. Existing approved model and chemistry release decisions remain in effect.",
   "chemistryRuntimeRedistributionApproved": true,
   "chemistryReview": "Open Babel GPL notice and corresponding core, Eigen and browser-binding sources accompany the runtime. Binary and source revisions are recorded in artifacts/chemistry-source-provenance.json; public/notices/OPENBABEL-SOURCE.txt provides build information and the local loader modification.",
   "researchArtifactReview": "Publication authorization covers the supplied project Fusion weights and selected UniMolRep author-manuscript crops. DL-FSG and AGIMA paper credits remain at their figures. Upstream BSD-3-Clause and gnina-torch MIT notices are retained; GNINA is credited as external software. This record grants no blanket licence over the private research archive.",
-  "assetRevision": "784a88468de2077a8b50d1fd9353590930039aee"
+  "assetRevision": "784a88468de2077a8b50d1fd9353590930039aee",
+  "publicReleaseProfile": {
+    "models": [
+      "fusion-aofb",
+      "gnina-crossdock"
+    ],
+    "docking": "Webina 1.0.5 / AutoDock Vina 1.2.3, Apache-2.0",
+    "excludedModels": [
+      "fusion-egfr",
+      "fusion-parp1",
+      "fusion-dpp4",
+      "fusion-hivpr"
+    ],
+    "excludedFigures": [
+      "etdock-architecture",
+      "etdock-pose-detail"
+    ],
+    "figureAlternative": "Original lab SVG summarising the cited ETDock method; no publisher permission is asserted."
+  }
 }

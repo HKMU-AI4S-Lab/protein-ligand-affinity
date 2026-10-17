@@ -176,8 +176,8 @@
   ],
   "validation": {
     "status": "passed",
-    "referenceSha256": "fd029934fa4eabed3f2f7b9b052b9e238bef7a1b66584589f11a8f5782844438",
-    "maxAbsError": 5.960464477539063e-08
+    "referenceSha256": "1b290891a83e72795849c9e61616cb49bef34c19e96d4eef260961b587d3a021",
+    "maxAbsError": 5.960464477539063e-8
   },
   "examples": []
 }

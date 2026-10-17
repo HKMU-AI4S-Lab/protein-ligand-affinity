@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/SiteLayout.astro';
+import PaperFigure from '../../components/PaperFigure.astro';
+import PaperCitation from '../../components/PaperCitation.astro';
+import MethodIllustration from '../../components/MethodIllustration.astro';
+import DockingWorkbench from '../../components/DockingWorkbench';
+import {citations} from '../../data/citations.mjs';
+import '../../styles/method-pages.css';
+import '../../styles/research-article.css';
+const base=import.meta.env.BASE_URL;
+---
+<Layout title="Protein–ligand docking with ETDock" description="ETDock predicts a ligand’s binding pose from protein and ligand structures. Explore the docking method, its research code, and its connection to bound-complex scoring.">
+<main id="main" class="wrap topic-document" data-method="docking">
+ <header class="topic-title">
+  <a class="back-link" href={base+'#topics'}>← All four methods</a>
+  <div class="topic-opening"><div>
+   <p class="eyebrow">04 / ETDock</p>
+   <h1>Protein–ligand docking</h1>
+   <p class="lead">Predict how a ligand might fit within a protein.</p>
+   <p class="article-takeaway">ETDock starts with protein and ligand structures and predicts a three-dimensional binding pose. It learns from chemical connectivity and geometry to reconstruct the ligand’s position and orientation.</p>
+   <div class="article-actions"><a class="article-action-primary editorial-link" href="#experiment">Try docking <span aria-hidden="true">↓</span></a><a href="#idea">Explore the method <span aria-hidden="true">↓</span></a></div>
+  </div><MethodIllustration kind="docking" eager/></div>
+ </header>
+ <div class="article-layout">
+  <aside class="article-nav" aria-label="On this page"><span>On this page</span><a href="#experiment">Try docking</a><a href="#idea">Predicting the pose</a><a href="#findings">Reported findings</a><a href="#connections">Pose and affinity</a><a href="#references">Paper & resources</a></aside>
+  <article class="article-content">
+   <section id="experiment" class="article-section experiment-section">
+    <h2>Predict a binding pose</h2>
+    <p class="tool-introduction">Supply a protein and ligand, choose a binding region, then explore and download predicted poses. The live calculation uses AutoDock Vina through Webina on your computer. ETDock’s geometric approach is described in the research below.</p>
+    <DockingWorkbench client:load/>
+   </section>
+   <section id="idea" class="article-section">
+    <h2>From separate structures to a binding pose</h2>
+    <p>A ligand’s chemical identity does not specify where it sits or how it is oriented in a protein. ETDock predicts distances between the binding partners, then uses those distances and constraints on the ligand’s internal geometry to reconstruct a pose.</p>
+    <p>The model combines atom-level and whole-molecule ligand features with a geometric protein representation. Its TAMformer module exchanges information through triangle, attention and message layers. Scalar features describe chemical properties; equivariant vectors preserve how spatial relationships change when a structure is rotated.</p>
+    <PaperFigure id="etdock-architecture"/>
+   </section>
+   <section id="findings" class="article-section">
+    <h2>How closely do the predicted poses match?</h2>
+    <p>The paper evaluates ETDock on a time split of PDBbind v2020. Ligand RMSD measures how closely predicted atom positions match the reference pose; lower values indicate a closer match.</p>
+    <dl class="paper-findings"><div><dt>Median ligand RMSD</dt><dd>3.8 <span>Å</span></dd></div><div><dt>Poses within 2 Å</dt><dd>23.2<span>%</span></dd></div><div><dt>Poses within 5 Å</dt><dd>61.1<span>%</span></dd></div></dl>
+    <p class="finding-context">Reported in Table 1 of the <a href={citations.etdock.url}>ETDock paper</a>. These metrics describe pose accuracy in that evaluation; they do not measure binding affinity.</p>
+   </section>
+   <section id="connections" class="article-section">
+    <h2>From a pose to an affinity estimate</h2>
+    <p>A pose describes an arrangement of atoms. Affinity concerns the strength of association between the protein and ligand. The arrangement establishes the contacts that a structure-based affinity model can examine.</p>
+    <div class="research-connections">
+     <div><h3>Study the binding contacts</h3><p>AGIMA-Score investigates how graphs of protein–ligand contacts can inform affinity estimation from a complex.</p><a class="editorial-link" href={base+'topics/binding-affinity/#research'}>Explore AGIMA-Score <span aria-hidden="true">→</span></a></div>
+     <div><h3>Explore a complex of your own</h3><p>Already have a bound complex? The live GNINA tool scores the pose in your PDB structure and lets you explore its spatial occlusion response.</p><a class="editorial-link" href={base+'topics/binding-affinity/#experiment'}>Score a bound complex <span aria-hidden="true">→</span></a></div>
+    </div>
+   </section>
+   <section id="references" class="article-section references">
+    <h2>Paper & resources</h2><PaperCitation paper={citations.etdock}/><PaperCitation paper={citations.webina}/><PaperCitation paper={citations.vina}/><PaperCitation paper={citations.gnina13}/>
+    <div class="research-resource-links"><a href="https://journal.hep.com.cn/fcs/EN/10.1007/s11704-026-51026-x">Article and supplementary materials ↗</a><a href="https://github.com/gnn4bio/ETDock">ETDock source code ↗</a><a href="https://github.com/durrantlab/webina">Webina browser engine ↗</a></div>
+   </section>
+   <a class="back-link" href={base+'#topics'}>← All four methods</a>
+  </article>
+ </div>
+</main>
+</Layout>

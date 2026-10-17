@@ -1,12 +1,31 @@
-import {validatePreparedComplex} from './prepared-inputs.mjs';
+import {canonicalizeSdfElements,validatePreparedComplex} from './prepared-inputs.mjs';
 export {validatePreparedComplex} from './prepared-inputs.mjs';
 import {chemistry} from './chemistry';
+import {validateLigandPose} from './complex-submission.mjs';
 
 export type GninaAtom={xyz:number[];channel:number;radius:number;z?:number};
 const f=Math.fround,N=48,RES=.5;
 const radii:Record<number,number>={5:1.92,6:1.9,7:1.8,8:1.7,9:1.5,12:1.2,15:2.1,16:2,17:1.8,20:1.2,25:1.2,26:1.2,30:1.2,34:2,35:2,53:2.2};
 export const gninaReceptorChannels=['aliphatic C hydrophobe','aliphatic C nonhydrophobe','aromatic C hydrophobe','aromatic C nonhydrophobe','halogen','N non-donor','N donor','O non-donor','O donor','S','P','Ca','Zn','other supported metal / B'];
 export const gninaLigandChannels=['aliphatic C hydrophobe','aliphatic C nonhydrophobe','aromatic C hydrophobe','aromatic C nonhydrophobe','Br / I','Cl','F','N non-donor','N donor','O non-donor','O donor','S','P','supported metal / B'];
+
+/** Read a ligand from an uploaded PDB complex without moving its deposited atoms. */
+export async function ligandPdbToSdf(ligandPdb:string,base:string,progress:(message:string)=>void=()=>{}){
+ const {ob,rdkit}=await chemistry(base,progress);
+ const ligand=new ob.OBMol(),conversion=new ob.ObConversionWrapper();
+ try{
+  progress('Preparing the selected ligand…');
+  conversion.setInFormat('','pdb');
+  if(!conversion.readString(ligand,ligandPdb))throw Error('The selected ligand could not be read from the PDB complex.');
+  conversion.setOutFormat('','sdf');
+  const sdf=conversion.writeString(ligand,false);
+  validateLigandPose(sdf,ligandPdb);
+  const molecule=rdkit.get_mol(sdf);
+  try{if(!molecule?.is_valid()||molecule.get_smiles().includes('.'))throw Error('The selected ligand needs complete bond information. Add a bound-pose SDF for this ligand.');}
+  finally{molecule?.delete();}
+  return sdf;
+ }finally{conversion.delete();ligand.delete();}
+}
 
 /** Native CoordinateSet::center uses sequential FP32 accumulation. */
 export function gninaCenter(atoms:GninaAtom[]){
@@ -53,9 +72,10 @@ function typeMolecule(mol:any,receptor:boolean):GninaAtom[]{
   const atoms:GninaAtom[]=[];
   for(let i=1;i<=mol.NumAtoms();i++){
     const a=mol.GetAtom(i),z=a.GetAtomicNum();
-    if(a.GetIsotope()||a.GetSpinMultiplicity()>1)throw Error('Isotopes and radical atoms are not supported by this prepared-complex demonstrator.');
+    if(a.GetIsotope()||a.GetSpinMultiplicity()>1)throw Error('This tool cannot score a complex containing isotope-labelled or radical atoms.');
     if(z===1)continue;
-    if(!(z in radii))throw Error('Unsupported GNINA element (atomic number '+z+').');
+    if(z===0)throw Error(`The ${receptor?'protein structure':'bound ligand'} contains an atom with an unrecognized element label. Check the structure file or choose another complex.`);
+    if(!(z in radii))throw Error(`The ${receptor?'protein structure':'bound ligand'} contains an element this tool cannot score (atomic number ${z}).`);
     const neighborElements=neighbors[i].map(j=>mol.GetAtom(j).GetAtomicNum());
     const hydrogen=neighborElements.includes(1),hetero=neighborElements.some(z=>z!==1&&z!==6);
     let channel:number;
@@ -76,7 +96,8 @@ function typeMolecule(mol:any,receptor:boolean):GninaAtom[]{
  * changes heavy-atom coordinates, docks, minimizes, or translates the inputs.
  */
 export async function prepareGninaGrid(pdbText:string,sdfText:string,base:string,progress:(message:string)=>void=()=>{}){
-  const {ligand,records,ligandAtomCount}=validatePreparedComplex(pdbText,sdfText);
+  const {ligand:rawLigand,records,ligandAtomCount}=validatePreparedComplex(pdbText,sdfText);
+  const ligand=canonicalizeSdfElements(rawLigand,ligandAtomCount);
   const {ob,rdkit}=await chemistry(base,progress);
   const chemical=rdkit.get_mol(ligand);
   try{if(!chemical?.is_valid()||chemical.get_smiles().includes('.'))throw Error('Supply one chemically valid connected ligand with explicit bond orders.');}finally{chemical?.delete();}
@@ -100,12 +121,15 @@ export async function prepareGninaGrid(pdbText:string,sdfText:string,base:string
     // 15.05 = grid half-width 11.75 + largest supported radius*1.5 (3.3).
     for(const line of records)if(['TRP','HIS','HID','HIE','HIP'].includes(line.slice(17,20).trim())){
       const xyz=[30,38,46].map(start=>Number(line.slice(start,start+8)));
-      if(xyz.every((value,d)=>Math.abs(value-center[d])<=15.05))throw Error('This browser release cannot reliably type receptor tryptophan or histidine within the scoring region. Use the validated examples or a prepared complex whose scoring region excludes these residues.');
+      if(xyz.every((value,d)=>Math.abs(value-center[d])<=15.05))throw Error('This complex has tryptophan or histidine near the ligand, which this tool cannot score reliably. Try another bound complex.');
     }
     const atoms=[...receptorAtoms,...ligandAtoms.map(atom=>({...atom,channel:atom.channel+14}))];
     // A distance guard catches obviously unaligned files; it cannot establish a
     // physically valid bound pose. Alignment remains the uploader's responsibility.
-    if(!receptorAtoms.some(a=>ligandAtoms.some(b=>a.xyz.reduce((s,v,i)=>s+(v-b.xyz[i])**2,0)<64)))throw Error('No receptor atoms lie within 8 Å of the ligand; upload coordinates from the same prepared complex.');
+    let closest=Infinity;
+    for(const a of receptorAtoms)for(const b of ligandAtoms){const distanceSquared=a.xyz.reduce((s,v,i)=>s+(v-b.xyz[i])**2,0);if(distanceSquared<closest)closest=distanceSquared;}
+    if(closest>=64)throw Error('No receptor atoms lie within 8 Å of the ligand; upload coordinates from the same prepared complex.');
+    if(closest<0.49)throw Error('Receptor and ligand heavy atoms overlap by less than 0.7 Å; check the supplied pose and coordinate frame.');
     progress('Rasterizing the 28-channel GNINA density grid locally…');
     const grid=rasterizeGnina(atoms,center);
     return {grid,shape:[1,28,48,48,48],center,molblock:ligand,proteinPdb:pdbText,

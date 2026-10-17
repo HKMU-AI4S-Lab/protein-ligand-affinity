@@ -23,4 +23,4 @@ do {
 if (!$ready) { throw 'Local preview did not become ready. Inspect preview-error.log.' }
 Get-LabListener 4321 | Out-Null
 Write-Output "Production build ready: $previewUrl"
-Write-Output 'Loopback only. Models run in the browser; no inference service or publication.'
+Write-Output 'Loopback only. All public tools run in the browser. The optional private GNINA docking engine needs its existing SSH forwarding.'

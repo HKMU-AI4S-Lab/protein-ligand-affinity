@@ -7,7 +7,7 @@ export const site = {
 };
 
 export const resources = [
-  { title: 'Learning protein–ligand interactions', kind: 'Research & software', url: 'https://github.com/debbydanwang/DL-PLBAP', note: 'DL-PLBAP · Structure-based deep learning' },
+  { title: 'Learning protein–ligand interactions', kind: 'Research & software', url: 'https://github.com/debbydanwang/DL-PLBAP', note: 'DL-PLBAP — Structure-based deep learning' },
   { title: 'BAP', kind: 'Source code', url: 'https://github.com/debbydanwang/BAP', note: 'Binding affinity prediction for protein–ligand complexes' },
   { title: 'IFPscore', kind: 'Source code', url: 'https://github.com/debbydanwang/IFPscore', note: 'Interaction fingerprint-based scoring functions' },
 ];

@@ -6,7 +6,7 @@ let ready:Promise<{rdkit:any;ob:any}>|undefined;
 const symbols:Record<number,string>={1:'H',5:'B',6:'C',7:'N',8:'O',9:'F',14:'Si',15:'P',16:'S',17:'Cl',35:'Br',53:'I'};
 export async function chemistry(base:string,progress:(s:string)=>void){
   if(!ready)ready=(async()=>{
-    const artifact=async(name:string)=>{const a=runtimeAssets.find(a=>a.path.endsWith(name));if(!a)throw Error('Missing chemistry runtime: '+name);return verifiedArtifact(a,{base,onProgress:(n:number)=>progress('Loading chemistry '+name+' · '+Math.round(n*100)+'%')});};
+    const artifact=async(name:string)=>{const a=runtimeAssets.find(a=>a.path.endsWith(name));if(!a)throw Error('Missing chemistry runtime: '+name);return verifiedArtifact(a,{base,onProgress:(n:number)=>progress('Loading chemistry '+name+' — '+Math.round(n*100)+'%')});};
     const [rdwasm,obwasm,obdata,objs]=await Promise.all(['rdkit/RDKit_minimal.wasm','openbabel/openbabel.wasm','openbabel/openbabel.data','openbabel/openbabel.mjs'].map(artifact));
     const rdkit=await (initRDKit as unknown as (options:unknown)=>Promise<any>)({wasmBinary:rdwasm});
     const blob=URL.createObjectURL(new Blob([objs],{type:'text/javascript'}));

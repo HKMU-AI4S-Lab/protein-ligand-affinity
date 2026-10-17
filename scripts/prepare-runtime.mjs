@@ -5,6 +5,8 @@ const paths=[['node_modules/@rdkit/rdkit/dist/RDKit_minimal.wasm','rdkit/RDKit_m
   ['node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm','ort/ort-wasm-simd-threaded.wasm'],
   ['node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs','ort/ort-wasm-simd-threaded.mjs']];
 const integrity=[];
+for(const entry of JSON.parse(await readFile('vendor/webina/integrity.json','utf8'))){const bytes=await readFile('vendor/webina/'+entry.name);if(bytes.length!==entry.bytes||createHash('sha256').update(bytes).digest('hex')!==entry.sha256)throw Error('Vendored Webina integrity mismatch: '+entry.name);}
+for(const name of ['vina.1.0.5.js','vina.worker.js','vina.wasm'])paths.push(['vendor/webina/'+name,'webina/'+name]);
 for(const [source,name] of paths) { await mkdir('public/runtime/'+name.split('/')[0],{recursive:true}); await copyFile(source,'public/runtime/'+name); const bytes=await readFile(source); integrity.push({path:'runtime/'+name,sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length}); }
 // OpenBabel is the pinned Kekule.js 1.0.3 distribution. Keep original source intact.
 for(const name of ['openbabel.js','openbabel.wasm','openbabel.data']) {

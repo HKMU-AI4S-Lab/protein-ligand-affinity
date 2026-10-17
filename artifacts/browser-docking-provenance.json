@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-17",
+  "engine": {
+    "name": "Webina 1.0.5 / AutoDock Vina 1.2.3",
+    "source": "https://github.com/durrantlab/webina",
+    "sourceCommit": "4230729e7dad197b4c77912dffe30c8bcdd492ba",
+    "license": "Apache-2.0",
+    "assets": [
+      {
+        "name": "vina.1.0.5.js",
+        "bytes": 93110,
+        "sha256": "42b275d5c9c36b8522a692394d1cfd01760f874ef4fb8ed23bdb4d91fe676027"
+      },
+      {
+        "name": "vina.worker.js",
+        "bytes": 2124,
+        "sha256": "444baa7d7e110be04b47e0c8daa8878291cbabe144948eee3fd7e867c6ec98bb"
+      },
+      {
+        "name": "vina.wasm",
+        "bytes": 639890,
+        "sha256": "e17a8807aee230e629cdafa6f31897d2bbd993f5c3a3374b84d0638aaa2927f4"
+      }
+    ]
+  },
+  "originalDiagram": {
+    "path": "public/illustrations/docking-overview.svg",
+    "sha256": "5e4f47e88e544d23cb5d7317c00099b6de667d9f9be3758f8d2477f2babe58dd",
+    "operation": "Original lab schematic authored for this website, summarising the cited ETDock method. No paper pixels are used.",
+    "researchSource": "https://doi.org/10.1007/s11704-026-51026-x"
+  },
+  "fixtures": [
+    {
+      "path": "tests/fixtures/1hsg.pdb",
+      "source": "https://files.rcsb.org/download/1HSG.pdb",
+      "sha256": "d430675c358060808ef614002cfdcfcfa824714d89f1240adf5749d2ba60fed2"
+    },
+    {
+      "path": "tests/fixtures/1hvr.pdb",
+      "source": "https://files.rcsb.org/download/1HVR.pdb",
+      "sha256": "c8d3f238d3269a66823454d4681b71467b4677a18751ce094047961620b338cb"
+    }
+  ]
+}

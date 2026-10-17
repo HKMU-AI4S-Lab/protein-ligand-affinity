@@ -4,8 +4,8 @@ import {progressText,errorText} from '../src/lib/research/presentation.mjs';
 
 test('progress names the reader task without exposing runtime files or sessions',()=>{
  assert.equal(progressText('Creating model session…'),'Preparing the model…');
- assert.equal(progressText('Loading chemistry openbabel/openbabel.wasm · 42%'),'Preparing molecular tools · 42%');
- assert.equal(progressText('Loading weights · 17% · 300.1 MB'),'Loading model data · 17% · 300.1 MB');
+ assert.equal(progressText('Loading chemistry openbabel/openbabel.wasm — 42%'),'Preparing molecular tools — 42%');
+ assert.equal(progressText('Loading weights — 17% — 300.1 MB'),'Loading model data — 17% — 300.1 MB');
  assert.equal(progressText('Spatial occlusion 5/8'),'Spatial occlusion 5/8');
  assert.equal(progressText('unknown backend detail /private/path'),'Preparing the calculation…');
 });
@@ -16,4 +16,6 @@ test('download failures and verification errors give a recovery action without l
  assert.match(errorText('Invalid SMILES. Check atoms, bonds and ring closures.'),/^Invalid SMILES/);
  assert.match(errorText('Generated coordinates did not preserve the specified stereochemistry; this molecule is unsupported.'),/stereochemistry/);
  assert.match(errorText('The explanation does not match the current prediction. Please recalculate.'),/recalculate/);
+ assert.match(errorText('The selected protein chains are too far from this ligand. Choose nearby chain B.'),/Choose nearby chain B/);
+ assert.match(errorText('Heme is a bound cofactor. This tool cannot give a reliable affinity estimate for heme; choose a complex with a bound small-molecule ligand.'),/Heme is a bound cofactor/);
 });

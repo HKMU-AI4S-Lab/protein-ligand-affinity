@@ -14,5 +14,7 @@ h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spac
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 .project-research{border-top:1px solid var(--line)}
+.platform-name{font:22px/1.25 Georgia,serif;color:var(--ink);text-decoration:none}.platform-name small{display:block;font:11px/1.4 Arial,sans-serif;color:var(--muted);margin-top:5px}.site-header nav a:hover{text-decoration:underline}.site-header{gap:24px}.footer a{display:inline-block;margin-top:12px}.article-content,.bench-output{overflow-wrap:anywhere}
+@media(max-width:520px){.site-header{align-items:start}.platform-name{font-size:19px}.site-header nav{gap:10px 16px;flex-wrap:wrap;justify-content:end;max-width:170px;font-size:12px}.site-header nav a{padding:4px 0}}
 
 @media(min-width:761px) and (max-width:1200px){.grid-teaching{grid-template-columns:1fr 1fr}.grid-teaching .channel-pair{grid-column:1/-1}}

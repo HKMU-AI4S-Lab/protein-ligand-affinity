@@ -196,5 +196,49 @@
     "height": 156,
     "operation": "Unaltered PDF rendering; rectangular crop only",
     "redistributionApproved": true
+  },
+  {
+    "id": "etdock-architecture",
+    "source": "research_works/ETDock/ETDock_FCS.pdf",
+    "sourceSha256": "117f056384baeb06b7367a860c6c670479c2187ba7adea9ebf37a6cc7f3f10c4",
+    "page": 2,
+    "label": "Figure 1",
+    "cropPoints": [
+      51,
+      72,
+      565,
+      197
+    ],
+    "artifact": {
+      "path": "paper-figures/etdock-architecture.webp",
+      "sha256": "f9d6b58f27c7fe0dfe53b14e91dbffb43dd50dfd7f24a25b1b60ed277d3f60a9",
+      "bytes": 231330
+    },
+    "width": 2056,
+    "height": 500,
+    "operation": "Unaltered PDF rendering; rectangular crop only",
+    "redistributionApproved": false
+  },
+  {
+    "id": "etdock-pose-detail",
+    "source": "research_works/ETDock/ETDock_FCS.pdf",
+    "sourceSha256": "117f056384baeb06b7367a860c6c670479c2187ba7adea9ebf37a6cc7f3f10c4",
+    "page": 2,
+    "label": "Figure 1, docking-pose detail",
+    "cropPoints": [
+      261,
+      116,
+      306,
+      149
+    ],
+    "artifact": {
+      "path": "paper-figures/etdock-pose-detail.webp",
+      "sha256": "b89ee0bea7e56e44d2cb1e2bcaaf6f932e8bcac159b5919f252d0af5bd75790a",
+      "bytes": 26258
+    },
+    "width": 180,
+    "height": 132,
+    "operation": "Unaltered PDF rendering; rectangular crop only",
+    "redistributionApproved": false
   }
 ]

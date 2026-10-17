@@ -15,6 +15,21 @@
     "bytes": 24218
   },
   {
+    "path": "runtime/webina/vina.1.0.5.js",
+    "sha256": "42b275d5c9c36b8522a692394d1cfd01760f874ef4fb8ed23bdb4d91fe676027",
+    "bytes": 93110
+  },
+  {
+    "path": "runtime/webina/vina.worker.js",
+    "sha256": "444baa7d7e110be04b47e0c8daa8878291cbabe144948eee3fd7e867c6ec98bb",
+    "bytes": 2124
+  },
+  {
+    "path": "runtime/webina/vina.wasm",
+    "sha256": "e17a8807aee230e629cdafa6f31897d2bbd993f5c3a3374b84d0638aaa2927f4",
+    "bytes": 639890
+  },
+  {
     "path": "runtime/openbabel/openbabel.js",
     "sha256": "5e895fb68e1c80e0e8c94f24f3f4f5c3ba70b07e8ee5a394a1974001b962ce82",
     "bytes": 1420576

@@ -1,7 +1,8 @@
 """Exact FP32 exports. Run locally; no server or substitute models.
 
 python scripts/export-research-models.py gnina
-python scripts/export-research-models.py fusion
+python scripts/export-research-models.py fusion --target aofb
+python scripts/export-research-models.py fusion --target dpp4
 Native input fixtures must precede scientific validation; zero inputs only test export.
 """
 import argparse, ast, hashlib, importlib.util, json, time
@@ -33,10 +34,18 @@ def externalize(p):
     p.write_bytes(model.SerializeToString())
     return list({a['path']:a for a in artifacts}.values())
 
-def load_fusion():
-    source=ROOT/'artifacts/research-source/fusion-aofb';p=source/'valid_best_checkpoint.pth'
-    if p.stat().st_size!=900665297:raise ValueError(f'Incomplete fusion checkpoint: {p.stat().st_size} / 900665297 bytes. No replacement is allowed.')
-    if digest(p)!='73029954ba6581365d5786c78768cf54f1d399c7f891f0e2b7bd5d8c371d12f1':raise ValueError('Fusion checkpoint hash mismatch')
+def load_fusion(target='aofb'):
+    if target not in ('aofb','egfr','parp1','dpp4','hivpr'):raise ValueError('Unsupported Fusion target')
+    source=ROOT/'artifacts/research-source'/('fusion-'+target);p=source/'valid_best_checkpoint.pth'
+    if p.stat().st_size<800_000_000:raise ValueError(f'Incomplete Fusion checkpoint: {p.stat().st_size} bytes. No substitute is allowed.')
+    actual=digest(p)
+    if target=='aofb':expected='73029954ba6581365d5786c78768cf54f1d399c7f891f0e2b7bd5d8c371d12f1'
+    else:
+        report=source/'training-report.json'
+        if report.exists():expected=json.loads(report.read_text())['checkpointSha256']
+        elif target=='egfr':expected='b6fcf52045036d56dcbc90453ce38849075be9c72bcc6f6ba35b1ac5a93d0aca'
+        else:raise ValueError('A training provenance report is required for '+target)
+    if actual!=expected:raise ValueError('Fusion checkpoint hash mismatch')
     if digest(source/'model.py')!='7e0be1a53a248357b00c536d262fceb68689ada6ab8494ef089987c0632520cd':raise ValueError('Fusion architecture source hash mismatch')
     text=(source/'model.py').read_text(encoding='utf-8');tree=ast.parse(text);scope=dict(torch=torch,nn=nn,F=F)
     exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.ClassDef) and n.name in ('GridNet','GridSmiMCANet')],type_ignores=[]),str(source/'model.py'),'exec'),scope)
@@ -74,9 +83,9 @@ def curated_metadata(name, out):
                 description='HIV-1 protease with bound inhibitor '+ligand+'. A prepared crystallographic complex for examining affinity and pose scoring.')
 
 def main():
-    args=argparse.ArgumentParser();args.add_argument('model',choices=['gnina','fusion']);args=args.parse_args()
+    args=argparse.ArgumentParser();args.add_argument('model',choices=['gnina','fusion']);args.add_argument('--target',choices=['aofb','egfr','parp1','dpp4','hivpr'],default='aofb');args=args.parse_args()
     torch.set_num_threads(2);torch.manual_seed(0)
-    fusion=args.model=='fusion';model,checkpoint=load_fusion() if fusion else load_gnina();id='fusion-aofb' if fusion else 'gnina-crossdock'
+    fusion=args.model=='fusion';model,checkpoint=load_fusion(args.target) if fusion else load_gnina();id='fusion-'+args.target if fusion else 'gnina-crossdock'
     out=ROOT/'public/research'/id;out.mkdir(parents=True,exist_ok=True)
     dims=[1,28,24,24,24] if fusion else [1,28,48,48,48]
     grid=torch.zeros(dims,dtype=torch.float32);inputs=(grid,torch.zeros([1,100],dtype=torch.int64)) if fusion else (grid,)
@@ -89,7 +98,7 @@ def main():
     with torch.inference_mode():native=model(*inputs)
     if fusion:native=(native,)
     errors=[float(np.max(np.abs(a-b.numpy()))) for a,b in zip(actual,native)]
-    manifest=dict(schemaVersion=3,id=id,format='onnx',runtime='onnxruntime-web',backend='wasm',precision='fp32',preprocessingVersion='fusion-grid-source-v1' if fusion else 'libmolgrid-0.5.5-gnina-default-types-v1',checkpointSha256=digest(checkpoint),sourceRevision=digest(checkpoint.parent/'model.py') if fusion else '5196d00ec78738428313a1af9a11bf73c550edd3',license='Source redistribution review pending' if fusion else 'gnina-torch MIT; upstream GNINA attribution required',redistributionApproved=False,artifact=artifact(dest),externalData=external,executionLocation='browser',explanationCapabilities=['grouped-spatial-occlusion','grad-cam','integrated-gradients'],inputs=[dict(name='grid',dtype='float32',shape=dims)]+([dict(name='tokens',dtype='int64',shape=[1,100])] if fusion else []),outputs=[dict(name=output_names[0],dtype='float32',shape=[1,2])]+([] if fusion else [dict(name='affinity',dtype='float32',shape=[1,1])]),validation=dict(status='pending'),examples=[])
+    manifest=dict(schemaVersion=3,id=id,format='onnx',runtime='onnxruntime-web',backend='wasm',precision='fp32',preprocessingVersion='fusion-grid-source-v1' if fusion else 'libmolgrid-0.5.5-gnina-default-types-v1',checkpointSha256=digest(checkpoint),sourceRevision=digest(checkpoint.parent/'model.py') if fusion else '5196d00ec78738428313a1af9a11bf73c550edd3',license='Source redistribution review pending' if fusion else 'gnina-torch MIT; upstream GNINA attribution required',redistributionApproved=False,artifact=artifact(dest),externalData=external,executionLocation='browser',explanationCapabilities=[] if fusion else ['grouped-spatial-occlusion','grad-cam','integrated-gradients'],inputs=[dict(name='grid',dtype='float32',shape=dims)]+([dict(name='tokens',dtype='int64',shape=[1,100])] if fusion else []),outputs=[dict(name=output_names[0],dtype='float32',shape=[1,2])]+([] if fusion else [dict(name='affinity',dtype='float32',shape=[1,1])]),validation=dict(status='pending'),examples=[])
     # Bind curated native grids and final predictions. No generated substitute grids.
     references=[]
     for fixture in sorted(out.glob('*-grid.bin')):

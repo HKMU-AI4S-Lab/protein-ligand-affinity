@@ -1,0 +1,17 @@
+/* Shared editorial language. Method accents affect the interface, not scientific data. */
+:root{--rep-accent:#2f5f8f;--screen-accent:#226d70;--binding-accent:#72518b}
+[data-method="representations"]{--method-accent:var(--rep-accent);--method-tint:#f1f6fb;--method-line:#bed2e3}
+[data-method="screening"]{--method-accent:var(--screen-accent);--method-tint:#eff7f6;--method-line:#b8d5d3}
+[data-method="binding-affinity"]{--method-accent:var(--binding-accent);--method-tint:#f6f2f9;--method-line:#d3c5df}
+[data-method="docking"]{--method-accent:#86532e;--method-tint:#faf5ed;--method-line:#d8bfa3}
+.method-illustration{width:100%;min-width:0;position:relative;isolation:isolate}
+.method-illustration img{display:block;width:100%;height:auto}
+.method-illustration .docking-illustration{aspect-ratio:840/460;object-fit:contain;padding:7% 12%;background:radial-gradient(ellipse at center,#faf5ed 0%,#fff 72%)}
+.illustration-compact img{aspect-ratio:1.65;object-fit:contain}
+.editorial-kicker{font-size:11px;line-height:1.5;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.method-label{color:var(--method-accent);font-size:12px;line-height:1.5;letter-spacing:.025em}
+.editorial-link{display:inline-flex;align-items:center;gap:14px;text-decoration:none;font-weight:600}
+.editorial-link span{transition:transform 160ms ease}
+.editorial-link:hover span{transform:translateX(3px)}
+.editorial-link:hover{text-decoration:underline;text-decoration-thickness:1px}
+@media(prefers-reduced-motion:reduce){.editorial-link span{transition:none}.editorial-link:hover span{transform:none}}

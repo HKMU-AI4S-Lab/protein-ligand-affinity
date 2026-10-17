@@ -23,5 +23,5 @@ export default function StructureView({complex}:{complex:NonNullable<PredictionR
     {error&&<p role="alert">{error} <a href={complex.source}>View the structure record</a>.</p>}
     {!ready&&!error&&<p role="status">Loading the local structure…</p>}
     <div className="example-buttons"><button type="button" onClick={()=>{viewer.current?.rotate(25,'y');viewer.current?.render();}} disabled={!ready}>Rotate left</button><button type="button" onClick={()=>{viewer.current?.rotate(-25,'y');viewer.current?.render();}} disabled={!ready}>Rotate right</button><button type="button" onClick={()=>{viewer.current?.zoomTo();viewer.current?.render();}} disabled={!ready}>Reset view</button></div>
-    <figcaption><a href={complex.source} target="_blank" rel="noreferrer">{complex.id.toUpperCase()} · RCSB PDB record</a>. Protein cartoon; hetero residues in sticks. Drag to rotate or use the buttons. This deposited structure provides context; scoring uses the separately prepared ODDT contact features.</figcaption></figure>;
+    <figcaption><a href={complex.source} target="_blank" rel="noreferrer">{complex.id.toUpperCase()} — RCSB PDB record</a>. Protein cartoon; hetero residues in sticks. Drag to rotate or use the buttons. This deposited structure provides context; scoring uses the separately prepared ODDT contact features.</figcaption></figure>;
 }

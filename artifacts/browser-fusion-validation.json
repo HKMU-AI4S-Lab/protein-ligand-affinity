@@ -1,0 +1,222 @@
+{
+  "date": "2026-09-28T14:00:22.111Z",
+  "browser": "153.0.8010.54",
+  "runtime": "onnxruntime-web 1.29.0",
+  "backend": "wasm",
+  "precision": "fp32",
+  "device": {
+    "os": "win32 10.0.26200",
+    "cpu": "AMD Ryzen 7 5700X 8-Core Processor             ",
+    "ramBytes": 34282184704
+  },
+  "checkpointSha256": "73029954ba6581365d5786c78768cf54f1d399c7f891f0e2b7bd5d8c371d12f1",
+  "modelGraphSha256": "a7df29276f16efad4fceb6c16df7d6b0830157d066298698a79977437912298a",
+  "derivativeGraphSha256": "f175e140752fad0cd82efa22ad48a71f414bf4c9cc0e2c3e2ac363f587f1883e",
+  "externalArtifacts": [
+    {
+      "path": "research/fusion-aofb/weights/8276bdfb1c703a01e525141350047a96bf4cccc6ac053ee8b3aef1573defb248.bin",
+      "sha256": "8276bdfb1c703a01e525141350047a96bf4cccc6ac053ee8b3aef1573defb248",
+      "bytes": 110592
+    },
+    {
+      "path": "research/fusion-aofb/weights/897481188e15bb91143bf859e22d6a24013332f3bd2ec15b808738573e5d6692.bin",
+      "sha256": "897481188e15bb91143bf859e22d6a24013332f3bd2ec15b808738573e5d6692",
+      "bytes": 110592
+    },
+    {
+      "path": "research/fusion-aofb/weights/50bf5c435564599dd81a233198b0e4eaf1b9fff7554663913a2c610c734d031d.bin",
+      "sha256": "50bf5c435564599dd81a233198b0e4eaf1b9fff7554663913a2c610c734d031d",
+      "bytes": 442368
+    },
+    {
+      "sha256": "54ee06307f6dc6b27bf8894ebe5944d010aef4c9e05e8336e6a01b7ca01975d1",
+      "bytes": 891289600,
+      "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/784a88468de2077a8b50d1fd9353590930039aee/54ee06307f6dc6b27bf8894ebe5944d010aef4c9e05e8336e6a01b7ca01975d1.bin"
+    },
+    {
+      "path": "research/fusion-aofb/weights/c08ca0169ef48e890a0c57ddbf3a0eca86468706efe5d3e3bc7b639053e98cd6.bin",
+      "sha256": "c08ca0169ef48e890a0c57ddbf3a0eca86468706efe5d3e3bc7b639053e98cd6",
+      "bytes": 76800
+    },
+    {
+      "path": "research/fusion-aofb/weights/ca9c0d09639ccd2455431136b00e6c3ed387af04db2aff261f5350aef2f22296.bin",
+      "sha256": "ca9c0d09639ccd2455431136b00e6c3ed387af04db2aff261f5350aef2f22296",
+      "bytes": 409600
+    },
+    {
+      "path": "research/fusion-aofb/weights/0b12ad5b1872a9295c206d4933942e974a50a03d3a2a255436f604d5e868f578.bin",
+      "sha256": "0b12ad5b1872a9295c206d4933942e974a50a03d3a2a255436f604d5e868f578",
+      "bytes": 102400
+    },
+    {
+      "path": "research/fusion-aofb/weights/f290dfcd8d5bad3f84e09e87b8e29741918abaf663dfb952484e4357b68ef4aa.bin",
+      "sha256": "f290dfcd8d5bad3f84e09e87b8e29741918abaf663dfb952484e4357b68ef4aa",
+      "bytes": 1310720
+    },
+    {
+      "path": "research/fusion-aofb/weights/620f224bb03e99e8b0a05569599e9725245d68fa7f098c04c1d10b9a38b03492.bin",
+      "sha256": "620f224bb03e99e8b0a05569599e9725245d68fa7f098c04c1d10b9a38b03492",
+      "bytes": 4194304
+    },
+    {
+      "path": "research/fusion-aofb/weights/cdfb69a43b246ada8f0d1f00227d861690736a7a3cfa252f9ac8cf0a4a76c2e8.bin",
+      "sha256": "cdfb69a43b246ada8f0d1f00227d861690736a7a3cfa252f9ac8cf0a4a76c2e8",
+      "bytes": 2097152
+    },
+    {
+      "path": "research/fusion-aofb/weights/ddf7029313dbcc5011dbcd579f565d372023b1e07ef8e2dc2192409d4b5573da.bin",
+      "sha256": "ddf7029313dbcc5011dbcd579f565d372023b1e07ef8e2dc2192409d4b5573da",
+      "bytes": 102400
+    },
+    {
+      "path": "research/fusion-aofb/weights/b15912bc71076ec1cfc30b3a163bcf48d0add4cfcad86b855e2ada97884c46f8.bin",
+      "sha256": "b15912bc71076ec1cfc30b3a163bcf48d0add4cfcad86b855e2ada97884c46f8",
+      "bytes": 204800
+    }
+  ],
+  "modelBytes": 900681312,
+  "forward": [
+    {
+      "id": "0",
+      "error": 0,
+      "score": 0.5370496511459351,
+      "warmMs": [
+        82.20000000298023,
+        64,
+        61.69999999925494
+      ],
+      "occlusionError": 0
+    },
+    {
+      "id": "1",
+      "error": 0,
+      "score": 0.537009060382843,
+      "warmMs": [
+        60.70000000298023,
+        59.099999997764826,
+        61.900000002235174
+      ],
+      "occlusionError": 0
+    },
+    {
+      "id": "2",
+      "error": 7.270142102516845e-27,
+      "score": 1.9039474249177677e-21,
+      "warmMs": [
+        62.100000001490116,
+        62.5,
+        60.599999997764826
+      ],
+      "occlusionError": 7.270142102516845e-27
+    },
+    {
+      "id": "3",
+      "error": 0,
+      "score": 5.440369044151794e-9,
+      "warmMs": [
+        62.30000000074506,
+        59.600000001490116,
+        59.399999998509884
+      ],
+      "occlusionError": 2.0872192862952943e-14
+    }
+  ],
+  "gradients": [
+    {
+      "id": "0",
+      "errors": {
+        "screening_scores": 2.9802322387695312e-8,
+        "input_gradient": 3.581135388230905e-12,
+        "grad_cam": 5.820766091346741e-11,
+        "spatial_activation": 5.960464477539063e-8
+      },
+      "warmMs": [
+        259.5,
+        231.30000000074506,
+        213.5
+      ],
+      "integrations": [
+        {
+          "steps": 64,
+          "maxVoxelError": 8.526512829121202e-14,
+          "elapsedMs": 11878.199999999255,
+          "completenessResidual": 1.1585399306568434e-8,
+          "attributionSum": -1.6722853501960344e-7,
+          "outputDifference": -1.7881393432617188e-7
+        },
+        {
+          "steps": 128,
+          "maxVoxelError": 1.4210854715202004e-14,
+          "elapsedMs": 22171.800000000745,
+          "completenessResidual": 9.997535244110622e-9,
+          "attributionSum": -1.6881639908206125e-7,
+          "outputDifference": -1.7881393432617188e-7
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "errors": {
+        "screening_scores": 0,
+        "input_gradient": 4.263256414560601e-12,
+        "grad_cam": 2.546585164964199e-11,
+        "spatial_activation": 5.960464477539063e-8
+      },
+      "warmMs": [
+        156.40000000223517,
+        157.80000000074506,
+        155.69999999925494
+      ],
+      "integrations": []
+    },
+    {
+      "id": "2",
+      "errors": {
+        "screening_scores": 7.270142102516845e-27,
+        "input_gradient": 7.241496590896007e-32,
+        "grad_cam": 4.437342591868191e-31,
+        "spatial_activation": 5.960464477539063e-8
+      },
+      "warmMs": [
+        156.10000000149012,
+        154.10000000149012,
+        158.60000000149012
+      ],
+      "integrations": [
+        {
+          "steps": 64,
+          "maxVoxelError": 8.04075751781671e-33,
+          "elapsedMs": 11243.5,
+          "completenessResidual": -1.6656677161637654e-28,
+          "attributionSum": -1.6656677161637654e-28,
+          "outputDifference": 0
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "errors": {
+        "screening_scores": 0,
+        "input_gradient": 1.7957098481791167e-19,
+        "grad_cam": 8.402566836762659e-19,
+        "spatial_activation": 5.960464477539063e-8
+      },
+      "warmMs": [
+        152.89999999850988,
+        156,
+        154.60000000149012
+      ],
+      "integrations": []
+    }
+  ],
+  "heapBefore": 4366442,
+  "forwardColdLoadMs": 168665.3999999985,
+  "heapAfterForward": 977752094,
+  "derivativeLoadMs": 2380.800000000745,
+  "cancellation": {
+    "aborted": true,
+    "recovered": true
+  },
+  "heapAfter": 227885468,
+  "memoryNote": "JS heap observations exclude total WASM residency; each session is disposed before another opens."
+}

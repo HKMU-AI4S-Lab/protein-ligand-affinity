@@ -1,0 +1,17 @@
+[
+  {
+    "name": "vina.1.0.5.js",
+    "bytes": 93110,
+    "sha256": "42b275d5c9c36b8522a692394d1cfd01760f874ef4fb8ed23bdb4d91fe676027"
+  },
+  {
+    "name": "vina.worker.js",
+    "bytes": 2124,
+    "sha256": "444baa7d7e110be04b47e0c8daa8878291cbabe144948eee3fd7e867c6ec98bb"
+  },
+  {
+    "name": "vina.wasm",
+    "bytes": 639890,
+    "sha256": "e17a8807aee230e629cdafa6f31897d2bbd993f5c3a3374b84d0638aaa2927f4"
+  }
+]

@@ -8,9 +8,9 @@ export async function openSession(value:unknown,base:string,progress:(s:string)=
   if(manifest.runtime!=='onnxruntime-web'||manifest.format!=='onnx'||manifest.backend!=='wasm')throw Error('This manifest runtime has not been validated in this build.');
   const totalBytes=manifest.artifact.bytes+manifest.externalData.reduce((sum,a)=>sum+a.artifact.bytes,0);
   progress('Loading verified '+(totalBytes/1e6).toFixed(1)+' MB model…');
-  const bytes=await verifiedArtifact(manifest.artifact,{base,onProgress:(n:number)=>progress('Downloading model · '+Math.round(n*100)+'%')});
+  const bytes=await verifiedArtifact(manifest.artifact,{base,onProgress:(n:number)=>progress('Downloading model — '+Math.round(n*100)+'%')});
   const externalData:{path:string;data:Uint8Array}[]=[];
-  for(const item of manifest.externalData)externalData.push({path:item.path,data:await verifiedArtifact(item.artifact,{base,onProgress:(n:number)=>progress('Loading weights · '+Math.round(n*100)+'% · '+(item.artifact.bytes/1e6).toFixed(1)+' MB')})});
+  for(const item of manifest.externalData)externalData.push({path:item.path,data:await verifiedArtifact(item.artifact,{base,onProgress:(n:number)=>progress('Loading weights — '+Math.round(n*100)+'% — '+(item.artifact.bytes/1e6).toFixed(1)+' MB')})});
   const ort=await import('onnxruntime-web/wasm');
   ort.env.wasm.numThreads=1;ort.env.wasm.proxy=false;
   const wasm=runtimeAssets.find(a=>a.path.endsWith('ort-wasm-simd-threaded.wasm'))!;

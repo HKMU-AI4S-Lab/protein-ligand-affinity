@@ -76,7 +76,7 @@ export async function openGninaExplainer(manifestValue:unknown,base:string,progr
             total[at]+=value;
             if(steps===128&&i%2===0)coarse[at]+=value;
           }
-          options.onProgress?.((i+1)/(steps+1),`Integrated Gradients · ${i+1}/${steps+1} browser gradient evaluations`);
+          options.onProgress?.((i+1)/(steps+1),`Integrated Gradients — ${i+1}/${steps+1} browser gradient evaluations`);
           // Permit worker cancellation messages between evaluations; a worker
           // termination can interrupt the current WASM execution immediately.
           await new Promise<void>(resolve=>setTimeout(resolve,0));

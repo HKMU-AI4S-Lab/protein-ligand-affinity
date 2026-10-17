@@ -1,5 +1,6 @@
 import {sha256} from './artifacts.mjs';
 import {validateResult,validateTensor} from './contracts.mjs';
+import {isFusionModel} from './screening-targets.mjs';
 
 // Two bounded records, independent of the much larger verified model cache.
 const DB='research-prediction-handoff-v1', STORE='predictions', POINTER='research-prediction-handoff';
@@ -15,7 +16,7 @@ export async function verifyPredictionSnapshot(snapshot,manifest){
  if(r.modelId!==manifest.id||r.modelArtifactSha256!==manifest.artifact.sha256||!Array.isArray(r.center)||r.center.length!==3||!r.center.every(Number.isFinite)||typeof r.molblock!=='string')throw Error('This prediction could not be restored. Calculate a new prediction.');
  validateTensor(manifest.inputs[0],{...manifest.inputs[0],data:snapshot.grid});
  if(await sha256(snapshot.grid)!==r.gridSha256)throw Error('This prediction could not be restored. Calculate a new prediction.');
- if(manifest.id==='fusion-aofb'){
+ if(isFusionModel(manifest.id)){
   validateTensor(manifest.inputs[1],{...manifest.inputs[1],data:snapshot.tokens});
   if(await sha256(snapshot.tokens)!==r.tokensSha256||await sha256(new TextEncoder().encode(snapshot.smiles))!==r.inputIdentity||!r.grid||await sha256(r.grid.data)!==r.gridSha256)throw Error('This prediction could not be restored. Calculate a new prediction.');
  }else{
@@ -32,6 +33,6 @@ export async function savePredictionSnapshot(snapshot){
  finally{db.close();}
 }
 export async function loadPredictionSnapshot(){
- const raw=sessionStorage.getItem(POINTER);if(!raw)return null;const {token,modelId}=JSON.parse(raw);if(!['fusion-aofb','gnina-crossdock'].includes(modelId))return null;
+ const raw=sessionStorage.getItem(POINTER);if(!raw)return null;const {token,modelId}=JSON.parse(raw);if(!isFusionModel(modelId)&&modelId!=='gnina-crossdock')return null;
  const db=await database();try{const record=await new Promise((resolve,reject)=>{const req=db.transaction(STORE).objectStore(STORE).get(modelId);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});return record?.token===token?record.snapshot:null;}finally{db.close();}
 }
