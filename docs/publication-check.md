@@ -19,4 +19,12 @@ The unchanged weight files are now hosted at Hugging Face revision `8438a8c92c5a
 - All five screening targets completed actual browser scoring, matching Grad-CAM, downloads and target-change invalidation. GNINA scoring, structure preparation, exports, cancellation and network-error recovery passed without uncaught browser exceptions.
 - Webina completed an actual docking search, JSON export, reload recovery and the GNINA scoring handoff.
 
-Deployment and live verification are recorded below after the restoration is published. Browser screenshots and inference exports remain outside the public build.
+## Published restoration
+
+- GitHub Pages deployed source commit `903b7daf8972b75b08524723aaaf6c568666bdab`; [workflow run 39046082165](https://github.com/HKMU-AI4S-Lab/protein-ligand-affinity/actions/runs/39046082165) completed successfully, including tests, type checking, the normal build, built-site audit and full publication gate.
+- Live verification used `https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/`, not localhost. MAO-B, EGFR, PARP1, DPP4 and HIV-1 protease each downloaded their full public weights, completed scoring and matching Grad-CAM, exported results, and invalidated stale output on a target change.
+- The public Webina tool completed docking from PDB ID 1HSG and from uploaded receptor/ligand files, result downloads, reload recovery, cancellation/retry, and the GNINA scoring handoff. No private proxy requests occurred.
+- Representations, GNINA PDB/upload scoring and occlusion, all exports, input rejection, cancellation and network-error retry passed. No uncaught browser exceptions were observed across these journeys.
+- Live DOM and image checks confirmed the original method order, the working ETDock publisher URL, and both original ETDock images by SHA-256. Desktop/mobile layout checks passed at 1440, 1024, 820 and 390 px.
+
+Browser evidence is retained outside the public build in `%TEMP%/molecule-net-restore-live/` (`platform-review.json`, `restoration-review.json`, screenshots and inference exports) and `%TEMP%/molecule-net-restore-docking-live/` (`result.json`, screenshots and run exports).
