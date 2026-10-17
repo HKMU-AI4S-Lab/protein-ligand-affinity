@@ -1,0 +1,221 @@
+{
+  "target": "parp1",
+  "splitSha256": "9a2ce96edfe6c0d22e4764118d1d5c089607b6fc6e1b4cffc0d29b4be5917e53",
+  "splitStart": 4064,
+  "splitSize": 1016,
+  "assessedRows": 20,
+  "checkpointSha256": "bc251bbf1e26d637224c0bbb1fe96714273742676211141afe9b68491b3b3bcd",
+  "modelArtifactSha256": "97b06298e9107c90ec7ab7caa7c434c0b0dfbafd318494f823401c3578d47eee",
+  "metrics": {
+    "total": 20,
+    "scored": 19,
+    "failed": 1,
+    "positives": 10,
+    "negatives": 9,
+    "auroc": 1,
+    "averagePrecision": 1,
+    "baselinePrecision": 0.5263157894736842
+  },
+  "cases": [
+    {
+      "index": 4069,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "5203708187344c6adeb02c9464bf33b6eb3559ea2774f1366ec6728b21f924e3",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 50,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4071,
+      "label": 1,
+      "score": 0.1160392165184021,
+      "error": null,
+      "gridSha256": "94b746bfe4c75be243025fd874ffae046c802032a7b87a3e63f3c017da7da1de",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 72,
+      "repeatScoreError": 0.000009104609489440918
+    },
+    {
+      "index": 4086,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "19139c049ec982f1fd6a990ddc81b1b1b2217dcee763e3cb2ee594b01f0a8a5d",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 72,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4095,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "3cdd452b73696594ca3602ac3e4a8f13c3c230f13b76a41d8c6d4763c8fb50f2",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 106,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4098,
+      "label": 1,
+      "score": 0.014699317514896393,
+      "error": null,
+      "gridSha256": "bbf1d6ee7bf697852466940a8c94d86d63c0a13da8a7bc86362eb860d55366a3",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 44,
+      "repeatScoreError": 0.0000012153759598731995
+    },
+    {
+      "index": 4121,
+      "label": 1,
+      "score": 0.9906409382820129,
+      "error": null,
+      "gridSha256": "3419bbe438316ce758bb1f0ae6c72df37f081f9231570b51ffae425f331f3422",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4143,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "f5e751aa2927f906923dac28d1b1dfc6bc686a211e8f553f105ec54909629b0c",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 94,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4150,
+      "label": 1,
+      "score": 0.996610701084137,
+      "error": null,
+      "gridSha256": "3e23e3232cfb41532c1c109fb93e1b49a672c2b51d428ece9dec47d3341e167c",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 84,
+      "repeatScoreError": 0.0000013709068298339844
+    },
+    {
+      "index": 4155,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "acd6f5b270da1612d5668c6ccfb92cf735f4fa76b96fe5e73e35cbf91908fe32",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 28,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4185,
+      "label": 1,
+      "score": 0.9999855756759644,
+      "error": null,
+      "gridSha256": "beffca8813370ed63ff25e22b471a5470d5e64abdce7f0825b75b22695c4c347",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4064,
+      "label": 0,
+      "score": 2.1401822659596796e-15,
+      "error": null,
+      "gridSha256": "58eb92d13736a41c44e60874133393c90690e8977c8e2b1648bd4e92aeb990c6",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4065,
+      "label": 0,
+      "score": 6.191558037354224e-19,
+      "error": null,
+      "gridSha256": "d388aa6c675cd9c6b7656c12c0429cbb63e903412fab367eb05c1bbf0fbc281b",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4066,
+      "label": 0,
+      "score": 3.056776449739118e-7,
+      "error": null,
+      "gridSha256": "2525c4e281e6b7337775ecc7b70efb303cac9d6f9d3b80a9a51ffc0c85c54247",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4067,
+      "label": 0,
+      "score": 4.439362442099082e-7,
+      "error": null,
+      "gridSha256": "eac8a5707442b924de2d8e1b758315886bda25ae6d7bdd543272dfc883794df0",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 118,
+      "repeatScoreError": 5.67297320230864e-11
+    },
+    {
+      "index": 4068,
+      "label": 0,
+      "score": 1.7252254583700194e-13,
+      "error": null,
+      "gridSha256": "fb1c06580e33eb3c7f71137d61a3b2bc3946860fadb2a5a434cbddcb330c2a7a",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 108,
+      "repeatScoreError": 3.026279313950164e-17
+    },
+    {
+      "index": 4070,
+      "label": 0,
+      "score": 4.844311190794863e-14,
+      "error": null,
+      "gridSha256": "fddd8b25fc8e00352110618accc16dcce6f9ed6b94ca9b3efb8ba0800b523687",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 66,
+      "repeatScoreError": 2.256631296757017e-16
+    },
+    {
+      "index": 4072,
+      "label": 0,
+      "score": null,
+      "error": "Conformer generation returned invalid coordinates.",
+      "gridSha256": null,
+      "repeatGridMaxError": null,
+      "repeatGridChangedVoxels": null,
+      "repeatScoreError": null
+    },
+    {
+      "index": 4073,
+      "label": 0,
+      "score": 1.461629012267096e-10,
+      "error": null,
+      "gridSha256": "863fed9d3c5e957ccaa08094a2bd345452353fdc877d865dc3f6c7ca93dc57a6",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 154,
+      "repeatScoreError": 2.31342722756267e-14
+    },
+    {
+      "index": 4074,
+      "label": 0,
+      "score": 9.750049075399336e-13,
+      "error": null,
+      "gridSha256": "0dea5d1efa7c2c31c4a7f1c31522bfa2a2bf975279edb4320fecc530e8e3e121",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4075,
+      "label": 0,
+      "score": 8.72936271878455e-12,
+      "error": null,
+      "gridSha256": "409a8aeb09e2c89403fbf08010280a465394e5cb3d7f8884de64f6eedd28afbd",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 112,
+      "repeatScoreError": 4.163336342344337e-16
+    }
+  ]
+}

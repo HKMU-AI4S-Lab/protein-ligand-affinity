@@ -4,7 +4,6 @@ import {siteBase} from '../deployment.config.mjs';
 async function walk(dir){const out=[];for(const e of await readdir(dir,{withFileTypes:true})){const p=dir+'/'+e.name;if(e.isDirectory())out.push(...await walk(p));else out.push(p);}return out;}
 const analysisTitles={'representing-molecules':'Explore your molecule','screening-molecules':'Screen a molecule','binding-affinity':'Score a bound complex','protein-ligand-docking':'Predict a binding pose'};
 const builtFiles=await walk('dist'),html=builtFiles.filter(p=>p.endsWith('.html')),issues=[],checks=[];let links=0;
-const publicRelease=builtFiles.includes('dist/release-profile.json'),dockingIllustration=publicRelease?'docking-overview.svg':'etdock-pose-detail.webp',dockingArchitecture=publicRelease?'docking-overview.svg':'etdock-architecture.webp';
 if(builtFiles.some(p=>p.startsWith('dist/figure-provenance/')))issues.push('Internal figure-generation records are published');
 for(const file of html){const text=await readFile(file,'utf8');if(/Conceptual workflow based on|Method illustration based on|These study results describe|not performance estimates for|educational model outputs|Screenshot from|Explore More|Copy citation|Interactive demonstration|Live demonstration|Creating model session|checkpoint.transfer|publication gate|GridOnly|Molecular Grid Research|personal portfolio|BAPNet|Molecular Representations for Drug Discovery|playground|notebook/i.test(text))issues.push(file+': internal or retired content');for(const [,url] of text.matchAll(/(?:href|src)="([^"#]+)"/g)){if(/^(https?:|data:|blob:|mailto:)/.test(url))continue;const clean=decodeURIComponent(url.split(/[?#]/)[0]);if(!clean)continue;if(clean.startsWith('/')&&!clean.startsWith(siteBase)){issues.push(file+': path outside deployment base '+url);continue;}let p=clean.startsWith('/')?resolve('dist','.'+clean.slice(siteBase.length-1)):resolve(dirname(file),clean);try{const info=await stat(p);if(info.isDirectory())await stat(p+'/index.html');links++;}catch{issues.push(file+': missing '+url);}}
  if(text.includes('class="site-header')){if((text.match(/href="https:\/\/zzulc.github.io\/DebbyCV\/members.html"/g)||[]).length!==1)issues.push(file+': expected exactly one team link');const header=text.match(/<header\b[^>]*>[\s\S]*?<\/header>/)?.[0]||'';if(header.includes('>Methods</a>'))issues.push(file+': removed Methods navigation remains');}
@@ -39,15 +38,18 @@ for(const file of html){const text=await readFile(file,'utf8');if(/Conceptual wo
 const home=await readFile('dist/index.html','utf8');
 for(const label of ['Explore representations','Screen a molecule','Score a complex','Explore docking','From input to insight','Research on molecular structure and binding'])if(!home.includes(label))issues.push('Home: missing '+label);
 if((home.match(/class="task-entry"/g)||[]).length!==4)issues.push('Home: expected exactly four method entries');
-if(!home.includes('topics/protein-ligand-docking/')||!home.includes(dockingIllustration))issues.push('Home: missing ETDock method entry');
+if(!home.includes('topics/protein-ligand-docking/')||!home.includes('etdock-pose-detail.webp'))issues.push('Home: missing ETDock method entry');
+const taskSection=home.slice(home.indexOf('id="topics"'),home.indexOf('id="research"'));
+const methodOrder=[...taskSection.matchAll(/data-method="([^"]+)"/g)].map(m=>m[1]);
+if(JSON.stringify(methodOrder)!==JSON.stringify(['representations','screening','docking','binding-affinity']))issues.push('Home: original method order was changed');
+if(!home.includes('https://journal.hep.com.cn/fcs/EN/10.1007/s11704-026-51026-x'))issues.push('ETDock: working publisher link missing');
 const researchQuestions=['Represent molecular structure','Prioritise candidate compounds','Predict a binding pose','Learn from the binding interface'];
 const researchSection=home.slice(home.indexOf('id="research"'));
 const questionPositions=researchQuestions.map(label=>researchSection.indexOf(label));
 if(questionPositions.some(n=>n<0)||questionPositions.some((n,i)=>i&&n<=questionPositions[i-1]))issues.push('Home: research questions are missing or out of order');
 const etdockRoute=await readFile('dist/topics/protein-ligand-docking/index.html','utf8');
 if(!etdockRoute.includes('docking-tool')||!etdockRoute.includes('GNINA')||/calculations are not yet available/.test(etdockRoute))issues.push('Docking: working tool and calculation-engine attribution required');
-for(const value of [dockingArchitecture,'10.1007/s11704-026-51026-x',siteBase+'topics/binding-affinity/#research',siteBase+'topics/binding-affinity/#experiment'])if(!etdockRoute.includes(value))issues.push('ETDock: missing evidence or onward connection '+value);
-if(publicRelease){for(const file of html)if(/paper-figures\/etdock-(?:architecture|pose-detail)\.webp/.test(await readFile(file,'utf8')))issues.push(file+': uncleared ETDock crop referenced');}
+for(const value of ['etdock-architecture.webp','10.1007/s11704-026-51026-x',siteBase+'topics/binding-affinity/#research',siteBase+'topics/binding-affinity/#experiment'])if(!etdockRoute.includes(value))issues.push('ETDock: missing evidence or onward connection '+value);
 if(/http-equiv="refresh"/.test(etdockRoute))issues.push('ETDock: method route must render its article');
 for(const date of ['5 January 2026','15 May 2027'])if(!etdockRoute.includes(date))issues.push('ETDock: missing publication date '+date);
 const etdockLegacy=await readFile('dist/works/etdock/index.html','utf8');

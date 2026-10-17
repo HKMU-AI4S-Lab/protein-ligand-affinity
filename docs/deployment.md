@@ -2,7 +2,7 @@
 
 The confirmed repository is `HKMU-AI4S-Lab/protein-ligand-affinity`. GitHub Pages serves the production build at `https://hkmu-ai4s-lab.github.io/protein-ligand-affinity/`.
 
-The first release was published, then taken offline during experimental work. The October public release adds browser docking; [Publication checks](publication-check.md) record the deployed commit, successful workflow and live verification.
+The first release is live. [Publication checks](publication-check.md) record the deployed commit, successful workflow and live verification.
 
 ## Manual release
 
@@ -10,11 +10,11 @@ The first release was published, then taken offline during experimental work. Th
 2. Set the repository Actions variable `ENABLE_PUBLIC_DEPLOY` to `true`.
 3. Run **Deploy lab website to GitHub Pages** from the Actions tab on `main`.
 
-The workflow installs the locked dependencies, retrieves and verifies the prepared complex grids, runs tests and type checking, builds and audits the static output, and checks the publication records before deploying. The workflow uses `npm run build:public` and `node scripts/check-publication.mjs --public`; pending experimental assets are excluded and retain their pending source status. Pushes alone do not publish changes.
+The workflow installs the locked dependencies, retrieves and verifies the prepared complex grids, runs tests and type checking, builds and audits the static output, and checks the publication records before deploying. Pushes alone do not publish changes.
 
 ## Asset hosting
 
-Three large inference files are hosted in `micklee17/protein-ligand-affinity-web-assets` at Hugging Face revision `784a88468de2077a8b50d1fd9353590930039aee`. The manifests use immutable URLs and retain the original SHA-256 hashes and byte counts. Checkpoints, inputs, numerical reference results and scientific figures were not changed for deployment.
+Seven large inference files are hosted in `micklee17/protein-ligand-affinity-web-assets` at immutable Hugging Face revisions: the original three files at `784a88468de2077a8b50d1fd9353590930039aee`, and the four additional screening weight files at `8438a8c92c5aedd45b98b425aa6614f613fe7088`. The manifests use immutable URLs and retain the original SHA-256 hashes and byte counts. Checkpoints, inputs, numerical reference results and scientific figures were not changed for deployment.
 
 `npm run release:inputs` obtains the two grids needed by build-time provenance and unit checks. `npm run build` omits duplicate large assets from `dist` after verifying any local copies. The browser downloads them directly from the pinned URLs when a visitor requests a calculation and verifies them before inference.
 
@@ -22,4 +22,4 @@ Three large inference files are hosted in `micklee17/protein-ligand-affinity-web
 
 ## Release verification
 
-Run the README build commands from a clean checkout. After deployment, check the homepage, direct nested URLs and legacy redirects; confirm images and licences load; run both affinity examples with occlusion and Screening with Grad-CAM; inspect desktop and mobile layouts. Browser evidence is kept outside the public build.
+Run the README build commands from a clean checkout. After deployment, check the homepage, direct nested URLs and legacy redirects; confirm images and licences load; run both affinity examples with occlusion and all five Screening targets with Grad-CAM; inspect desktop and mobile layouts. Browser evidence is kept outside the public build.

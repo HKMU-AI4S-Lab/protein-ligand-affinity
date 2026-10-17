@@ -1,0 +1,21 @@
+{
+  "target": "parp1",
+  "checkpointSha256": "bc251bbf1e26d637224c0bbb1fe96714273742676211141afe9b68491b3b3bcd",
+  "artifact": {
+    "path": "research/fusion-parp1/gradients.onnx",
+    "sha256": "14b6db138d6aa84f23ecdf69bc031aa10cecb31dedf87520345fcdbdcd7e63f0",
+    "bytes": 265740
+  },
+  "analyticErrors": {
+    "screening_scores": 1.249000902703301e-16,
+    "input_gradient": 9.486769009248164e-19,
+    "grad_cam": 4.404571325722362e-20,
+    "spatial_activation": 0.0
+  },
+  "onnxErrors": {
+    "screening_scores": 4.85722573273506e-16,
+    "input_gradient": 3.74049749507499e-18,
+    "grad_cam": 1.7618285302889447e-19,
+    "spatial_activation": 1.862645149230957e-08
+  }
+}

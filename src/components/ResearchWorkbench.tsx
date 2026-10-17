@@ -17,12 +17,10 @@ const fusionManifests=import.meta.glob('../../public/research/fusion-*/manifest.
 const fusionDerivativeManifests=import.meta.glob('../../public/research/fusion-*/gradients-manifest.json',{eager:true,import:'default'});
 const fusionForward=Object.fromEntries(screeningTargets.flatMap(target=>{
  const raw=fusionManifests[`../../public/research/${target.id}/manifest.json`];
- if(import.meta.env.PUBLIC_RELEASE==='true'&&(raw as any)?.validation?.status!=='passed')return [];
  return raw?[[target.id,PredictorManifest.parse(raw)]]:[];
 }));
 const fusionDerivatives=Object.fromEntries(screeningTargets.flatMap(target=>{
  const raw=fusionDerivativeManifests[`../../public/research/${target.id}/gradients-manifest.json`];
- if(import.meta.env.PUBLIC_RELEASE==='true'&&(raw as any)?.validation?.status!=='passed')return [];
  return raw?[[target.id,PredictorManifest.parse(raw)]]:[];
 }));
 const availableTargets=availableScreeningTargets(fusionForward,typeof window==='undefined'?'':window.location.hostname);

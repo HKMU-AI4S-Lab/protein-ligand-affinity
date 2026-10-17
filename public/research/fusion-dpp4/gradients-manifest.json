@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 3,
+  "id": "fusion-dpp4",
+  "format": "onnx",
+  "runtime": "onnxruntime-web",
+  "backend": "wasm",
+  "precision": "fp32",
+  "preprocessingVersion": "fusion-grid-source-v1",
+  "checkpointSha256": "ec532facf4a2af8dcd0914e6bb3e2e9e2d38fb2dd1650abbbed3a3d5802e1c14",
+  "sourceRevision": "7e0be1a53a248357b00c536d262fceb68689ada6ab8494ef089987c0632520cd",
+  "license": "Project-author publication authorization; upstream BSD-3-Clause notice retained",
+  "redistributionApproved": true,
+  "artifact": {
+    "path": "research/fusion-dpp4/gradients.onnx",
+    "sha256": "61cb3572eb968b095ea2e02df8da81b9a543c05858e3913faf3b5403eba961b4",
+    "bytes": 265740
+  },
+  "externalData": [
+    {
+      "path": "weights/f76e6223f9dda6e67108f43c9e2add2acff02407c27c0d58158674e93e448408.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/f76e6223f9dda6e67108f43c9e2add2acff02407c27c0d58158674e93e448408.bin",
+        "sha256": "f76e6223f9dda6e67108f43c9e2add2acff02407c27c0d58158674e93e448408",
+        "bytes": 110592
+      }
+    },
+    {
+      "path": "weights/f02109d37b78fac0791c06d5dedff1af3f0706ada89d226c65d8a94aeb34c1f0.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/f02109d37b78fac0791c06d5dedff1af3f0706ada89d226c65d8a94aeb34c1f0.bin",
+        "sha256": "f02109d37b78fac0791c06d5dedff1af3f0706ada89d226c65d8a94aeb34c1f0",
+        "bytes": 110592
+      }
+    },
+    {
+      "path": "weights/07878b03539a861a97a0e4ff2667d299fc98eed8e81192231210495ea0b99afa.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/07878b03539a861a97a0e4ff2667d299fc98eed8e81192231210495ea0b99afa.bin",
+        "sha256": "07878b03539a861a97a0e4ff2667d299fc98eed8e81192231210495ea0b99afa",
+        "bytes": 442368
+      }
+    },
+    {
+      "path": "weights/cbda9d3c380513244fe405cf08d7a79569b5990238661f38833dc8c352dcb5ef.bin",
+      "artifact": {
+        "sha256": "cbda9d3c380513244fe405cf08d7a79569b5990238661f38833dc8c352dcb5ef",
+        "bytes": 891289600,
+        "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/8438a8c92c5aedd45b98b425aa6614f613fe7088/cbda9d3c380513244fe405cf08d7a79569b5990238661f38833dc8c352dcb5ef.bin"
+      }
+    },
+    {
+      "path": "weights/eaeda2f804ba98ee42e6cd427501422a01c9850afbf81c34a286cfd7b7236483.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/eaeda2f804ba98ee42e6cd427501422a01c9850afbf81c34a286cfd7b7236483.bin",
+        "sha256": "eaeda2f804ba98ee42e6cd427501422a01c9850afbf81c34a286cfd7b7236483",
+        "bytes": 76800
+      }
+    },
+    {
+      "path": "weights/32f321e298a968ff11135b35945e499dd11f6efb2630b4b6173c3bf8e00c1d96.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/32f321e298a968ff11135b35945e499dd11f6efb2630b4b6173c3bf8e00c1d96.bin",
+        "sha256": "32f321e298a968ff11135b35945e499dd11f6efb2630b4b6173c3bf8e00c1d96",
+        "bytes": 409600
+      }
+    },
+    {
+      "path": "weights/c22f3c0286ed7aa44976a8bae9ac66b3a31a29501c1a0efdf55d872b83550d0b.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/c22f3c0286ed7aa44976a8bae9ac66b3a31a29501c1a0efdf55d872b83550d0b.bin",
+        "sha256": "c22f3c0286ed7aa44976a8bae9ac66b3a31a29501c1a0efdf55d872b83550d0b",
+        "bytes": 307200
+      }
+    },
+    {
+      "path": "weights/d7063b40b2d5b057ff385a71e417b20cba0720c01f452e757d8e2d92e0ead6ea.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/d7063b40b2d5b057ff385a71e417b20cba0720c01f452e757d8e2d92e0ead6ea.bin",
+        "sha256": "d7063b40b2d5b057ff385a71e417b20cba0720c01f452e757d8e2d92e0ead6ea",
+        "bytes": 102400
+      }
+    },
+    {
+      "path": "weights/38a3af56091d0ed509e5a51eb8bb447d87effbf8a8b08166e75b1b2faa8f180c.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/38a3af56091d0ed509e5a51eb8bb447d87effbf8a8b08166e75b1b2faa8f180c.bin",
+        "sha256": "38a3af56091d0ed509e5a51eb8bb447d87effbf8a8b08166e75b1b2faa8f180c",
+        "bytes": 1310720
+      }
+    },
+    {
+      "path": "weights/0ebea2165748ab04d69746d9316772d191c6ffab7fe15d4a867413678a874090.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/0ebea2165748ab04d69746d9316772d191c6ffab7fe15d4a867413678a874090.bin",
+        "sha256": "0ebea2165748ab04d69746d9316772d191c6ffab7fe15d4a867413678a874090",
+        "bytes": 4194304
+      }
+    },
+    {
+      "path": "weights/66940d3d0130a937baefb4858c1e0a2c0803725f52a439a93198632f932c5c8b.bin",
+      "artifact": {
+        "path": "research/fusion-dpp4/weights/66940d3d0130a937baefb4858c1e0a2c0803725f52a439a93198632f932c5c8b.bin",
+        "sha256": "66940d3d0130a937baefb4858c1e0a2c0803725f52a439a93198632f932c5c8b",
+        "bytes": 2097152
+      }
+    }
+  ],
+  "executionLocation": "browser",
+  "explanationCapabilities": [
+    "grad-cam"
+  ],
+  "inputs": [
+    {
+      "name": "grid",
+      "dtype": "float32",
+      "shape": [
+        1,
+        28,
+        24,
+        24,
+        24
+      ]
+    },
+    {
+      "name": "tokens",
+      "dtype": "int64",
+      "shape": [
+        1,
+        100
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "screening_scores",
+      "dtype": "float32",
+      "shape": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "input_gradient",
+      "dtype": "float32",
+      "shape": [
+        1,
+        28,
+        24,
+        24,
+        24
+      ]
+    },
+    {
+      "name": "grad_cam",
+      "dtype": "float32",
+      "shape": [
+        1,
+        12,
+        12,
+        12
+      ]
+    },
+    {
+      "name": "spatial_activation",
+      "dtype": "float32",
+      "shape": [
+        1,
+        256,
+        12,
+        12,
+        12
+      ]
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "referenceSha256": "a18905ffee61ec135861080f0dabd2c5afadda418fe2f325f2a3cbb7cfd83d05",
+    "maxAbsError": 4.470348358154297e-08
+  },
+  "examples": []
+}

@@ -1,0 +1,221 @@
+{
+  "target": "hivpr",
+  "splitSha256": "6e232c591d26035b3e1b5fde25ff2aa7c902f312b208caf3ea7dfd0dfa1de484",
+  "splitStart": 4288,
+  "splitSize": 1072,
+  "assessedRows": 20,
+  "checkpointSha256": "9fc35e058d50118b23478eba5370cf05c8ee588603b9ad697d5b56fca4b04b36",
+  "modelArtifactSha256": "8e3cf4d5a5a6255b3bab0f73faa0c2b3339aeac4da6ca694ea17e0f2c6561bac",
+  "metrics": {
+    "total": 20,
+    "scored": 19,
+    "failed": 1,
+    "positives": 9,
+    "negatives": 10,
+    "auroc": 1,
+    "averagePrecision": 1,
+    "baselinePrecision": 0.47368421052631576
+  },
+  "cases": [
+    {
+      "index": 4295,
+      "label": 1,
+      "score": null,
+      "error": "Conformer generation returned invalid coordinates.",
+      "gridSha256": null,
+      "repeatGridMaxError": null,
+      "repeatGridChangedVoxels": null,
+      "repeatScoreError": null
+    },
+    {
+      "index": 4299,
+      "label": 1,
+      "score": 0.009500976651906967,
+      "error": null,
+      "gridSha256": "cb6c8fef7684520a5ac03d6cd87da7170b7c674cdae33e611855dc5be3d297fe",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 62,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4314,
+      "label": 1,
+      "score": 0.9440291523933411,
+      "error": null,
+      "gridSha256": "35faebaf7a68d715a6d800d6358fdebac2f310f7cdb982b7e31df80891719813",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 166,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4318,
+      "label": 1,
+      "score": 0.9984868764877319,
+      "error": null,
+      "gridSha256": "dc7bf1ab68bcb0128c80ad3277e7e9ada2480a2dd6c28ea8e242d99126956c0a",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 168,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4323,
+      "label": 1,
+      "score": 0.9664448499679565,
+      "error": null,
+      "gridSha256": "cc849c91d677eca0be1dbe55b4b0af61bd602b057ea6dbc60cf3759fc63bb54d",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4331,
+      "label": 1,
+      "score": 0.9956680536270142,
+      "error": null,
+      "gridSha256": "19ec508564518e266bac78ca309d9287be3e16305baa1e8ab860862436d37feb",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 56,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4337,
+      "label": 1,
+      "score": 0.9893831610679626,
+      "error": null,
+      "gridSha256": "67cf26d43842650450d7d0f1cf89d67ddd1c2326c5a8570cb12aca56a6b59948",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 162,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4344,
+      "label": 1,
+      "score": 0.13589267432689667,
+      "error": null,
+      "gridSha256": "f433f3a620f518bc34aa9ec990b20e9cd9affdb0bd43aa5c777b5d0ec7132ee5",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 76,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4346,
+      "label": 1,
+      "score": 0.6928547024726868,
+      "error": null,
+      "gridSha256": "496c799ab5f6d862184b801a07003f83089d661ff67558d2930b6194760997ca",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 152,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4353,
+      "label": 1,
+      "score": 0.4190879762172699,
+      "error": null,
+      "gridSha256": "5ec701348a396c39c05de296f428feee57b304476929f0d90266d50d12f78102",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 108,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4288,
+      "label": 0,
+      "score": 8.163821283216615e-15,
+      "error": null,
+      "gridSha256": "0ecb88f3cc76852c1bb373a851f609d9f8823784900c26d6de332a1bdb63779a",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 70,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4289,
+      "label": 0,
+      "score": 3.1860154341213404e-16,
+      "error": null,
+      "gridSha256": "432f09e87a2cd8cd88a6a29b24e84d0b1feaa977a98076a341c5cc991574fb9f",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4290,
+      "label": 0,
+      "score": 1.6018685502285934e-18,
+      "error": null,
+      "gridSha256": "996d375a552036a62a8eb95b798cd985ff34228b0b74f789f86faad1342e3430",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 108,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4291,
+      "label": 0,
+      "score": 7.951482501270648e-19,
+      "error": null,
+      "gridSha256": "aeb560d45722c5af23f7161915720ae929ef1dd153a2a5587ae4d54d1fdaf151",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4292,
+      "label": 0,
+      "score": 3.1638707172448873e-19,
+      "error": null,
+      "gridSha256": "46e2360001c05f5487ec4300de7c916c6200f482155657330baecfa7041f0982",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 40,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4293,
+      "label": 0,
+      "score": 5.567866914052422e-12,
+      "error": null,
+      "gridSha256": "7a026aeaffea5c4e4fda31d574270e0139d10b327f8a2797cce69e1eb4839537",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4294,
+      "label": 0,
+      "score": 6.003116975955916e-14,
+      "error": null,
+      "gridSha256": "9a4f5297fcc22480bb747c50b3e66c4d50e6d32f957d6eaef5b65ada7d4b635f",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 68,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4296,
+      "label": 0,
+      "score": 5.108966973977648e-14,
+      "error": null,
+      "gridSha256": "46d6c3e892f6805afcef878e3a3a8c3996fb75cd3a5c3c69717bed0322a3dfa7",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 90,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4297,
+      "label": 0,
+      "score": 6.519942143772391e-17,
+      "error": null,
+      "gridSha256": "029ed4c18b6c2ef943ff95c49cb6fb3ae12fc30081711e6bae3288bfe884848e",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4298,
+      "label": 0,
+      "score": 5.842030574093742e-17,
+      "error": null,
+      "gridSha256": "62feeaed1725377ed64735a4b2cb30f0440b598ff7df0967a014bec7729d0c07",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 126,
+      "repeatScoreError": 0
+    }
+  ]
+}

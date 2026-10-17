@@ -1,0 +1,79 @@
+{
+  "egfr": {
+    "rows": 5420,
+    "development": 4336,
+    "test": 1084,
+    "testClasses": {
+      "0": 976,
+      "1": 108
+    },
+    "invalidDevelopmentSmiles": 0,
+    "invalidTestSmiles": 0,
+    "canonicalSmilesOverlap": 0,
+    "canonicalSmilesOverlapByLabel": {},
+    "scaffoldOverlap": 159,
+    "scaffoldOverlapByLabel": {
+      "0": 159
+    },
+    "uniqueDevelopmentScaffolds": 3373,
+    "uniqueTestScaffolds": 904
+  },
+  "parp1": {
+    "rows": 5080,
+    "development": 4064,
+    "test": 1016,
+    "testClasses": {
+      "0": 915,
+      "1": 101
+    },
+    "invalidDevelopmentSmiles": 0,
+    "invalidTestSmiles": 0,
+    "canonicalSmilesOverlap": 0,
+    "canonicalSmilesOverlapByLabel": {},
+    "scaffoldOverlap": 141,
+    "scaffoldOverlapByLabel": {
+      "0": 140,
+      "1": 1
+    },
+    "uniqueDevelopmentScaffolds": 3142,
+    "uniqueTestScaffolds": 815
+  },
+  "dpp4": {
+    "rows": 5330,
+    "development": 4264,
+    "test": 1066,
+    "testClasses": {
+      "0": 960,
+      "1": 106
+    },
+    "invalidDevelopmentSmiles": 0,
+    "invalidTestSmiles": 0,
+    "canonicalSmilesOverlap": 0,
+    "canonicalSmilesOverlapByLabel": {},
+    "scaffoldOverlap": 139,
+    "scaffoldOverlapByLabel": {
+      "0": 139
+    },
+    "uniqueDevelopmentScaffolds": 3199,
+    "uniqueTestScaffolds": 945
+  },
+  "hivpr": {
+    "rows": 5360,
+    "development": 4288,
+    "test": 1072,
+    "testClasses": {
+      "0": 965,
+      "1": 107
+    },
+    "invalidDevelopmentSmiles": 0,
+    "invalidTestSmiles": 0,
+    "canonicalSmilesOverlap": 0,
+    "canonicalSmilesOverlapByLabel": {},
+    "scaffoldOverlap": 477,
+    "scaffoldOverlapByLabel": {
+      "0": 477
+    },
+    "uniqueDevelopmentScaffolds": 2541,
+    "uniqueTestScaffolds": 558
+  }
+}

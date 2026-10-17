@@ -1,0 +1,21 @@
+{
+  "target": "egfr",
+  "checkpointSha256": "0de70abe2ff0698bc73f468d64a81b7d00a68bffb6062e81dea9eb04fd892d9a",
+  "artifact": {
+    "path": "research/fusion-egfr/gradients.onnx",
+    "sha256": "40a9f6caa636f7aa68d0ba8244a5457e4e8ee4bd5a5890bbac332b32c00eaee9",
+    "bytes": 265740
+  },
+  "analyticErrors": {
+    "screening_scores": 6.548361852765083e-11,
+    "input_gradient": 0.0,
+    "grad_cam": 1.1657341758564144e-15,
+    "spatial_activation": 0.0
+  },
+  "onnxErrors": {
+    "screening_scores": 6.548361852765083e-11,
+    "input_gradient": 0.0,
+    "grad_cam": 6.661338147750939e-16,
+    "spatial_activation": 2.421438694000244e-08
+  }
+}

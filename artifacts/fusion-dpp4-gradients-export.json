@@ -1,0 +1,21 @@
+{
+  "target": "dpp4",
+  "checkpointSha256": "ec532facf4a2af8dcd0914e6bb3e2e9e2d38fb2dd1650abbbed3a3d5802e1c14",
+  "artifact": {
+    "path": "research/fusion-dpp4/gradients.onnx",
+    "sha256": "61cb3572eb968b095ea2e02df8da81b9a543c05858e3913faf3b5403eba961b4",
+    "bytes": 265740
+  },
+  "analyticErrors": {
+    "screening_scores": 0.0,
+    "input_gradient": 4.0389678347315804e-28,
+    "grad_cam": 4.0389678347315804e-28,
+    "spatial_activation": 0.0
+  },
+  "onnxErrors": {
+    "screening_scores": 4.632211430296955e-22,
+    "input_gradient": 1.25208002876679e-26,
+    "grad_cam": 1.2116903504194741e-26,
+    "spatial_activation": 4.470348358154297e-08
+  }
+}

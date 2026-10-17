@@ -1,0 +1,81 @@
+{
+  "target": "hivpr",
+  "checkpointSha256": "9fc35e058d50118b23478eba5370cf05c8ee588603b9ad697d5b56fca4b04b36",
+  "onnxSha256": "8e3cf4d5a5a6255b3bab0f73faa0c2b3339aeac4da6ca694ea17e0f2c6561bac",
+  "cacheSha256": "e2b8eae32eb281c3570b8753db11b03529d1fa892ccdc383e79daf92751131ea",
+  "maxAbsError": 5.960464477539063e-08,
+  "cases": [
+    {
+      "originalIndex": 4288,
+      "label": 0,
+      "trainingBf16Score": 8.17660046929184e-15,
+      "nativeFp32Score": 8.163759449811465e-15,
+      "onnxFp32Score": 8.163821283216615e-15,
+      "onnxMaxAbsError": 6.183340514956392e-20,
+      "gridSha256": "4c0a1373e656d3f683d78731614c0210e4b22d1cea35f96679531ebafbc0cd06",
+      "tokensSha256": "f5f61ae7c6d5c7a35dd22ea041ba8d748073851c546eea7a3f5e9683f573aa50",
+      "gridPath": "artifacts/fusion-target-validation/hivpr/row-4288-grid.bin",
+      "tokensPath": "artifacts/fusion-target-validation/hivpr/row-4288-tokens.bin"
+    },
+    {
+      "originalIndex": 4810,
+      "label": 0,
+      "trainingBf16Score": 6.305116853596367e-16,
+      "nativeFp32Score": 6.37270214185338e-16,
+      "onnxFp32Score": 6.37270214185338e-16,
+      "onnxMaxAbsError": 0.0,
+      "gridSha256": "c7fe4af06ed13c6e48392d68b91477473c48afd659d0847bd025dd2117e3a6d0",
+      "tokensSha256": "6ba391b744dd3065913c5071a3078002a549195466d13ab811c50d3b9217cc8d",
+      "gridPath": "artifacts/fusion-target-validation/hivpr/row-4810-grid.bin",
+      "tokensPath": "artifacts/fusion-target-validation/hivpr/row-4810-tokens.bin"
+    },
+    {
+      "originalIndex": 5359,
+      "label": 0,
+      "trainingBf16Score": 3.951585250303303e-19,
+      "nativeFp32Score": 3.765669686789533e-19,
+      "onnxFp32Score": 3.7656265183013153e-19,
+      "onnxMaxAbsError": 4.316848821761113e-24,
+      "gridSha256": "942511de2ceba1c708d9daf5db07400d8b90c7dad501b01faac20df7f12bc312",
+      "tokensSha256": "af83c5ec152aeec48e65f9fe154553f69534774685c9190228a87563d2584cfb",
+      "gridPath": "artifacts/fusion-target-validation/hivpr/row-5359-grid.bin",
+      "tokensPath": "artifacts/fusion-target-validation/hivpr/row-5359-tokens.bin"
+    },
+    {
+      "originalIndex": 4295,
+      "label": 1,
+      "trainingBf16Score": 0.1525365114212036,
+      "nativeFp32Score": 0.1538335382938385,
+      "onnxFp32Score": 0.1538335233926773,
+      "onnxMaxAbsError": 1.4901161193847656e-08,
+      "gridSha256": "8ec2b7d197406770441134ba639413a0ad4e63536797cb131d72f3f329562ba6",
+      "tokensSha256": "084bccf7dbc28aaec4646c33587a6f12b9a8018f5b739730309b514efc852a38",
+      "gridPath": "artifacts/fusion-target-validation/hivpr/row-4295-grid.bin",
+      "tokensPath": "artifacts/fusion-target-validation/hivpr/row-4295-tokens.bin"
+    },
+    {
+      "originalIndex": 4929,
+      "label": 1,
+      "trainingBf16Score": 0.956308901309967,
+      "nativeFp32Score": 0.9568039178848267,
+      "onnxFp32Score": 0.9568039178848267,
+      "onnxMaxAbsError": 0.0,
+      "gridSha256": "b71d277c8144559dd7577d2d008efb74c89b394d0a38d43f71e7298d29cdd127",
+      "tokensSha256": "eac48076cda33ade4703c0c41360ca7e3b6280ff1ea1ff1691ce59c15d7854e5",
+      "gridPath": "artifacts/fusion-target-validation/hivpr/row-4929-grid.bin",
+      "tokensPath": "artifacts/fusion-target-validation/hivpr/row-4929-tokens.bin"
+    },
+    {
+      "originalIndex": 5356,
+      "label": 1,
+      "trainingBf16Score": 0.6963714361190796,
+      "nativeFp32Score": 0.6995400190353394,
+      "onnxFp32Score": 0.6995399594306946,
+      "onnxMaxAbsError": 5.960464477539063e-08,
+      "gridSha256": "0e34b6a4cbc69b0f47152c43e81d3a49c8602b70ceac2691530344edbc7c70cf",
+      "tokensSha256": "a068d235be6b0715a4fff811766b59942c8ee7fd9e7524a52476b4e5832b0e21",
+      "gridPath": "artifacts/fusion-target-validation/hivpr/row-5356-grid.bin",
+      "tokensPath": "artifacts/fusion-target-validation/hivpr/row-5356-tokens.bin"
+    }
+  ]
+}

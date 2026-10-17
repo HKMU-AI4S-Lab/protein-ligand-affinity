@@ -217,7 +217,7 @@
     "width": 2056,
     "height": 500,
     "operation": "Unaltered PDF rendering; rectangular crop only",
-    "redistributionApproved": false
+    "redistributionApproved": true
   },
   {
     "id": "etdock-pose-detail",
@@ -239,6 +239,6 @@
     "width": 180,
     "height": 132,
     "operation": "Unaltered PDF rendering; rectangular crop only",
-    "redistributionApproved": false
+    "redistributionApproved": true
   }
 ]

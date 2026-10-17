@@ -1,0 +1,21 @@
+{
+  "target": "hivpr",
+  "checkpointSha256": "9fc35e058d50118b23478eba5370cf05c8ee588603b9ad697d5b56fca4b04b36",
+  "artifact": {
+    "path": "research/fusion-hivpr/gradients.onnx",
+    "sha256": "780886c1a04216f557ffbe74c8bd2bb05ca4b3ad707156fc8a669d7f37e1da8d",
+    "bytes": 265740
+  },
+  "analyticErrors": {
+    "screening_scores": 0.0,
+    "input_gradient": 7.741203511546502e-17,
+    "grad_cam": 2.0599841277224584e-17,
+    "spatial_activation": 0.0
+  },
+  "onnxErrors": {
+    "screening_scores": 0.0,
+    "input_gradient": 7.849623728795052e-17,
+    "grad_cam": 1.973247953923618e-17,
+    "spatial_activation": 4.842877388000488e-08
+  }
+}

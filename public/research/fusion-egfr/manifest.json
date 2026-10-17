@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 3,
+  "id": "fusion-egfr",
+  "format": "onnx",
+  "runtime": "onnxruntime-web",
+  "backend": "wasm",
+  "precision": "fp32",
+  "preprocessingVersion": "fusion-grid-source-v1",
+  "checkpointSha256": "0de70abe2ff0698bc73f468d64a81b7d00a68bffb6062e81dea9eb04fd892d9a",
+  "sourceRevision": "7e0be1a53a248357b00c536d262fceb68689ada6ab8494ef089987c0632520cd",
+  "license": "Project-author publication authorization; upstream BSD-3-Clause notice retained",
+  "redistributionApproved": true,
+  "artifact": {
+    "path": "research/fusion-egfr/model.onnx",
+    "sha256": "36c93bd3fcfa2a20a6ccc4d46bb5fec0fcb9424a60fbc5ccd959d630941b8344",
+    "bytes": 229983
+  },
+  "externalData": [
+    {
+      "path": "weights/6fcd1a4890718396edefa386e4e82a6580b36edd4beeb47a53dc97120facebde.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/6fcd1a4890718396edefa386e4e82a6580b36edd4beeb47a53dc97120facebde.bin",
+        "sha256": "6fcd1a4890718396edefa386e4e82a6580b36edd4beeb47a53dc97120facebde",
+        "bytes": 110592
+      }
+    },
+    {
+      "path": "weights/9d8cd9ecfa92861cd9de101fa8315e0ca390b059add80b62ac3701921fd88686.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/9d8cd9ecfa92861cd9de101fa8315e0ca390b059add80b62ac3701921fd88686.bin",
+        "sha256": "9d8cd9ecfa92861cd9de101fa8315e0ca390b059add80b62ac3701921fd88686",
+        "bytes": 110592
+      }
+    },
+    {
+      "path": "weights/1856c2c27ea302952de5e6d8b44b44a4f252aabdc0d8381818e014ce23785460.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/1856c2c27ea302952de5e6d8b44b44a4f252aabdc0d8381818e014ce23785460.bin",
+        "sha256": "1856c2c27ea302952de5e6d8b44b44a4f252aabdc0d8381818e014ce23785460",
+        "bytes": 442368
+      }
+    },
+    {
+      "path": "weights/378fd396f5990e5e9f688e18438686328b51aad7a16ef95db2eba621706782db.bin",
+      "artifact": {
+        "sha256": "378fd396f5990e5e9f688e18438686328b51aad7a16ef95db2eba621706782db",
+        "bytes": 891289600,
+        "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/8438a8c92c5aedd45b98b425aa6614f613fe7088/378fd396f5990e5e9f688e18438686328b51aad7a16ef95db2eba621706782db.bin"
+      }
+    },
+    {
+      "path": "weights/8b30ada2995c1597c4495057414dd575ff200a41fe90087f4d1953bf0fb5677f.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/8b30ada2995c1597c4495057414dd575ff200a41fe90087f4d1953bf0fb5677f.bin",
+        "sha256": "8b30ada2995c1597c4495057414dd575ff200a41fe90087f4d1953bf0fb5677f",
+        "bytes": 76800
+      }
+    },
+    {
+      "path": "weights/0af289ce344692aedb5a184cfb9c5ef47aca10defeb4fdee22728eeda1432771.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/0af289ce344692aedb5a184cfb9c5ef47aca10defeb4fdee22728eeda1432771.bin",
+        "sha256": "0af289ce344692aedb5a184cfb9c5ef47aca10defeb4fdee22728eeda1432771",
+        "bytes": 409600
+      }
+    },
+    {
+      "path": "weights/235bf73fea925dee8e77affedbb8ad5672c829efcafee3c0e17139c62314dfe2.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/235bf73fea925dee8e77affedbb8ad5672c829efcafee3c0e17139c62314dfe2.bin",
+        "sha256": "235bf73fea925dee8e77affedbb8ad5672c829efcafee3c0e17139c62314dfe2",
+        "bytes": 102400
+      }
+    },
+    {
+      "path": "weights/46ce285e1f83d008a9537f75b0313cd655a7f287e49691d145dc2535e68208f1.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/46ce285e1f83d008a9537f75b0313cd655a7f287e49691d145dc2535e68208f1.bin",
+        "sha256": "46ce285e1f83d008a9537f75b0313cd655a7f287e49691d145dc2535e68208f1",
+        "bytes": 1310720
+      }
+    },
+    {
+      "path": "weights/414fddbb8f472886e352ac79b4aae9efa8cd9dfbd12071e3bc6938610d0276c3.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/414fddbb8f472886e352ac79b4aae9efa8cd9dfbd12071e3bc6938610d0276c3.bin",
+        "sha256": "414fddbb8f472886e352ac79b4aae9efa8cd9dfbd12071e3bc6938610d0276c3",
+        "bytes": 4194304
+      }
+    },
+    {
+      "path": "weights/22944e0e313b7ffa261991012123d643b7de9f30fa92b0c34b9e103ad36f39e5.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/22944e0e313b7ffa261991012123d643b7de9f30fa92b0c34b9e103ad36f39e5.bin",
+        "sha256": "22944e0e313b7ffa261991012123d643b7de9f30fa92b0c34b9e103ad36f39e5",
+        "bytes": 2097152
+      }
+    },
+    {
+      "path": "weights/15556ca301be532c72a89ac62367915cd48baf59e0bb46f3d66e9ad8fc11ce49.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/15556ca301be532c72a89ac62367915cd48baf59e0bb46f3d66e9ad8fc11ce49.bin",
+        "sha256": "15556ca301be532c72a89ac62367915cd48baf59e0bb46f3d66e9ad8fc11ce49",
+        "bytes": 102400
+      }
+    },
+    {
+      "path": "weights/ea352c79b44f4c559197553482deeef3fc808037160991ffdb6b355a355dcc4c.bin",
+      "artifact": {
+        "path": "research/fusion-egfr/weights/ea352c79b44f4c559197553482deeef3fc808037160991ffdb6b355a355dcc4c.bin",
+        "sha256": "ea352c79b44f4c559197553482deeef3fc808037160991ffdb6b355a355dcc4c",
+        "bytes": 204800
+      }
+    }
+  ],
+  "executionLocation": "browser",
+  "explanationCapabilities": [],
+  "inputs": [
+    {
+      "name": "grid",
+      "dtype": "float32",
+      "shape": [
+        1,
+        28,
+        24,
+        24,
+        24
+      ]
+    },
+    {
+      "name": "tokens",
+      "dtype": "int64",
+      "shape": [
+        1,
+        100
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "screening_scores",
+      "dtype": "float32",
+      "shape": [
+        1,
+        2
+      ]
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "referenceSha256": "dd44ffdf4087a706381e0366526d2e9f65ba1c2d15b320f5f05ef0fe1c2116d2",
+    "maxAbsError": 3.0899761915836876e-18
+  },
+  "examples": []
+}

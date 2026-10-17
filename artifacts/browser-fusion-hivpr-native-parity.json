@@ -1,0 +1,53 @@
+{
+  "target": "hivpr",
+  "checkpointSha256": "9fc35e058d50118b23478eba5370cf05c8ee588603b9ad697d5b56fca4b04b36",
+  "modelArtifactSha256": "8e3cf4d5a5a6255b3bab0f73faa0c2b3339aeac4da6ca694ea17e0f2c6561bac",
+  "referenceSha256": "bfb551b08372614b284d3079b7bf644bb08592dd1bc5406be28a743ebbfa8511",
+  "browser": "153.0.8010.54",
+  "cases": [
+    {
+      "originalIndex": 4288,
+      "label": 0,
+      "score": 8.163821283216615e-15,
+      "nativeError": 6.183340514956392e-20,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 4810,
+      "label": 0,
+      "score": 6.372677789656146e-16,
+      "nativeError": 2.4352197233561135e-21,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 5359,
+      "label": 0,
+      "score": 3.7656265183013153e-19,
+      "nativeError": 4.316848821761113e-24,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 4295,
+      "label": 1,
+      "score": 0.1538335382938385,
+      "nativeError": 0,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 4929,
+      "label": 1,
+      "score": 0.9568039178848267,
+      "nativeError": 0,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 5356,
+      "label": 1,
+      "score": 0.6995401978492737,
+      "nativeError": 1.7881393432617188e-7,
+      "maxRepeatError": 0
+    }
+  ],
+  "maxAbsError": 1.7881393432617188e-7,
+  "maxRepeatError": 0
+}

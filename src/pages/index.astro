@@ -7,8 +7,8 @@ const base=import.meta.env.BASE_URL;
 const methods=[
  {id:'representing-molecules',kind:'representations',method:'UniMolRep',title:'Explore a molecule',input:'A molecule as SMILES',output:'Fingerprints, atom graphs, geometry and spatial grids',action:'Explore representations',note:'Understand the structure a model sees.'},
  {id:'screening-molecules',kind:'screening',method:'DL-FSG',title:'Screen for a target',input:'SMILES and a protein target',output:'A relative screening score with Grad-CAM attribution.',action:'Screen a molecule',note:'Compare molecules within the same target.'},
- {id:'binding-affinity',kind:'binding-affinity',method:'GNINA / BAP',title:'Score a bound pose',input:'A PDB ID or your own protein–ligand complex',output:'A GNINA affinity estimate and pose score with spatial occlusion.',action:'Score a complex',note:'Choose the protein chains and bound ligand.'},
- {id:'protein-ligand-docking',kind:'docking',method:'ETDock',title:'Predict a binding pose',input:'A protein structure and a ligand',output:'A predicted three-dimensional ligand pose',action:'Explore docking',note:'Docking calculations are not yet available here.'}
+ {id:'protein-ligand-docking',kind:'docking',method:'ETDock',title:'Predict a binding pose',input:'A protein structure and a ligand',output:'A predicted three-dimensional ligand pose',action:'Explore docking',note:'Predict ligand poses in your browser.'},
+ {id:'binding-affinity',kind:'binding-affinity',method:'GNINA / BAP',title:'Score a bound pose',input:'A PDB ID or your own protein–ligand complex',output:'A GNINA affinity estimate and pose score with spatial occlusion.',action:'Score a complex',note:'Choose the protein chains and bound ligand.'}
 ] as const;
 const steps=[
  {title:'Submit your input',text:'Choose a task and enter your molecule or complex.',icon:'M7 3h7l5 5v13H7z M14 3v6h5 M10 13h6 M10 17h6'},
@@ -38,7 +38,7 @@ const steps=[
  <section id="research" class="selected-research" aria-labelledby="research-heading">
   <div class="section-label"><h2 id="research-heading">Research on molecular structure and binding</h2><p class="research-introduction">Our research connects molecular representation with three questions: which compounds to prioritise, how they bind, and how strongly they may bind.</p></div>
   {selectedResearch.map(({work,kind,label,heading,summary,path,thumbnail})=><article class="selected-work" data-method={kind}>
-   {thumbnail?<div class="method-illustration illustration-compact"><img src={base+thumbnail} width="180" height="132" alt={import.meta.env.PUBLIC_RELEASE==='true'?'Protein and ligand inputs guide binding-pose reconstruction.':'Protein–ligand pose detail from ETDock Figure 1.'} loading="lazy" decoding="async"/></div>:<MethodIllustration kind={kind} compact/>}
+   {thumbnail?<div class="method-illustration illustration-compact"><img src={base+thumbnail} width="180" height="132" alt="Protein–ligand pose detail from ETDock Figure 1." loading="lazy" decoding="async"/></div>:<MethodIllustration kind={kind} compact/>}
    <div class="selected-work-copy"><span class="publication-line method-label"><span>{label}</span><span>{work.id==='etdock'?'Online 2026 (2027 issue)':work.year}</span></span><h3><a href={base+path}>{heading}</a></h3><p>{summary}</p></div>
    <div class="research-links"><a class="editorial-link" href={base+path}>Explore {label} <span aria-hidden="true">→</span></a><a href={work.url}>Read the paper ↗</a></div>
   </article>)}

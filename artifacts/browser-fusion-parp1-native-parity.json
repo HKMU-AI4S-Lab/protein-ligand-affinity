@@ -1,0 +1,53 @@
+{
+  "target": "parp1",
+  "checkpointSha256": "bc251bbf1e26d637224c0bbb1fe96714273742676211141afe9b68491b3b3bcd",
+  "modelArtifactSha256": "97b06298e9107c90ec7ab7caa7c434c0b0dfbafd318494f823401c3578d47eee",
+  "referenceSha256": "0e57a70a139fb98d999a90188c8560cb9befba1fbb6f94fac3545f05fdc9fef0",
+  "browser": "153.0.8010.54",
+  "cases": [
+    {
+      "originalIndex": 4064,
+      "label": 0,
+      "score": 2.1221343231942955e-15,
+      "nativeError": 0,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 4556,
+      "label": 0,
+      "score": 7.928946999457407e-19,
+      "nativeError": 3.0502285087892896e-24,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 5079,
+      "label": 0,
+      "score": 1.107210226281019e-10,
+      "nativeError": 0,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 4069,
+      "label": 1,
+      "score": 1,
+      "nativeError": 0,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 4687,
+      "label": 1,
+      "score": 1,
+      "nativeError": 0,
+      "maxRepeatError": 0
+    },
+    {
+      "originalIndex": 5072,
+      "label": 1,
+      "score": 0.0000011724363275789074,
+      "nativeError": 2.2737367544323206e-12,
+      "maxRepeatError": 0
+    }
+  ],
+  "maxAbsError": 2.2737367544323206e-12,
+  "maxRepeatError": 0
+}

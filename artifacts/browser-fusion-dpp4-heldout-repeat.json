@@ -1,0 +1,221 @@
+{
+  "target": "dpp4",
+  "splitSha256": "d5efe86e44407cd21b8225f64127c5313fa3302403e9fe90763ff5c0b2a25f70",
+  "splitStart": 4264,
+  "splitSize": 1066,
+  "assessedRows": 20,
+  "checkpointSha256": "ec532facf4a2af8dcd0914e6bb3e2e9e2d38fb2dd1650abbbed3a3d5802e1c14",
+  "modelArtifactSha256": "86ac0a1daf3484ec9b66435c77ed2c58b151d4a61bfbc68e1288489eaf68e5b2",
+  "metrics": {
+    "total": 20,
+    "scored": 17,
+    "failed": 3,
+    "positives": 8,
+    "negatives": 9,
+    "auroc": 1,
+    "averagePrecision": 1,
+    "baselinePrecision": 0.47058823529411764
+  },
+  "cases": [
+    {
+      "index": 4268,
+      "label": 1,
+      "score": null,
+      "error": "Generated coordinates did not preserve the specified stereochemistry; this molecule is unsupported.",
+      "gridSha256": null,
+      "repeatGridMaxError": null,
+      "repeatGridChangedVoxels": null,
+      "repeatScoreError": null
+    },
+    {
+      "index": 4269,
+      "label": 1,
+      "score": null,
+      "error": "Generated coordinates did not preserve the specified stereochemistry; this molecule is unsupported.",
+      "gridSha256": null,
+      "repeatGridMaxError": null,
+      "repeatGridChangedVoxels": null,
+      "repeatScoreError": null
+    },
+    {
+      "index": 4278,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "dc4a825ccc56dcc24bbc0c278381ce27e1612f9331ac166075157ce069e6fce7",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 84,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4293,
+      "label": 1,
+      "score": 0.9999847412109375,
+      "error": null,
+      "gridSha256": "0b8d7fbb3fb81b9640e0fa33ef2a48f03fa5e955bc348baa3cbecd4c9f53a4b4",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 84,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4297,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "e50ffe7efe5985966247f56bf9e9c8ec0c0809a17b91900ca7ff32f5c443cc66",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 108,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4305,
+      "label": 1,
+      "score": 0.999969482421875,
+      "error": null,
+      "gridSha256": "0d71bfe3b13dcbc34124ad332a6d21ef6ec688d5c4e5168e81cf92d482a0f0ae",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4319,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "0c2db03f841a6a53d51e881f1092e1486019432f32b03e647069f5c0fe78fdf2",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 62,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4326,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "8c217b0ca5922b3ce462d10df8419c792c42a3bc62b5786d46e2f454e5d612e7",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 72,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4328,
+      "label": 1,
+      "score": 0.9999672174453735,
+      "error": null,
+      "gridSha256": "c444eba6a5f3dea1d4b71ae5912706f3ce3c1ca6484ad461d1bbf4db0a989835",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 106,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4339,
+      "label": 1,
+      "score": 1,
+      "error": null,
+      "gridSha256": "d39b3aeb285092d31937c655793d09cccb8cd44f92230c4e93476edf3cbc87e8",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 102,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4264,
+      "label": 0,
+      "score": null,
+      "error": "Generated coordinates did not preserve the specified stereochemistry; this molecule is unsupported.",
+      "gridSha256": null,
+      "repeatGridMaxError": null,
+      "repeatGridChangedVoxels": null,
+      "repeatScoreError": null
+    },
+    {
+      "index": 4265,
+      "label": 0,
+      "score": 3.0112268234461226e-9,
+      "error": null,
+      "gridSha256": "ceb680dde8088f6062a3346837cdd1f0b167312f5e348fc82df25a32c685a55d",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 86,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4266,
+      "label": 0,
+      "score": 3.617415107265677e-21,
+      "error": null,
+      "gridSha256": "25ccf0fdb8fe03d0d5042c1afca4599dd423a0ed7e308d275f67d1ee30ec928a",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 112,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4267,
+      "label": 0,
+      "score": 3.191122182525447e-17,
+      "error": null,
+      "gridSha256": "b9025a95a664ed014ed12d4935675d8c1eae3a11f4438a776bb9e49b13cca245",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4270,
+      "label": 0,
+      "score": 8.320882471934965e-8,
+      "error": null,
+      "gridSha256": "18888c7994aec14765e3b74a53017e63a28a6c5cd30c70cf6c64fc19753b75f5",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4271,
+      "label": 0,
+      "score": 4.378347337463673e-11,
+      "error": null,
+      "gridSha256": "d628037315fcbef149dae07a1e9c28a9f8e3fb2073e792bc645a5d195d2cfe88",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 28,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4272,
+      "label": 0,
+      "score": 3.5989731143732474e-35,
+      "error": null,
+      "gridSha256": "d41eebd8c11f2ff25f96d2fa52beefab86c3b9034b49595fa02e40ee9fa552ee",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 40,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4273,
+      "label": 0,
+      "score": 1.771245816684086e-9,
+      "error": null,
+      "gridSha256": "0f550b927d94369d36ffef95a9af8df16d9f740702a799112be47cbcd470cc0a",
+      "repeatGridMaxError": 1,
+      "repeatGridChangedVoxels": 84,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4274,
+      "label": 0,
+      "score": 3.7327758939387223e-11,
+      "error": null,
+      "gridSha256": "ab5472818affbacde385357506ce6ed16fce978cf575c3e81f839b8a406b61d4",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    },
+    {
+      "index": 4275,
+      "label": 0,
+      "score": 2.0241638032335466e-33,
+      "error": null,
+      "gridSha256": "d5cea97fc1190a2e0b04863ac7ae373366304f631e7b47ef5b4aabf6c4a8410d",
+      "repeatGridMaxError": 0,
+      "repeatGridChangedVoxels": 0,
+      "repeatScoreError": 0
+    }
+  ]
+}

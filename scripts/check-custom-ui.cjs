@@ -30,7 +30,7 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),asse
   assert.match(await page.locator('#references').innerText(),/15 May 2027/);
   assert.equal(await page.getByRole('link',{name:'ETDock source code',exact:false}).first().getAttribute('href'),'https://github.com/gnn4bio/ETDock');
   await page.goto(base+'works/etdock/');await page.waitForURL(base+'topics/protein-ligand-docking/');
-  record('Docking: fourth tool attributed to AutoDock Vina; ETDock research, source, publication dates and legacy redirect preserved.');
+  record('Docking: tool attributed to AutoDock Vina; ETDock research, source, publication dates and legacy redirect preserved.');
   await page.setViewportSize({width:1440,height:1000});
   await page.goto(base+'topics/representing-molecules/');await page.locator('#molecule-smiles').fill('CCCO');await page.getByRole('button',{name:'Show representations'}).click();await ready();
   const rep=await json('representations');assert.equal(rep.input.smiles,'CCCO');assert.equal(rep.representations.fingerprint.length,2048);assert.equal(rep.representations.graph.atoms.length,4);assert.equal(rep.representations.graph.bonds.length,3);assert.ok(rep.representations.angles.length);assert.equal(rep.representations.grid.length,22*48**3);assert.ok(rep.representations.grid.indices.length>0);
@@ -39,9 +39,9 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),asse
   for(const invalid of ['invalid','CCO.CN','[13CH4]']){await page.locator('#molecule-smiles').fill(invalid);await noStale();await page.getByRole('button',{name:'Show representations'}).click();await page.getByRole('alert').waitFor();await noStale();}
   await page.locator('#molecule-smiles').fill('CCN');await page.getByRole('button',{name:'Show representations'}).click();await ready();const retry=await json('representations-retry');assert.equal(retry.input.smiles,'CCN');assert.notEqual(retry.completedAt,rep.completedAt);
   record('UniMolRep: own SMILES, all representations, JSON/TXT/CSV/SDF, invalid input recovery and stale-result invalidation.');
-  for(const [target,label] of (process.env.PUBLIC_QA?[['aofb','MAO-B']]:[['aofb','MAO-B'],['egfr','EGFR'],['parp1','PARP1'],['dpp4','DPP4'],['hivpr','HIV-1 protease']])){
-   await page.goto(base+'topics/screening-molecules/');if(!process.env.PUBLIC_QA){await page.locator('#screening-target').waitFor();assert.equal(await page.locator('#screening-target option').count(),5);}
-   if(!process.env.PUBLIC_QA)await page.locator('#screening-target').selectOption('fusion-'+target);await page.locator('#molecule-smiles').fill('CCCO');await page.getByRole('button',{name:'Calculate screening score'}).click();await ready();
+  for(const [target,label] of [['aofb','MAO-B'],['egfr','EGFR'],['parp1','PARP1'],['dpp4','DPP4'],['hivpr','HIV-1 protease']]){
+   await page.goto(base+'topics/screening-molecules/');{await page.locator('#screening-target').waitFor();assert.equal(await page.locator('#screening-target option').count(),5);}
+   await page.locator('#screening-target').selectOption('fusion-'+target);await page.locator('#molecule-smiles').fill('CCCO');await page.getByRole('button',{name:'Calculate screening score'}).click();await ready();
    const before=await json('screening-'+target);assert.equal(before.input.target,label);assert.equal(before.input.smiles,'CCCO');assert.equal(before.model.id,'fusion-'+target);assert.ok(Number.isFinite(before.outputs[0].value));
    await page.getByRole('button',{name:'Calculate Grad-CAM',exact:true}).click();await page.waitForFunction(()=>document.querySelector('.grad-cam-view')||document.querySelector('[role=alert]'),null,{timeout:300000});assert.equal(await page.getByRole('alert').count(),0,await page.locator('.bench-output').innerText());
    await page.getByLabel('Grad-CAM axis',{exact:true}).selectOption('y');await page.getByRole('slider',{name:'Grad-CAM slice',exact:true}).fill('7');
@@ -49,7 +49,7 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),asse
    assert.match(await download('Grad-CAM slice (SVG)','screening-'+target+'.svg'),/slice 8\/12/);assert.match(await download('Run summary (TXT)','screening-'+target+'.txt'),new RegExp(label));assert.match(await download('Scores (CSV)','screening-'+target+'.csv'),new RegExp(label));await download('Ligand (SDF)','screening-'+target+'.sdf');
    await page.locator('.grad-cam-view').scrollIntoViewIfNeeded();await screenshot('gradcam-'+target);
    report.runs.push({target:label,score:before.outputs[0].value,gradCamPeak:Math.max(...after.attribution.values),checkpoint:before.model.checkpointSha256});
-   if(process.env.PUBLIC_QA)await page.locator('#molecule-smiles').fill('CCN');else await page.locator('#screening-target').selectOption(target==='egfr'?'fusion-parp1':'fusion-egfr');await noStale();record(label+': actual full-model score, matching Grad-CAM, downloads and target-change invalidation.');
+   await page.locator('#screening-target').selectOption(target==='egfr'?'fusion-parp1':'fusion-egfr');await noStale();record(label+': actual full-model score, matching Grad-CAM, downloads and target-change invalidation.');
   }
   await page.goto(base+'topics/binding-affinity/');await page.locator('#complex-pdb-id').fill('1HSG');await page.getByRole('button',{name:'Load structure'}).click();await page.getByLabel('Chain A',{exact:true}).waitFor();await page.getByLabel('Chain A',{exact:true}).check();await page.getByLabel('Chain B',{exact:true}).check();await page.getByRole('button',{name:'Score bound pose'}).click();await ready();
   const pdb=await json('gnina-pdb');assert.equal(pdb.input.pdbId,'1HSG');assert.deepEqual(pdb.input.chains,['A','B']);assert.ok(Math.abs(pdb.outputs[0].value-8.6251554)<0.001);assert.equal(pdb.outputs[0].unit,'pK units');assert.equal(pdb.references[0].id,'gnina');assert.equal(pdb.relatedResearch.id,'agima');

@@ -19,5 +19,33 @@
     "sha256": "32bfe625f20b4f926679878ee75bad1a30133c10f5861e80afb9907f256e3022",
     "bytes": 12386304,
     "buildInput": true
+  },
+  {
+    "publicPath": "public/research/fusion-egfr/weights/378fd396f5990e5e9f688e18438686328b51aad7a16ef95db2eba621706782db.bin",
+    "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/8438a8c92c5aedd45b98b425aa6614f613fe7088/378fd396f5990e5e9f688e18438686328b51aad7a16ef95db2eba621706782db.bin",
+    "sha256": "378fd396f5990e5e9f688e18438686328b51aad7a16ef95db2eba621706782db",
+    "bytes": 891289600,
+    "buildInput": false
+  },
+  {
+    "publicPath": "public/research/fusion-parp1/weights/b3fabc5ad00a6853adf387a12a9293eab9a107babb1fe7d839a82155d3c8c352.bin",
+    "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/8438a8c92c5aedd45b98b425aa6614f613fe7088/b3fabc5ad00a6853adf387a12a9293eab9a107babb1fe7d839a82155d3c8c352.bin",
+    "sha256": "b3fabc5ad00a6853adf387a12a9293eab9a107babb1fe7d839a82155d3c8c352",
+    "bytes": 891289600,
+    "buildInput": false
+  },
+  {
+    "publicPath": "public/research/fusion-dpp4/weights/cbda9d3c380513244fe405cf08d7a79569b5990238661f38833dc8c352dcb5ef.bin",
+    "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/8438a8c92c5aedd45b98b425aa6614f613fe7088/cbda9d3c380513244fe405cf08d7a79569b5990238661f38833dc8c352dcb5ef.bin",
+    "sha256": "cbda9d3c380513244fe405cf08d7a79569b5990238661f38833dc8c352dcb5ef",
+    "bytes": 891289600,
+    "buildInput": false
+  },
+  {
+    "publicPath": "public/research/fusion-hivpr/weights/c9690bd7ea1bd726df23c0286f10a5410e0bdc422e1e2479963662e0973b4b86.bin",
+    "url": "https://huggingface.co/micklee17/protein-ligand-affinity-web-assets/resolve/8438a8c92c5aedd45b98b425aa6614f613fe7088/c9690bd7ea1bd726df23c0286f10a5410e0bdc422e1e2479963662e0973b4b86.bin",
+    "sha256": "c9690bd7ea1bd726df23c0286f10a5410e0bdc422e1e2479963662e0973b4b86",
+    "bytes": 891289600,
+    "buildInput": false
   }
 ]

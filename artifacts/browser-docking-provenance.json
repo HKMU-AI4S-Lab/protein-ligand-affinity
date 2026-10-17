@@ -23,12 +23,6 @@
       }
     ]
   },
-  "originalDiagram": {
-    "path": "public/illustrations/docking-overview.svg",
-    "sha256": "5e4f47e88e544d23cb5d7317c00099b6de667d9f9be3758f8d2477f2babe58dd",
-    "operation": "Original lab schematic authored for this website, summarising the cited ETDock method. No paper pixels are used.",
-    "researchSource": "https://doi.org/10.1007/s11704-026-51026-x"
-  },
   "fixtures": [
     {
       "path": "tests/fixtures/1hsg.pdb",

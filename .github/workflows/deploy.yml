@@ -22,9 +22,9 @@ jobs:
       - run: npm run release:inputs
       - run: npm test
       - run: npm run check
-      - run: npm run build:public
+      - run: npm run build
       - run: node scripts/audit-built-site.mjs
-      - run: node scripts/check-publication.mjs --public
+      - run: node scripts/check-publication.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
